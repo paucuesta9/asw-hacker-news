@@ -132,3 +132,103 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 335)
 
 
+Started GET "/" for 37.135.35.55 at 2021-03-24 21:22:32 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.3ms | Allocations: 332)
+Completed 200 OK in 17ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 2477)
+
+
+Started GET "/" for 37.135.35.55 at 2021-03-24 21:22:42 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.0ms | Allocations: 215)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.0ms | Allocations: 831)
+
+
+Started GET "/users" for 37.135.35.55 at 2021-03-24 21:22:53 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1013)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+/home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:23:in `exec': Permission denied - /home/ubuntu/environment/asw-hacker-news/webapp/node_modules/.bin/webpack (Errno::EACCES)
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:23:in `block in run'
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:22:in `chdir'
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:22:in `run'
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:17:in `block in <main>'
+	from ./bin/webpack:16:in `chdir'
+	from ./bin/webpack:16:in `<main>'
+
+  Rendered layout layouts/application.html.erb (Duration: 2113.8ms | Allocations: 24973)
+Completed 200 OK in 2130ms (Views: 2125.2ms | ActiveRecord: 0.8ms | Allocations: 26378)
+
+
+Started GET "/" for 37.135.35.55 at 2021-03-24 21:23:09 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 45)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 398)
+
+
+Started GET "/users" for 37.135.35.55 at 2021-03-24 21:23:15 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 711)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.9ms | Allocations: 3830)
+Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 0.1ms | Allocations: 4228)
+
+
+Started GET "/posts" for 37.135.35.55 at 2021-03-24 21:23:20 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 991)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 4086)
+Completed 200 OK in 21ms (Views: 18.1ms | ActiveRecord: 0.2ms | Allocations: 5197)
+
+
+Started GET "/posts/new" for 37.135.35.55 at 2021-03-24 21:23:29 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 26.0ms | Allocations: 4449)
+  Rendered posts/new.html.erb within layouts/application (Duration: 28.0ms | Allocations: 4793)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 7907)
+Completed 200 OK in 47ms (Views: 40.0ms | ActiveRecord: 0.6ms | Allocations: 11730)
+
+
+Started GET "/posts" for 37.135.35.55 at 2021-03-24 21:24:55 +0000
+Cannot render console from 37.135.35.55! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 699)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 3819)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.1ms | Allocations: 4211)
+
+
