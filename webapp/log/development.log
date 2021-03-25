@@ -732,3 +732,512 @@ Migrating to AddPointsAndTypeToPosts (20210325125404)
   [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 13:59:01 +0100
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 18.6ms | Allocations: 5693)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 120.8ms | Allocations: 14603)
+Completed 200 OK in 160ms (Views: 132.4ms | ActiveRecord: 1.6ms | Allocations: 17551)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 13:59:02 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 13:59:02 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts/new" for 127.0.0.1 at 2021-03-25 14:00:56 +0100
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 506.5ms | Allocations: 9543)
+  Rendered posts/new.html.erb within layouts/application (Duration: 547.5ms | Allocations: 9894)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 628.4ms | Allocations: 13988)
+Completed 200 OK in 646ms (Views: 640.5ms | ActiveRecord: 0.0ms | Allocations: 15164)
+
+
+Started GET "/posts/y18.gif" for 127.0.0.1 at 2021-03-25 14:00:57 +0100
+Started GET "/posts/s.gif" for 127.0.0.1 at 2021-03-25 14:00:57 +0100
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.4ms | Allocations: 1532)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 11ms (ActiveRecord: 1.1ms | Allocations: 2445)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:01:00 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:01:00 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:01:05 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.4ms | Allocations: 1361)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 84.2ms | Allocations: 5341)
+Completed 200 OK in 93ms (Views: 86.0ms | ActiveRecord: 0.7ms | Allocations: 5869)
+
+
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:01:06 +0100
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:01:06 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDefault0PointsToPosts (20210325130630)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aposts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT NULL, "type" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aposts" ("id","title","url","text","created_at","updated_at","points","type")
+                     SELECT "id","title","url","text","created_at","updated_at","points","type" FROM "posts"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "posts"[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT NULL, "type" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("id","title","url","text","created_at","updated_at","points","type")
+                     SELECT "id","title","url","text","created_at","updated_at","points","type" FROM "aposts"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE "aposts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210325130630"]]
+  [1m[36mTRANSACTION (14.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDefault0PointsToPost (20210325131035)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (2.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aposts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT NULL, "type" varchar DEFAULT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "aposts" ("id","title","url","text","created_at","updated_at","points","type")
+                     SELECT "id","title","url","text","created_at","updated_at","points","type" FROM "posts"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "posts"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0, "type" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("id","title","url","text","created_at","updated_at","points","type")
+                     SELECT "id","title","url","text","created_at","updated_at","points","type" FROM "aposts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aposts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210325131035"]]
+  [1m[36mTRANSACTION (14.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:13:09 +0100
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 26.9ms | Allocations: 5724)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 159.7ms | Allocations: 14634)
+Completed 200 OK in 198ms (Views: 173.3ms | ActiveRecord: 2.4ms | Allocations: 17582)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:13:10 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:13:10 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts/new" for 127.0.0.1 at 2021-03-25 14:15:18 +0100
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 139.2ms | Allocations: 7231)
+  Rendered posts/new.html.erb within layouts/application (Duration: 145.4ms | Allocations: 7582)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 210.4ms | Allocations: 11485)
+Completed 200 OK in 219ms (Views: 213.0ms | ActiveRecord: 0.0ms | Allocations: 12066)
+
+
+Started GET "/posts/y18.gif" for 127.0.0.1 at 2021-03-25 14:15:19 +0100
+Started GET "/posts/s.gif" for 127.0.0.1 at 2021-03-25 14:15:19 +0100
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 20ms (ActiveRecord: 0.8ms | Allocations: 1543)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 26ms (ActiveRecord: 2.3ms | Allocations: 2123)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Started POST "/posts" for 127.0.0.1 at 2021-03-25 14:15:35 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"New Post", "url"=>"www.goole.es", "text"=>"This is a post"}, "commit"=>"Create Post"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:27:in `block in create'
+  [1m[36mPost Create (1.9ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "New Post"], ["url", "www.goole.es"], ["text", "This is a post"], ["created_at", "2021-03-25 13:15:35.475781"], ["updated_at", "2021-03-25 13:15:35.475781"]]
+  ↳ app/controllers/posts_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/posts/5
+Completed 302 Found in 53ms (ActiveRecord: 19.4ms | Allocations: 2748)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2021-03-25 14:15:35 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 21.4ms | Allocations: 308)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 91.5ms | Allocations: 4289)
+Completed 200 OK in 106ms (Views: 94.2ms | ActiveRecord: 0.5ms | Allocations: 5363)
+
+
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:15:39 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 1065)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 71.3ms | Allocations: 5036)
+Completed 200 OK in 74ms (Views: 73.4ms | ActiveRecord: 0.4ms | Allocations: 5431)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:15:39 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:15:39 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/vote?id=1&how=up&goto=news" for 127.0.0.1 at 2021-03-25 14:15:58 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/vote"):
+  
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:15:58 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:15:58 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:16:01 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 1043)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 77.6ms | Allocations: 5020)
+Completed 200 OK in 81ms (Views: 79.2ms | ActiveRecord: 0.5ms | Allocations: 5412)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:16:02 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:16:02 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:22:24 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.4ms | Allocations: 3454)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 3523)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 1.6ms | Allocations: 6442)
+
+
+  
+ActionView::Template::Error (The single-table inheritance mechanism failed to locate the subclass: 'url'. This error is raised because the column 'type' is reserved for storing the class in case of inheritance. Please rename this column if you didn't intend it to be used for storing the inheritance class or overwrite Post.inheritance_column to use another column for that information.):
+    13:         <td>
+    14:           <table border="0" cellpadding="0" class="itemlist">
+    15:             <tbody>
+    16:               <% @posts.each_with_index do |post, index| %>
+    17:                 <tr class="athing" id="<%= post.id %>">
+    18:                   <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
+    19:                   <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
+  
+app/views/posts/index.html.erb:16:in `each_with_index'
+app/views/posts/index.html.erb:16
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeNameTypeOfPosts (20210325132333)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aposts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0, "typePost" varchar DEFAULT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "aposts" ("id","title","url","text","created_at","updated_at","points","typePost")
+                     SELECT "id","title","url","text","created_at","updated_at","points","type" FROM "posts"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "posts"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0, "typePost" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("id","title","url","text","created_at","updated_at","points","typePost")
+                     SELECT "id","title","url","text","created_at","updated_at","points","typePost" FROM "aposts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aposts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210325132333"]]
+  [1m[36mTRANSACTION (30.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:25:25 +0100
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.0ms | Allocations: 5800)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 159.9ms | Allocations: 14710)
+Completed 200 OK in 209ms (Views: 176.0ms | ActiveRecord: 3.1ms | Allocations: 17658)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:25:26 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:25:26 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:27:40 +0100
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 27.3ms | Allocations: 5800)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 141.4ms | Allocations: 14710)
+Completed 200 OK in 180ms (Views: 154.4ms | ActiveRecord: 2.5ms | Allocations: 17658)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:27:40 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:27:40 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/" for 127.0.0.1 at 2021-03-25 14:31:36 +0100
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 15.1ms | Allocations: 339)
+Completed 200 OK in 43ms (Views: 20.3ms | ActiveRecord: 0.0ms | Allocations: 2592)
+
+
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:31:44 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 32.7ms | Allocations: 5691)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 175.8ms | Allocations: 14595)
+Completed 200 OK in 201ms (Views: 188.8ms | ActiveRecord: 3.2ms | Allocations: 16038)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:31:45 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:31:45 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/" for 127.0.0.1 at 2021-03-25 14:32:20 +0100
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.1ms | Allocations: 339)
+Completed 200 OK in 41ms (Views: 18.9ms | ActiveRecord: 0.0ms | Allocations: 2592)
+
+
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:32:27 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.5ms | Allocations: 5707)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 148.9ms | Allocations: 14611)
+Completed 200 OK in 174ms (Views: 160.7ms | ActiveRecord: 3.5ms | Allocations: 16054)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:32:28 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:32:28 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:36:42 +0100
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (7.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY posts.points DESC[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.8ms | Allocations: 5839)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 142.3ms | Allocations: 14749)
+Completed 200 OK in 181ms (Views: 148.9ms | ActiveRecord: 8.8ms | Allocations: 17697)
+
+
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:36:43 +0100
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:36:43 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:39:28 +0100
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 27.9ms | Allocations: 5129)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 5198)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.9ms | Allocations: 8114)
+
+
+  
+ActionView::Template::Error (undefined method `each_with_index' for #<ActionView::Base:0x00000000008a48>):
+    13:         <td>
+    14:           <table border="0" cellpadding="0" class="itemlist">
+    15:             <tbody>
+    16:               <% @posts.where(:typePost => 'url').order('posts.points DESC')..each_with_index do |post, index| %>
+    17:                 <tr class="athing" id="<%= post.id %>">
+    18:                   <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
+    19:                   <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
+  
+app/views/posts/index.html.erb:16
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:40:10 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 28.4ms | Allocations: 6169)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 161.4ms | Allocations: 15079)
+Completed 200 OK in 201ms (Views: 174.0ms | ActiveRecord: 2.8ms | Allocations: 18027)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:40:11 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:40:11 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 14:40:28 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.1ms | Allocations: 1115)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 95.5ms | Allocations: 5115)
+Completed 200 OK in 99ms (Views: 97.0ms | ActiveRecord: 0.9ms | Allocations: 5533)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:40:29 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:40:29 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  

@@ -13,14 +13,14 @@
         <td>
           <table border="0" cellpadding="0" class="itemlist">
             <tbody>
-              <% @posts.each_with_index do |post, index| %>
+              <% @posts.where(:typePost => 'url').order('posts.points DESC').each_with_index do |post, index| %>
                 <tr class="athing" id="<%= post.id %>">
                   <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
                   <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
                   <td class="title"><!--<a href="<%= post.url %>" class="storylink">--><%= post.title %><!--</a>--><span class="sitebit comhead"> <!--(<a href="from?site=fossil-scm.org"><span class="sitestr">fossil-scm.org</span></a>)--></span></td>
                 </tr>
                 <tr><td colspan="2"></td><td class="subtext">
-                  <span class="score" id="score_<%= post.id %>">0 Points</span> by <a href="user?id=mockUser" class="hnuser">mockUser</a> <span class="age"><a href="item?id=<%= post.id %>"><%= post.created_at %></a></span> <span id="unv_<%= post.id %>"></span> | <a href="hide?id=<%= post.id %>&amp;goto=news">hide</a> | <a href="item?id=<%= post.id %>">0 Comments</a></td>
+                  <span class="score" id="score_<%= post.id %>"><%= post.points %> Points</span> by <a href="user?id=mockUser" class="hnuser">mockUser</a> <span class="age"><a href="item?id=<%= post.id %>"><%= post.created_at %></a></span> <span id="unv_<%= post.id %>"></span> | <a href="hide?id=<%= post.id %>&amp;goto=news">hide</a> | <a href="item?id=<%= post.id %>">0 Comments</a></td>
                 </tr>
                 <tr class="spacer" style="height:5px"></tr>
               <% end %>
