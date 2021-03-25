@@ -1,1 +1,4 @@
 webapp/tmp/*
+webapp/.idea/*
+webapp/log/*
+webapp/tmp/*
