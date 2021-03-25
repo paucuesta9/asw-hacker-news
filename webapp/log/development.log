@@ -1520,3 +1520,51 @@ Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 1087)
 ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
   
 app/controllers/posts_controller.rb:62:in `set_post'
+Started GET "/posts/new" for 127.0.0.1 at 2021-03-25 23:59:00 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_formsub.html.erb (Duration: 11.7ms | Allocations: 3175)
+  Rendered posts/new.html.erb within layouts/application (Duration: 13.9ms | Allocations: 3633)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 285.4ms | Allocations: 15433)
+Completed 200 OK in 308ms (Views: 291.3ms | ActiveRecord: 0.7ms | Allocations: 22587)
+
+
+Started GET "/posts/y18.gif" for 127.0.0.1 at 2021-03-25 23:59:00 +0100
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms | Allocations: 1546)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Started GET "/posts/new" for 127.0.0.1 at 2021-03-25 23:59:04 +0100
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_formsub.html.erb (Duration: 2.8ms | Allocations: 887)
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 976)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.9ms | Allocations: 4654)
+Completed 200 OK in 59ms (Views: 57.1ms | ActiveRecord: 0.0ms | Allocations: 5082)
+
+
+Started GET "/posts/y18.gif" for 127.0.0.1 at 2021-03-25 23:59:04 +0100
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1109)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
