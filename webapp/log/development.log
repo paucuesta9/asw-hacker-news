@@ -1241,3 +1241,89 @@ ActionController::RoutingError (No route matches [GET] "/y18.gif"):
   
 ActionController::RoutingError (No route matches [GET] "/s.gif"):
   
+Started GET "/posts/new" for 127.0.0.1 at 2021-03-25 14:43:18 +0100
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 171.6ms | Allocations: 8012)
+  Rendered posts/new.html.erb within layouts/application (Duration: 178.6ms | Allocations: 8360)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 253.9ms | Allocations: 12239)
+Completed 200 OK in 263ms (Views: 256.4ms | ActiveRecord: 0.0ms | Allocations: 12774)
+
+
+Started GET "/posts/y18.gif" for 127.0.0.1 at 2021-03-25 14:43:18 +0100
+Started GET "/posts/s.gif" for 127.0.0.1 at 2021-03-25 14:43:18 +0100
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 13ms (ActiveRecord: 0.8ms | Allocations: 1226)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 18ms (ActiveRecord: 1.9ms | Allocations: 2253)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 14:43:20 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 14:43:21 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts/y18.gif" for 127.0.0.1 at 2021-03-25 14:44:33 +0100
+Started GET "/posts/s.gif" for 127.0.0.1 at 2021-03-25 14:44:33 +0100
+Started GET "/posts/new" for 127.0.0.1 at 2021-03-25 14:44:33 +0100
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 34ms (ActiveRecord: 2.4ms | Allocations: 3334)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:62:in `set_post'
+Completed 404 Not Found in 22ms (ActiveRecord: 1.8ms | Allocations: 3131)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:62:in `set_post'
+Processing by PostsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/posts_controller.rb:15:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 36.5ms | Allocations: 17591)
+  Rendered posts/new.html.erb within layouts/application (Duration: 44.5ms | Allocations: 19503)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 307.9ms | Allocations: 79110)
+Completed 200 OK in 345ms (Views: 322.9ms | ActiveRecord: 0.8ms | Allocations: 89917)
+
+
