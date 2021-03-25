@@ -1728,3 +1728,616 @@ ActionController::RoutingError (No route matches [GET] "/y18.gif"):
   
 ActionController::RoutingError (No route matches [GET] "/s.gif"):
   
+Started GET "/home/helloworld" for 81.184.185.107 at 2021-03-25 21:37:27 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/home/helloworld"):
+  
+Started GET "/home/helloworld" for 81.184.185.107 at 2021-03-25 21:37:48 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/home/helloworld"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:37:56 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 22.0ms | Allocations: 6257)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+/home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:23:in `exec': Permission denied - /home/ubuntu/environment/asw-hacker-news/webapp/node_modules/.bin/webpack (Errno::EACCES)
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:23:in `block in run'
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:22:in `chdir'
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/webpack_runner.rb:22:in `run'
+	from /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/webpacker-5.2.1/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:17:in `block in <main>'
+	from ./bin/webpack:16:in `chdir'
+	from ./bin/webpack:16:in `<main>'
+
+  Rendered layout layouts/application.html.erb (Duration: 1705.8ms | Allocations: 26782)
+Completed 200 OK in 1721ms (Views: 1708.6ms | ActiveRecord: 2.0ms | Allocations: 29488)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:37:58 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/y18.gif" for 81.184.185.107 at 2021-03-25 21:37:58 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:37:59 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:41:54 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1321)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 4364)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.3ms | Allocations: 5479)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:41:54 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/y18.gif" for 81.184.185.107 at 2021-03-25 21:41:54 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:41:55 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:41:59 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 971)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 3838)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.2ms | Allocations: 4241)
+
+
+Started GET "/y18.gif" for 81.184.185.107 at 2021-03-25 21:41:59 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:41:59 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:42:00 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:42:13 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 19.8ms | Allocations: 5969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 71.3ms | Allocations: 11573)
+Completed 200 OK in 89ms (Views: 75.9ms | ActiveRecord: 1.3ms | Allocations: 14462)
+
+
+Started GET "/y18.gif" for 81.184.185.107 at 2021-03-25 21:42:13 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:42:13 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:42:13 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:43:52 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 5969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.2ms | Allocations: 11573)
+Completed 200 OK in 66ms (Views: 58.3ms | ActiveRecord: 0.8ms | Allocations: 14462)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:43:53 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/y18.gif" for 81.184.185.107 at 2021-03-25 21:43:53 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:43:53 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:49:23 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.9ms | Allocations: 5969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 103.7ms | Allocations: 15872)
+Completed 200 OK in 115ms (Views: 106.8ms | ActiveRecord: 0.7ms | Allocations: 18760)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:49:23 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/y18.gif" for 81.184.185.107 at 2021-03-25 21:49:23 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:49:23 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:50:59 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 13.0ms | Allocations: 5969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.4ms | Allocations: 11814)
+Completed 200 OK in 66ms (Views: 58.1ms | ActiveRecord: 0.8ms | Allocations: 14703)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:51:00 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/y18.gif" for 81.184.185.107 at 2021-03-25 21:51:00 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:52:43 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 5969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 11814)
+Completed 200 OK in 53ms (Views: 44.9ms | ActiveRecord: 0.7ms | Allocations: 14703)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:52:43 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+  
+ActionController::RoutingError (uninitialized constant AssetsController):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:52:43 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:58:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 6031)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 55.3ms | Allocations: 11867)
+Completed 200 OK in 71ms (Views: 62.9ms | ActiveRecord: 0.9ms | Allocations: 14756)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:58:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/y18.gif"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:58:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 21:58:44 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 6031)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.6ms | Allocations: 11867)
+Completed 200 OK in 53ms (Views: 44.9ms | ActiveRecord: 0.7ms | Allocations: 14756)
+
+
+Started GET "/app/assets/images/y18.gif" for 81.184.185.107 at 2021-03-25 21:58:44 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets/images/y18.gif"):
+  
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 21:58:44 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 21:58:44 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:00:45 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 5969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.9ms | Allocations: 11814)
+Completed 200 OK in 55ms (Views: 46.3ms | ActiveRecord: 0.8ms | Allocations: 14703)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:00:46 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 22:00:46 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:01:57 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1106)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 4072)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.2ms | Allocations: 4561)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:01:57 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 22:01:58 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts/submit" for 81.184.185.107 at 2021-03-25 22:02:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"submit"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `set_post'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms | Allocations: 1244)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=submit):
+  
+app/controllers/posts_controller.rb:67:in `set_post'
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:05:02 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 957)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 3820)
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.2ms | Allocations: 4212)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:05:04 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 22:05:04 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/news?p=2" for 81.184.185.107 at 2021-03-25 22:05:07 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/news"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:05:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 957)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 3820)
+Completed 200 OK in 20ms (Views: 19.1ms | ActiveRecord: 0.2ms | Allocations: 4213)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:05:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 22:05:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/login?goto=news" for 81.184.185.107 at 2021-03-25 22:05:13 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:05:15 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 957)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 3817)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.2ms | Allocations: 4209)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:05:16 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 22:05:16 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/posts/new" for 81.184.185.107 at 2021-03-25 22:05:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 30.9ms | Allocations: 7775)
+  Rendered posts/new.html.erb within layouts/application (Duration: 35.0ms | Allocations: 8116)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.2ms | Allocations: 10882)
+Completed 200 OK in 52ms (Views: 50.6ms | ActiveRecord: 0.0ms | Allocations: 11417)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:05:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started POST "/posts" for 81.184.185.107 at 2021-03-25 22:06:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"rr", "url"=>"z", "text"=>"d", "type"=>"s"}, "commit"=>"Create Post"}
+[31mUnpermitted parameter: :type[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:32:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "rr"], ["url", "z"], ["text", "d"], ["created_at", "2021-03-25 22:06:20.732920"], ["updated_at", "2021-03-25 22:06:20.732920"]]
+  ↳ app/controllers/posts_controller.rb:32:in `block in create'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:32:in `block in create'
+Redirected to https://4a71c38eb9da4ce5949f2877ecbc33cc.vfs.cloud9.us-east-1.amazonaws.com/posts/6
+Completed 302 Found in 20ms (ActiveRecord: 5.3ms | Allocations: 2725)
+
+
+Started GET "/posts/6" for 81.184.185.107 at 2021-03-25 22:06:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 291)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 3158)
+Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 0.1ms | Allocations: 4236)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:06:21 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:06:24 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 958)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 3815)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.2ms | Allocations: 4208)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:06:24 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 22:06:24 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:06:33 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 965)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 3829)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.2ms | Allocations: 4229)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:06:33 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/s.gif" for 81.184.185.107 at 2021-03-25 22:06:33 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+Started GET "/news?p=2" for 81.184.185.107 at 2021-03-25 22:06:35 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/news"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-03-25 22:06:37 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."typePost" = ? ORDER BY posts.points DESC[0m  [["typePost", "url"]]
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 957)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 3820)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.2ms | Allocations: 4212)
+
+
+Started GET "/packs/js/application-6711b2536a1688e9c21f.js" for 81.184.185.107 at 2021-03-25 22:06:37 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/packs/js/application-6711b2536a1688e9c21f.js"):
+  
+Started GET "/posts/submit" for 81.184.185.107 at 2021-03-25 22:06:59 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"submit"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `set_post'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1087)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=submit):
+  
+app/controllers/posts_controller.rb:67:in `set_post'
