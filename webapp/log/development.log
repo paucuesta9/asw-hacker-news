@@ -673,3 +673,62 @@ ActionController::RoutingError (No route matches [GET] "/s.gif"):
   
 ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
   
+Started GET "/" for 127.0.0.1 at 2021-03-25 13:40:06 +0100
+  [1m[35m (42.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 135.8ms | Allocations: 340)
+Completed 200 OK in 554ms (Views: 284.1ms | ActiveRecord: 0.0ms | Allocations: 2536)
+
+
+Started GET "/posts" for 127.0.0.1 at 2021-03-25 13:40:25 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (3.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 25.6ms | Allocations: 4707)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in C:/Users/Pau Cuesta/Documents/development/asw-hacker-news/webapp/public/packs
+[Webpacker] Hash: 8d4691cd398095427bf7
+Version: webpack 4.46.0
+Time: 5746ms
+Built at: 25/03/2021 13:40:38
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-6711b2536a1688e9c21f.js    125 KiB  application  [emitted] [immutable]  application
+js/application-6711b2536a1688e9c21f.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-6711b2536a1688e9c21f.js js/application-6711b2536a1688e9c21f.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 13306.3ms | Allocations: 15876)
+Completed 200 OK in 13369ms (Views: 13314.7ms | ActiveRecord: 5.3ms | Allocations: 17302)
+
+
+Started GET "/y18.gif" for 127.0.0.1 at 2021-03-25 13:40:39 +0100
+Started GET "/s.gif" for 127.0.0.1 at 2021-03-25 13:40:39 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPointsAndTypeToPosts (20210325125404)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (6.6ms)[0m  [1m[35mALTER TABLE "posts" ADD "points" integer[0m
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "posts" ADD "type" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210325125404"]]
+  [1m[36mTRANSACTION (17.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
