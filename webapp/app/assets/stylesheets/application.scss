@@ -11,6 +11,42 @@ textarea { font-family:monospace; font-size:10pt; }
 a:link    { color:#000000; text-decoration:none; }
 a:visited { color:#828282; text-decoration:none; }
 
+
+
+
+.helptitle{
+  padding-top:4px;
+}
+
+.helpurl{
+  padding-top:4px;
+  padding-left:10px;
+}
+
+.theor{
+  padding-top:4px;
+  padding-left:33px;
+}
+.helptext{
+  padding-top:4px;
+}
+
+
+.createpost{
+  padding-top: 10px;
+  padding-left:33px;
+}
+.form-title{
+  width:22.5%;
+}
+.form-url{
+  width:22.6%;
+}
+.form-text{
+  height: 75px;
+  width:22.5%;
+}
+
 .default { font-family:Verdana, Geneva, sans-serif; font-size: 10pt; color:#828282; }
 .admin   { font-family:Verdana, Geneva, sans-serif; font-size:8.5pt; color:#000000; }
 .title   { font-family:Verdana, Geneva, sans-serif; font-size: 10pt; color:#828282; overflow:hidden; }
