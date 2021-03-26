@@ -18,7 +18,7 @@
 ### Clone the repository
 ```shell
 git clone https://github.com/paucuesta9/asw-hacker-news.git
-cd asw-hacker-news/webapp
+cd asw-hacker-news
 ```
 
 ### Chechk your Ruby version
