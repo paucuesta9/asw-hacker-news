@@ -13,7 +13,7 @@
       <td>
         <table border="0" cellpadding="0" class="itemlist">
           <tbody>
-          <% @posts.where(:typePost => "url").or(@posts.where(:typePost => "ask")).order('posts.created_at DESC').each_with_index do |post, index| %>
+          <% @posts.where(:type => "url").or(@posts.where(:type => "ask")).order('posts.created_at DESC').each_with_index do |post, index| %>
             <tr class="athing" id="<%= post.id %>">
               <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
               <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
