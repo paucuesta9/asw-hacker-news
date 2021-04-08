@@ -232,3 +232,977 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.1ms | Allocations: 4211)
 
 
+Started GET "/" for 81.184.185.107 at 2021-04-08 14:55:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 15.0ms | Allocations: 332)
+Completed 200 OK in 111ms (Views: 58.8ms | ActiveRecord: 0.0ms | Allocations: 2881)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 14:55:43 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.8ms | Allocations: 1029)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 159.4ms | Allocations: 20425)
+Completed 200 OK in 175ms (Views: 169.6ms | ActiveRecord: 1.0ms | Allocations: 21902)
+
+
+Started GET "/" for 81.184.185.107 at 2021-04-08 14:55:52 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.1ms | Allocations: 217)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 865)
+
+
+Started GET "/post" for 81.184.185.107 at 2021-04-08 14:55:58 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/post"):
+  
+Started GET "/" for 81.184.185.107 at 2021-04-08 18:54:04 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.9ms | Allocations: 332)
+Completed 200 OK in 32ms (Views: 17.3ms | ActiveRecord: 0.0ms | Allocations: 2534)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 18:54:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1027)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 68.2ms | Allocations: 6626)
+Completed 200 OK in 77ms (Views: 71.9ms | ActiveRecord: 0.7ms | Allocations: 8062)
+
+
+Started GET "/new" for 81.184.185.107 at 2021-04-08 18:54:15 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/news" for 81.184.185.107 at 2021-04-08 18:54:43 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/news"):
+  
+Started GET "/new" for 81.184.185.107 at 2021-04-08 18:55:00 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 18:55:05 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 783)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 3781)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.1ms | Allocations: 4265)
+
+
+Started GET "/post" for 81.184.185.107 at 2021-04-08 18:55:08 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/post"):
+  
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 18:55:11 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 704)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3561)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.1ms | Allocations: 3960)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 18:55:14 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 29.8ms | Allocations: 6514)
+  Rendered posts/new.html.erb within layouts/application (Duration: 38.0ms | Allocations: 7821)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.1ms | Allocations: 10611)
+Completed 200 OK in 60ms (Views: 50.6ms | ActiveRecord: 0.6ms | Allocations: 14491)
+
+
+Started GET "/index" for 81.184.185.107 at 2021-04-08 18:55:33 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/index"):
+  
+Started GET "/home" for 81.184.185.107 at 2021-04-08 18:55:39 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/home"):
+  
+Started GET "/users" for 81.184.185.107 at 2021-04-08 18:56:19 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 963)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 3791)
+Completed 200 OK in 22ms (Views: 18.7ms | ActiveRecord: 1.2ms | Allocations: 4929)
+
+
+Started GET "/" for 81.184.185.107 at 2021-04-08 18:57:36 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.7ms | Allocations: 214)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 866)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 19:04:52 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1419)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 4280)
+Completed 200 OK in 20ms (Views: 19.8ms | ActiveRecord: 0.4ms | Allocations: 4672)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 19:04:54 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.7ms | Allocations: 850)
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 957)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 4775)
+Completed 200 OK in 20ms (Views: 19.8ms | ActiveRecord: 0.0ms | Allocations: 5173)
+
+
+Started GET "/" for 81.184.185.107 at 2021-04-08 20:31:27 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 14.7ms | Allocations: 332)
+Completed 200 OK in 35ms (Views: 22.1ms | ActiveRecord: 0.0ms | Allocations: 2534)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 20:31:30 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1024)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 65.3ms | Allocations: 6626)
+Completed 200 OK in 73ms (Views: 67.6ms | ActiveRecord: 0.8ms | Allocations: 8063)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 20:35:18 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 30.3ms | Allocations: 5131)
+  Rendered posts/new.html.erb within layouts/application (Duration: 32.6ms | Allocations: 5475)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 8239)
+Completed 200 OK in 54ms (Views: 40.0ms | ActiveRecord: 0.6ms | Allocations: 12060)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 20:52:17 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1130)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 82.1ms | Allocations: 12353)
+Completed 200 OK in 94ms (Views: 85.5ms | ActiveRecord: 0.2ms | Allocations: 15255)
+
+
+Started GET "/" for 81.184.185.107 at 2021-04-08 20:55:08 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.6ms | Allocations: 219)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 905)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 20:55:14 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 953)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 3993)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.1ms | Allocations: 5101)
+
+
+Started GET "/ask" for 81.184.185.107 at 2021-04-08 20:55:18 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/ask"):
+  
+Started GET "/asks" for 81.184.185.107 at 2021-04-08 20:55:21 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/asks"):
+  
+Started GET "/ask" for 81.184.185.107 at 2021-04-08 20:56:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AskController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ask/index.html.erb within layouts/application
+  Rendered ask/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 117)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 3099)
+Completed 200 OK in 10ms (Views: 8.6ms | Allocations: 4088)
+
+
+Started GET "/y18.gif" for 81.184.185.107 at 2021-04-08 20:56:10 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+Started GET "/ask" for 81.184.185.107 at 2021-04-08 20:59:02 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AskController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ask/index.html.erb within layouts/application
+  Rendered ask/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 173)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 3216)
+Completed 200 OK in 10ms (Views: 9.0ms | Allocations: 4304)
+
+
+Started GET "/news.css?kYAZqEBDkZ1yesLxUECv" for 81.184.185.107 at 2021-04-08 20:59:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/news.css"):
+  
+Started GET "/hn.js?kYAZqEBDkZ1yesLxUECv" for 81.184.185.107 at 2021-04-08 20:59:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/hn.js"):
+  
+Started GET "/y18.gif" for 81.184.185.107 at 2021-04-08 20:59:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/s.gif" for 81.184.185.107 at 2021-04-08 20:59:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/s.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/y18.gif"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:02:39 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/posts_controller.rb:15:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 4.5ms | Allocations: 2783)
+  Rendered posts/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 3130)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 5961)
+Completed 200 OK in 25ms (Views: 13.9ms | ActiveRecord: 1.0ms | Allocations: 11294)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:02:39 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.6ms | Allocations: 847)
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 954)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 3816)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 4217)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:02:42 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"", "url"=>"", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", ""], ["url", ""], ["text", ""], ["created_at", "2021-04-08 21:02:42.813876"], ["updated_at", "2021-04-08 21:02:42.813876"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to https://4a71c38eb9da4ce5949f2877ecbc33cc.vfs.cloud9.us-east-1.amazonaws.com/posts/1
+Completed 302 Found in 19ms (ActiveRecord: 6.4ms | Allocations: 3325)
+
+
+Started GET "/posts/1" for 81.184.185.107 at 2021-04-08 21:02:42 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:74:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 288)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3154)
+Completed 200 OK in 14ms (Views: 7.5ms | ActiveRecord: 0.2ms | Allocations: 4923)
+
+
+Started GET "/new" for 81.184.185.107 at 2021-04-08 21:03:37 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:03:43 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.7ms | Allocations: 849)
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 956)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 3821)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 4215)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:04:30 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kjasd", "url"=>"", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 2007)
+
+
+  
+NoMethodError (undefined method `url' for #<ActionController::Parameters:0x0000565511685788>):
+  
+app/controllers/posts_controller.rb:31:in `block in create'
+app/controllers/posts_controller.rb:30:in `create'
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:04:42 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.9ms | Allocations: 847)
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 954)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 3823)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 4224)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:04:47 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kjasd", "url"=>"xddd", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 1996)
+
+
+  
+NoMethodError (undefined method `url' for #<ActionController::Parameters:0x00005655119ca3f8>):
+  
+app/controllers/posts_controller.rb:31:in `block in create'
+app/controllers/posts_controller.rb:30:in `create'
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:05:21 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.6ms | Allocations: 847)
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 954)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 3822)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 4216)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:05:24 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kjasd", "url"=>"xddd", "text"=>"hjbb"}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 1995)
+
+
+  
+NoMethodError (undefined method `url' for #<ActionController::Parameters:0x0000565511bfa560>):
+  
+app/controllers/posts_controller.rb:31:in `block in create'
+app/controllers/posts_controller.rb:30:in `create'
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:07:18 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 4.9ms | Allocations: 2907)
+  Rendered posts/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3366)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 9232)
+Completed 200 OK in 42ms (Views: 27.9ms | ActiveRecord: 0.6ms | Allocations: 15413)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:07:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kjasd", "url"=>"xddd", "text"=>"hjbb"}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms | Allocations: 2082)
+
+
+  
+NoMethodError (undefined method `url' for #<ActionController::Parameters:0x000055ad169b1630>):
+  
+app/controllers/posts_controller.rb:31:in `block in create'
+app/controllers/posts_controller.rb:30:in `create'
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:08:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 4.8ms | Allocations: 2907)
+  Rendered posts/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3366)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.6ms | Allocations: 9232)
+Completed 200 OK in 42ms (Views: 28.8ms | ActiveRecord: 0.5ms | Allocations: 15413)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:08:04 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kjasd", "url"=>"xddd", "text"=>"hjbb"}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "kjasd"], ["url", "xddd"], ["text", "hjbb"], ["created_at", "2021-04-08 21:08:04.502360"], ["updated_at", "2021-04-08 21:08:04.502360"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to https://4a71c38eb9da4ce5949f2877ecbc33cc.vfs.cloud9.us-east-1.amazonaws.com/posts/2
+Completed 302 Found in 24ms (ActiveRecord: 6.5ms | Allocations: 3299)
+
+
+Started GET "/posts/2" for 81.184.185.107 at 2021-04-08 21:08:04 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:74:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 289)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 3157)
+Completed 200 OK in 23ms (Views: 16.5ms | ActiveRecord: 0.2ms | Allocations: 4637)
+
+
+Started GET "/posts/" for 81.184.185.107 at 2021-04-08 21:09:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 4711)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.4ms | Allocations: 10592)
+Completed 200 OK in 38ms (Views: 29.8ms | ActiveRecord: 0.8ms | Allocations: 13494)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:09:13 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 9.1ms | Allocations: 2813)
+  Rendered posts/new.html.erb within layouts/application (Duration: 11.8ms | Allocations: 3157)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | Allocations: 6021)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.0ms | Allocations: 6562)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:09:13 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 3.5ms | Allocations: 847)
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 954)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 3818)
+Completed 200 OK in 20ms (Views: 19.6ms | ActiveRecord: 0.0ms | Allocations: 4213)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:09:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"efwradead", "url"=>"we", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "efwradead"], ["url", "we"], ["text", ""], ["created_at", "2021-04-08 21:09:20.858546"], ["updated_at", "2021-04-08 21:09:20.858546"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to https://4a71c38eb9da4ce5949f2877ecbc33cc.vfs.cloud9.us-east-1.amazonaws.com/posts/3
+Completed 302 Found in 17ms (ActiveRecord: 5.8ms | Allocations: 3249)
+
+
+Started GET "/posts/3" for 81.184.185.107 at 2021-04-08 21:09:21 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:74:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 288)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3155)
+Completed 200 OK in 12ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 4633)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:10:17 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.7ms | Allocations: 849)
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 956)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 3817)
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 4211)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:12:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 10.4ms | Allocations: 2907)
+  Rendered posts/new.html.erb within layouts/application (Duration: 13.1ms | Allocations: 3366)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.6ms | Allocations: 9232)
+Completed 200 OK in 53ms (Views: 39.2ms | ActiveRecord: 0.6ms | Allocations: 15413)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:12:08 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kinjr", "url"=>"ferpjpo", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "kinjr"], ["url", "ferpjpo"], ["text", ""], ["created_at", "2021-04-08 21:12:08.866731"], ["updated_at", "2021-04-08 21:12:08.866731"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to 
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 5.2ms | Allocations: 3686)
+
+
+  
+ActionController::ActionControllerError (Cannot redirect to nil!):
+  
+app/controllers/posts_controller.rb:39:in `block (2 levels) in create'
+app/controllers/posts_controller.rb:37:in `create'
+Started GET "/" for 81.184.185.107 at 2021-04-08 21:12:36 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.9ms | Allocations: 219)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 984)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:14:18 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 4922)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.1ms | Allocations: 10799)
+Completed 200 OK in 47ms (Views: 38.8ms | ActiveRecord: 0.7ms | Allocations: 13701)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:14:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 18.1ms | Allocations: 2813)
+  Rendered posts/new.html.erb within layouts/application (Duration: 19.7ms | Allocations: 3157)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.8ms | Allocations: 6025)
+Completed 200 OK in 28ms (Views: 26.3ms | ActiveRecord: 0.0ms | Allocations: 6570)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:14:25 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"nm ddcl", "url"=>"mpmn", "text"=>"pdd"}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "nm ddcl"], ["url", "mpmn"], ["text", "pdd"], ["created_at", "2021-04-08 21:14:25.169424"], ["updated_at", "2021-04-08 21:14:25.169424"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 6.1ms | Allocations: 6177)
+
+
+  
+NameError (undefined local variable or method `posts' for #<PostsController:0x00000000009380>
+Did you mean?  @post):
+  
+app/controllers/posts_controller.rb:39:in `block (2 levels) in create'
+app/controllers/posts_controller.rb:37:in `create'
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:14:48 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.6ms | Allocations: 5027)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.8ms | Allocations: 10904)
+Completed 200 OK in 50ms (Views: 41.5ms | ActiveRecord: 0.7ms | Allocations: 13806)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:14:51 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 6.4ms | Allocations: 2836)
+  Rendered posts/new.html.erb within layouts/application (Duration: 11.1ms | Allocations: 4148)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 7015)
+Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 0.0ms | Allocations: 7560)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:14:54 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"lkefm", "url"=>"knln", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "lkefm"], ["url", "knln"], ["text", ""], ["created_at", "2021-04-08 21:14:54.669203"], ["updated_at", "2021-04-08 21:14:54.669203"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to 
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 5.2ms | Allocations: 4287)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"posts", :controller=>"posts", :notice=>"Post was successfully created."}):
+  
+app/controllers/posts_controller.rb:39:in `block (2 levels) in create'
+app/controllers/posts_controller.rb:37:in `create'
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:16:31 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 36.2ms | Allocations: 5132)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 58.1ms | Allocations: 11009)
+Completed 200 OK in 69ms (Views: 60.5ms | ActiveRecord: 0.8ms | Allocations: 13911)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:16:32 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 9.6ms | Allocations: 3774)
+  Rendered posts/new.html.erb within layouts/application (Duration: 11.0ms | Allocations: 4118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 6983)
+Completed 200 OK in 30ms (Views: 29.4ms | ActiveRecord: 0.0ms | Allocations: 7528)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:16:36 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"mm", "url"=>"pmpm", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "mm"], ["url", "pmpm"], ["text", ""], ["created_at", "2021-04-08 21:16:36.200493"], ["updated_at", "2021-04-08 21:16:36.200493"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to 
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 5.9ms | Allocations: 4301)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"post", :controller=>"posts", :notice=>"Post was successfully created."}):
+  
+app/controllers/posts_controller.rb:39:in `block (2 levels) in create'
+app/controllers/posts_controller.rb:37:in `create'
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:17:00 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"mm", "url"=>"pmpm", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 17ms (ActiveRecord: 0.7ms | Allocations: 6800)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:17:03 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"mm", "url"=>"pmpm", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 6ms (ActiveRecord: 0.1ms | Allocations: 2266)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:17:16 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.1ms | Allocations: 5237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 11114)
+Completed 200 OK in 45ms (Views: 37.0ms | ActiveRecord: 0.7ms | Allocations: 14016)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:17:19 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 7.7ms | Allocations: 2813)
+  Rendered posts/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 3157)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | Allocations: 6022)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 6567)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:17:23 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kjen", "url"=>"ono", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "kjen"], ["url", "ono"], ["text", ""], ["created_at", "2021-04-08 21:17:23.167467"], ["updated_at", "2021-04-08 21:17:23.167467"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to 
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 5.4ms | Allocations: 4314)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"post", :controller=>"posts", :notice=>"Post was successfully created."}):
+  
+app/controllers/posts_controller.rb:39:in `block (2 levels) in create'
+app/controllers/posts_controller.rb:37:in `create'
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:17:54 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 5247)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 8225)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 1.3ms | Allocations: 9185)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:18:05 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 5342)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 11219)
+Completed 200 OK in 47ms (Views: 38.6ms | ActiveRecord: 0.8ms | Allocations: 14121)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:18:06 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 6.0ms | Allocations: 2813)
+  Rendered posts/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 3157)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.2ms | Allocations: 6021)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 0.0ms | Allocations: 6566)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:18:09 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"kln", "url"=>"on", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "kln"], ["url", "on"], ["text", ""], ["created_at", "2021-04-08 21:18:09.502058"], ["updated_at", "2021-04-08 21:18:09.502058"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to 
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 5.9ms | Allocations: 4318)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"posts", :controller=>"posts"}):
+  
+app/controllers/posts_controller.rb:39:in `block (2 levels) in create'
+app/controllers/posts_controller.rb:37:in `create'
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:18:42 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 5447)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 11324)
+Completed 200 OK in 38ms (Views: 30.0ms | ActiveRecord: 0.6ms | Allocations: 14226)
+
+
+Started GET "/posts/new" for 81.184.185.107 at 2021-04-08 21:18:48 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 11.3ms | Allocations: 2813)
+  Rendered posts/new.html.erb within layouts/application (Duration: 16.8ms | Allocations: 4136)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 7000)
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.0ms | Allocations: 7544)
+
+
+Started POST "/posts" for 81.184.185.107 at 2021-04-08 21:18:56 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"e", "url"=>"dwew", "text"=>""}, "commit"=>"Create Post"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "e"], ["url", "dwew"], ["text", ""], ["created_at", "2021-04-08 21:18:56.601508"], ["updated_at", "2021-04-08 21:18:56.601508"]]
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:38:in `block in create'
+Redirected to https://4a71c38eb9da4ce5949f2877ecbc33cc.vfs.cloud9.us-east-1.amazonaws.com/posts
+Completed 302 Found in 17ms (ActiveRecord: 5.4ms | Allocations: 3336)
+
+
+Started GET "/posts" for 81.184.185.107 at 2021-04-08 21:18:56 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1761)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 4629)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.2ms | Allocations: 5033)
+
+

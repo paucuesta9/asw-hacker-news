@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'ask/index'
+  resources :ask
   resources :posts
   resources :users
   get 'home/helloworld'
