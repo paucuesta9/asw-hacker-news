@@ -1,5 +1,7 @@
 # Hacker News
 
+Notion: https://www.notion.so/ASW-Task-Generation-Meeting-ca8d4e4896e445da970e00a1cacc6682
+
 
 ## Project info
 - Project name: Hacker News
