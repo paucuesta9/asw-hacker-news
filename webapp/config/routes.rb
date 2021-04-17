@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'ask/index'
+  get 'posts/asks'
   resources :ask
   resources :posts
   resources :users

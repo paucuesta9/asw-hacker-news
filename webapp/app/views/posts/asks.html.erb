@@ -1,0 +1,122 @@
+<html lang="en" op="ask">
+  <head><meta name="referrer" content="origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="news.css?WmOPHVu15TVF5xOnDKhL">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>Ask | Hacker News</title>
+  </head>
+  
+  <body>
+    <center>
+      <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+        <tbody>
+          <tr>
+            <td bgcolor="#ff6600">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+                <tbody>
+                  <tr>
+                    <td style="width:18px;padding-right:4px">
+                      <a href="https://news.ycombinator.com"> <img src="y18.gif" width="18" height="18" style="border:1px white solid;"> </a>
+                    </td>
+                    
+                    <td style="line-height:12pt; height:10px;">
+                      <span class="pagetop">
+                        <b class="hnname"><a href="news">Hacker News</a></b>
+                        <a href="newest">new</a> | <a href="threads?id=Jhamir">threads</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <span class="topsel"><a href="ask">ask</a></span> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a>
+                      </span>
+                    </td>
+                    
+                    <td style="text-align:right;padding-right:4px;">
+                      <span class="pagetop">
+                        <a id="me" href="user?id=Jhamir">Jhamir</a>                (1) |
+                        <a id="logout" href="logout?auth=161152b9323b2c1a761a7dc1d160dadd7f126ebb&amp;goto=ask">logout</a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          
+          <tr id="pagespace" title="Ask" style="height:10px"></tr>
+          
+          <tr>
+            <td>
+              <table border="0" cellpadding="0" cellspacing="0" class="itemlist">
+                <tbody>
+                  <!-- /////////////////POST///////////////-->
+                  <% cont = 1%>
+                  <% @asks.each do |ask| %>
+                  <tr class="athing" id="26825017">
+                    <td align="right" valign="top" class="title">
+                      <span class="rank"><%= cont %>.</span>
+                      <% cont = cont + 1 %>
+                    </td>
+                    <td valign="top" class="votelinks">
+                      <center>
+                        <a id="up_26825017" onclick="return vote(event, this, &quot;up&quot;)" href="vote?id=26825017&amp;how=up&amp;auth=131c00cfd570f7f4c67ea13a5310065a1a7c900c&amp;goto=ask">
+                          <div class="votearrow" title="upvote"></div>
+                        </a>
+                      </center>
+                    </td>
+                    <td class="title"><a href="item?id=26825017" class="storylink"><%= ask.title %></a></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td class="subtext">
+                      <span class="score" id="score_26825017">498 points</span> by <a href="user?id=snakedoctor" class="hnuser">snakedoctor</a>
+                      <span class="age"><a href="item?id=26825017">1 day ago</a></span>
+                      <span id="unv_26825017"></span> | <a href="item?id=26825017">780&nbsp;comments</a>
+                    </td>
+                  </tr>
+                  
+                  <tr class="spacer" style="height:5px"></tr>
+                  <% end %>
+                  <!-- /////////////////FI POST///////////////-->
+                  
+                  <tr class="morespace" style="height:10px"></tr>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td class="title"><a href="ask?p=2" class="morelink" rel="next">More</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <img src="s.gif" height="10" width="0">
+              <table width="100%" cellspacing="0" cellpadding="1">
+                <tbody>
+                  <tr>
+                    <td bgcolor="#ff6600"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              
+              <center>
+                <span class="yclinks"><a href="newsguidelines.html">Guidelines</a>
+                  | <a href="newsfaq.html">FAQ</a>
+                  | <a href="lists">Lists</a>
+                  | <a href="https://github.com/HackerNews/API">API</a>
+                  | <a href="security.html">Security</a>
+                  | <a href="http://www.ycombinator.com/legal/">Legal</a>
+                  | <a href="http://www.ycombinator.com/apply/">Apply to YC</a>
+                  | <a href="mailto:hn@ycombinator.com">Contact</a>
+                </span>
+                <br><br>
+                <form method="get" action="//hn.algolia.com/">Search:
+                    <input type="text" name="q" value="" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false">
+                </form>
+              </center>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+    <script type="text/javascript" src="hn.js?WmOPHVu15TVF5xOnDKhL"></script>
+  </body>
+  
+  </html>

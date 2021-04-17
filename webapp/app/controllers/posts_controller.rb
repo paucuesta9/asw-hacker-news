@@ -5,6 +5,19 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
+  
+  
+  # GET /posts/asks
+  def asks
+    @posts = Post.all
+    @asks = []
+    
+    for i in @posts
+      if i.url != ""
+        @asks << i
+      end
+    end
+  end
 
   # GET /posts/1 or /posts/1.json
   def show
