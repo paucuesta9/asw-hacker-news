@@ -4407,3 +4407,481 @@ app/controllers/posts_controller.rb:87:in `set_post'
 ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
   
 app/controllers/posts_controller.rb:87:in `set_post'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColumnsToPosts (20210419165318)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "author" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "created_at" datetime[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColumnsToPosts (20210419165318)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "author" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "posts" ADD "points" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210419165318"]]
+  [1m[36mTRANSACTION (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 81.184.185.107 at 2021-04-19 17:06:06 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.1ms | Allocations: 332)
+Completed 200 OK in 31ms (Views: 17.2ms | ActiveRecord: 0.0ms | Allocations: 2490)
+
+
+Started GET "/" for 81.184.185.107 at 2021-04-19 17:06:12 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.2ms | Allocations: 215)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 889)
+
+
+Started GET "/posts/asks" for 81.184.185.107 at 2021-04-19 17:06:19 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#asks as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:15:in `asks'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/asks.html.erb within layouts/application
+  Rendered posts/asks.html.erb within layouts/application (Duration: 2.1ms | Allocations: 619)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.7ms | Allocations: 6500)
+Completed 200 OK in 86ms (Views: 62.3ms | ActiveRecord: 0.8ms | Allocations: 12820)
+
+
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:06:19 +0000
+Started GET "/posts/news.css?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:06:19 +0000
+Started GET "/posts/s.gif" for 81.184.185.107 at 2021-04-19 17:06:19 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as JS
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/posts/y18.gif" for 81.184.185.107 at 2021-04-19 17:06:19 +0000
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Processing by PostsController#show as CSS
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as GIF
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"news"}
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+Completed 404 Not Found in 9ms (ActiveRecord: 0.2ms | Allocations: 2236)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Parameters: {"id"=>"y18"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 114ms (ActiveRecord: 0.5ms | Allocations: 33253)
+
+
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=news):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 117ms (ActiveRecord: 0.4ms | Allocations: 34353)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 363ms (ActiveRecord: 0.4ms | Allocations: 172595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/asks" for 81.184.185.107 at 2021-04-19 17:06:20 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#asks as HTML
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:15:in `asks'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/asks.html.erb within layouts/application
+  Rendered posts/asks.html.erb within layouts/application (Duration: 0.6ms | Allocations: 315)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 3326)
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 0.1ms | Allocations: 4559)
+
+
+Started GET "/posts/news.css?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:06:21 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as CSS
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"news"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:06:21 +0000
+Completed 404 Not Found in 6ms (ActiveRecord: 0.1ms | Allocations: 2651)
+
+
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=news):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Processing by PostsController#show as JS
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.1ms | Allocations: 1102)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts/asks" for 81.184.185.107 at 2021-04-19 17:07:10 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#asks as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:15:in `asks'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/asks.html.erb within layouts/application
+  Rendered posts/asks.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2902)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2966)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.2ms | Allocations: 4780)
+
+
+  
+ActionView::Template::Error (undefined method `now' for Thu, 08 Apr 2021 21:08:04.502360000 UTC +00:00:Time
+Did you mean?  noon):
+    65:                     <td colspan="2"></td>
+    66:                     <td class="subtext">
+    67:                       <span class="score" id="score_26825017">498 points</span> by <a href="user?id=snakedoctor" class="hnuser">snakedoctor</a>
+    68:                       <span class="age"><a href="item?id=26825017"><%= ask.created_at.now %>1 day ago</a></span>
+    69:                       <span id="unv_26825017"></span> | <a href="item?id=26825017">780&nbsp;comments</a>
+    70:                     </td>
+    71:                   </tr>
+  
+app/views/posts/asks.html.erb:68
+app/views/posts/asks.html.erb:49:in `each'
+app/views/posts/asks.html.erb:49
+Started GET "/posts/asks" for 81.184.185.107 at 2021-04-19 17:07:17 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#asks as HTML
+  [1m[36mPost Load (2.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:15:in `asks'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/asks.html.erb within layouts/application
+  Rendered posts/asks.html.erb within layouts/application (Duration: 1.1ms | Allocations: 600)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 3643)
+Completed 200 OK in 23ms (Views: 15.2ms | ActiveRecord: 2.6ms | Allocations: 5450)
+
+
+Started GET "/posts/news.css?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:07:18 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as CSS
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:07:18 +0000
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"news"}
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.1ms | Allocations: 1583)
+
+
+Processing by PostsController#show as JS
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=news):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 9ms (ActiveRecord: 0.1ms | Allocations: 3735)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/y18.gif" for 81.184.185.107 at 2021-04-19 17:07:18 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 9ms (ActiveRecord: 0.1ms | Allocations: 10877)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/s.gif" for 81.184.185.107 at 2021-04-19 17:07:18 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 12ms (ActiveRecord: 0.1ms | Allocations: 18552)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts/asks" for 81.184.185.107 at 2021-04-19 17:09:36 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#asks as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:15:in `asks'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/asks.html.erb within layouts/application
+  Rendered posts/asks.html.erb within layouts/application (Duration: 8.9ms | Allocations: 2153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 5194)
+Completed 200 OK in 27ms (Views: 22.2ms | ActiveRecord: 0.2ms | Allocations: 7021)
+
+
+Started GET "/posts/news.css?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:09:36 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as CSS
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"news"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:09:36 +0000
+Completed 404 Not Found in 6ms (ActiveRecord: 0.1ms | Allocations: 2633)
+
+
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=news):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Processing by PostsController#show as JS
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Started GET "/posts/y18.gif" for 81.184.185.107 at 2021-04-19 17:09:36 +0000
+Started GET "/posts/s.gif" for 81.184.185.107 at 2021-04-19 17:09:36 +0000
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Completed 404 Not Found in 6ms (ActiveRecord: 0.1ms | Allocations: 2235)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.1ms | Allocations: 1087)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 12ms (ActiveRecord: 0.1ms | Allocations: 15048)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:09:37 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as JS
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.1ms | Allocations: 4102)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/asks" for 81.184.185.107 at 2021-04-19 17:09:49 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#asks as HTML
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:15:in `asks'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/asks.html.erb within layouts/application
+  Rendered posts/asks.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1041)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 4084)
+Completed 200 OK in 20ms (Views: 14.8ms | ActiveRecord: 0.1ms | Allocations: 5890)
+
+
+Started GET "/posts/news.css?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:09:49 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:09:49 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/posts/s.gif" for 81.184.185.107 at 2021-04-19 17:09:49 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/posts/y18.gif" for 81.184.185.107 at 2021-04-19 17:09:49 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Processing by PostsController#show as JS
+Processing by PostsController#show as GIF
+Processing by PostsController#show as CSS
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1097)
+
+
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  Parameters: {"id"=>"s"}
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"news"}
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 106ms (ActiveRecord: 0.1ms | Allocations: 58669)
+
+
+Completed 404 Not Found in 107ms (ActiveRecord: 0.1ms | Allocations: 58992)
+
+
+Completed 404 Not Found in 107ms (ActiveRecord: 0.1ms | Allocations: 59315)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=news):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:09:50 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as JS
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.1ms | Allocations: 1087)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/asks" for 81.184.185.107 at 2021-04-19 17:10:06 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#asks as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:15:in `asks'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/asks.html.erb within layouts/application
+  Rendered posts/asks.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1041)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 4083)
+Completed 200 OK in 28ms (Views: 22.6ms | ActiveRecord: 0.3ms | Allocations: 5910)
+
+
+Started GET "/posts/news.css?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:10:06 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as CSS
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"news"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Started GET "/posts/hn.js?WmOPHVu15TVF5xOnDKhL" for 81.184.185.107 at 2021-04-19 17:10:06 +0000
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Started GET "/posts/y18.gif" for 81.184.185.107 at 2021-04-19 17:10:06 +0000
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/posts/s.gif" for 81.184.185.107 at 2021-04-19 17:10:06 +0000
+Completed 404 Not Found in 11ms (ActiveRecord: 0.2ms | Allocations: 5803)
+
+
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Cannot render console from 81.184.185.107! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PostsController#show as JS
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=news):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+Processing by PostsController#show as GIF
+  Parameters: {"id"=>"s"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Processing by PostsController#show as GIF
+  Parameters: {"WmOPHVu15TVF5xOnDKhL"=>nil, "id"=>"hn"}
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  Parameters: {"id"=>"y18"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1342)
+
+
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=s):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  ↳ app/controllers/posts_controller.rb:87:in `set_post'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.1ms | Allocations: 2489)
+
+
+Completed 404 Not Found in 99ms (ActiveRecord: 0.1ms | Allocations: 58741)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=y18):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=hn):
+  
+app/controllers/posts_controller.rb:87:in `set_post'
+  
+ActionController::RoutingError (No route matches [GET] "/assets/grayarrow.gif"):
+  
