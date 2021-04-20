@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
+    session[:id] = 2
+    #@postsusu = User.posts.where(user_id: @user.id)
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: "User was successfully created." }

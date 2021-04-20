@@ -13,6 +13,11 @@
         <td>
           <table border="0" cellpadding="0" class="itemlist">
             <tbody>
+              <!--
+              <%= #session[:id] = "2" %>
+              <% #Post.where(user_id: session[:id]).each do |post| %>
+              -->
+              
               <% @posts.where(:typePost => 'url').order('posts.points DESC').each_with_index do |post, index| %>
                 <tr class="athing" id="<%= post.id %>">
                   <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
