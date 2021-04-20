@@ -9,14 +9,7 @@ link_to 'Back', posts_path %>
 	Doesnt have comments implemented%>
 
 
-<html lang="en" op="item">
-<head>
-  <meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="news.css?kYAZqEBDkZ1yesLxUECv">
-  <link rel="shortcut icon" href="favicon.ico">
-  <title><%= @post.title%>| Hacker News</title>
-</head>
-<body>
+
   <center>
     <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
       <tr>
@@ -62,12 +55,11 @@ link_to 'Back', posts_path %>
             <tr>
               <td colspan="2"></td>
               <td class="subtext">
-                <span class="score" id="score_26737771"><%=@post.points%> points</span> by <a href="user?id=ksahin" class="hnuser">user</a> 
-                <span class="age"><a href="item?id=26737771"><%=@post.created_at%></a></span> 
-                <span id="unv_26737771"></span> | <a href="hide?id=26737771&amp;auth=cc8be5c1c63ab2a4ba1425ace65fe41aa794b106&amp;goto=item%3Fid%3D26737771">hide</a> | <a href="https://hn.algolia.com/?query=The%20Architecture%20of%20a%20One-Man%20SaaS&type=story&dateRange=all&sort=byDate&storyText=false&prefix&page=0" class="hnpast">past</a> | <a href="fave?id=26737771&amp;auth=cc8be5c1c63ab2a4ba1425ace65fe41aa794b106">favorite</a> | <a href="item?id=26737771">0&nbsp;comments</a>
+                <span class="score"><%=@post.points%> points</span> by <a href="user?id=ksahin" class="hnuser"><%= @post.user.username %></a> 
+                <span class="age"><%= link_to @post.get_time %></span> 
+                | <a href="#">hide</a> | <a href="https://hn.algolia.com/?query=The%20Architecture%20of%20a%20One-Man%20SaaS&type=story&dateRange=all&sort=byDate&storyText=false&prefix&page=0" class="hnpast">past</a> | <a href="">favorite</a> | <%= link_to @post.comments.count.to_s + ' comments', @post %>
               </td>
             </tr>
-            <tr style="height:10px"></tr>
             <tr><td colspan="2"></td>
             <td>
             	<%= @post.text %> <br><br>
@@ -75,6 +67,39 @@ link_to 'Back', posts_path %>
               <small class="comment">
                   <%= render 'comments/form', comment: @comment %>
               </small>
+            </td>
+          </table>
+          <table class="comment-tree" border ="0">
+            <tbody>
+              <% @post.comments.each do |comment| %>
+                <%= render 'comments/show_in_post', current_comment: comment %>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="s.gif" height="10" width="0">
+          <table width="100%" cellspacing="0" cellpadding="1"><tbody><tr><td bgcolor="#ff6600"></td></tr></tbody></table>
+          <br>
+          <center>
+            <span class="yclinks"><a href="">Guidelines</a>
+              | <a href="">FAQ</a>
+              | <a href="">Lists</a>
+              | <a href="">API</a>
+              | <a href="">Security</a>
+              | <a href="">Legal</a>
+              | <a href="">Apply to YC</a>
+              | <a href="">Contact</a>
+            </span>
+            <br><br>
+            <form method="get" action="//hn.algolia.com/">Search: <input type="text" name="q" value="" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false"></form>
+          </center>
+        </td>
+      </tr>
+    </table>
+  </center>
 
 
 
