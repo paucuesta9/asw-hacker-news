@@ -6,6 +6,11 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
+  #GET /upvoted_comments or /upvoted_comments
+  def upvoted
+    @comments = Comment.where(user_id: 1).order(votes: :desc)
+  end
+
   # GET /comments/1 or /comments/1.json
   def show
     @reply = Reply.new
