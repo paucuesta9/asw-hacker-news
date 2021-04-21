@@ -54,7 +54,7 @@
               <tr>
                 <td colspan="2"></td>
                 <td>
-                  <%= render 'replies/form', reply: @reply, locals: {parent: @comment.id} %>
+                  <%= render 'replies/form', reply: @reply, parent: @comment %>
                 </td>
               </tr>
             </tbody>

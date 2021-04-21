@@ -15,7 +15,8 @@
     <%= form.text_area :text, size: "60x7" %>
   </div>
 
-  <%= form.hidden_field :parent_id, :value => locals[:parent] %>
+  <%= form.hidden_field :parent_id, :value => parent.id %>
+  <%= form.hidden_field :parent_type, :value => parent.class.name %>
 
   <div class="actions margin_top" style="margin-bottom: 20px">
     <%= form.submit %>
