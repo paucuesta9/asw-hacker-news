@@ -2,6 +2,9 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   
+  ENV['GOOGLE_OAUTH_CLIENT_ID'] = '900276800714-ljtq8kn5dl4saoufkd4uo4q65ubh0g9c.apps.googleusercontent.com'
+  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'V4RJcUTWKljYvxtW6_TfIKxE'
+  
   
   # Settings specified here will take precedence over those in config/application.rb.
 
