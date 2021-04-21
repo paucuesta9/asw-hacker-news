@@ -76,4 +76,19 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :url, :text)
     end
+    
+    
+      # GET /posts/asks
+  def asks
+    @posts = Post.all
+    @asks = []
+    
+    for i in @posts
+      if i.url != ""
+        @asks << i
+      end
+    end
+  end
+    
+    
 end

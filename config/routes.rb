@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :vote_posts
   resources :vote_replies
   get '/newest', to: 'posts#newest'
+  get '/asks', to: 'posts#asks'
   root :to => 'posts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
