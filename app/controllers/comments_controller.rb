@@ -6,9 +6,14 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
-  #GET /upvoted_comments or /upvoted_comments
+  #GET /threads
+  def threads
+    @comments = Comment.where(user_id: 1)
+  end
+
+  #GET /upvoted 
   def upvoted
-    @comments = Comment.where(user_id: 1).order(votes: :desc)
+    @comments = Comment.joins(:users).where(id: 1)
   end
 
   # GET /comments/1 or /comments/1.json
