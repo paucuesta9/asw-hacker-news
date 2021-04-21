@@ -22,7 +22,7 @@ class RepliesController < ApplicationController
   # POST /replies or /replies.json
   def create
     @reply = Reply.new(reply_params)
-
+    @reply.user_id = 1
     respond_to do |format|
       if @reply.save
         format.html { redirect_to @reply, notice: "Reply was successfully created." }
@@ -64,6 +64,6 @@ class RepliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reply_params
-      params.require(:reply).permit(:text, :user_id, :parent_id)
+      params.require(:reply).permit(:text, :parent_id)
     end
 end

@@ -16,15 +16,7 @@
     <%= form.text_field :text %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :parent_id %>
-    <%= form.text_field :parent_id %>
-  </div>
+  <%= form.hidden_field :parent_id, :value => id %>
 
   <div class="actions">
     <%= form.submit %>
