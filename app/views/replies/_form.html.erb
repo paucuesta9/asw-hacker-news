@@ -12,13 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text %>
+    <%= form.text_area :text, size: "60x7" %>
   </div>
 
-  <%= form.hidden_field :parent_id, :value => id %>
+  <%= form.hidden_field :parent_id, :value => locals[:parent] %>
 
-  <div class="actions">
+  <div class="actions margin_top" style="margin-bottom: 20px">
     <%= form.submit %>
   </div>
 <% end %>

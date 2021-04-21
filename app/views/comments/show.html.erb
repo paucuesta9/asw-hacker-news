@@ -26,9 +26,9 @@
                 <td class="ind"></td>
                 <td class="votelinks" valign="top">
                   <center>
-                    <a id="up_26886353" onclick="return vote(event, this, &quot;up&quot;)" href="vote?id=26886353&amp;how=up&amp;auth=b78930deba4e59c3d624c73d0cc5219bbd729fda&amp;goto=reply%3Fgoto%3Ditem%253Fid%253D26885803%252326886353%26id%3D26886353#26886353">
+                    <%= link_to :controller => "vote_comments", :action => "create", :method => "post", :comment_id => @comment.id, :user_id => @comment.user_id do %>
                       <div class="votearrow" title="upvote"></div>
-                    </a>
+                    <% end %>
                   </center>    
                 </td>
                 <td class="default">
@@ -41,12 +41,12 @@
                       <span id="unv_26886353"></span>
                       <span class="par"> | <a href="item?id=26885803">parent</a></span> 
                       <a class="togg" n="6" href="javascript:void(0)" onclick="return toggle(event, 26886353)">[–]</a>
-                      <span class="storyon"> | on: <a href="item?id=26885803">Ethereum: A Store of Value with Cash Flow</a></span>
+                      <span class="storyon"> | on: <%= link_to @comment.post.title, @comment.post %></span>
                     </span>
                   </div>
                   <br>
                   <div class="comment">
-                    <span class="commtext c00"><div class="reply"></div></span>
+                    <span class="commtext c00"><%= @comment.text %><div class="reply"></div></span>
                   </div>
                 </td>
               </tr>
@@ -54,9 +54,7 @@
               <tr>
                 <td colspan="2"></td>
                 <td>
-                  <form method="post" action="comment"><input type="hidden" name="parent" value="26886353"><input type="hidden" name="goto" value="item?id=26885803#26886353"><input type="hidden" name="hmac" value="ba86cceaea95d4030ee8473e5134eeb7c7a3034d"><textarea name="text" rows="6" cols="60"></textarea>
-                    <br><br><input type="submit" value="reply">
-                  </form>
+                  <%= render 'replies/form', reply: @reply, locals: {parent: @comment.id} %>
                 </td>
               </tr>
             </tbody>

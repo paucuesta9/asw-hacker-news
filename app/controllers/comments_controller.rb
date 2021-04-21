@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1 or /comments/1.json
   def show
+    @reply = Reply.new
   end
 
   # GET /comments/new
