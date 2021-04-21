@@ -6,6 +6,16 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
+  #GET /threads
+  def threads
+    @comments = Comment.where(user_id: 1)
+  end
+
+  #GET /upvoted 
+  def upvoted
+    @comments = Comment.joins(:users).where(id: 1)
+  end
+
   # GET /comments/1 or /comments/1.json
   def show
     @reply = Reply.new

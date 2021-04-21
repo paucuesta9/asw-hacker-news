@@ -36,5 +36,5 @@
     </td>
 </tr>
 <% current_comment.replies.each do |reply| %>
-    <%= render 'replies/show_in_post', current_reply: reply, id: 1 %>
+    <%= render 'replies/show_in_post', current_reply: reply, num: 1 %>
 <% end %>

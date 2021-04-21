@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_093900) do
+ActiveRecord::Schema.define(version: 2021_04_21_141215) do
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_093900) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", default: 1, null: false
     t.integer "post_id", default: 1, null: false
+    t.integer "votes", default: 0, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -36,13 +37,13 @@ ActiveRecord::Schema.define(version: 2021_04_21_093900) do
 
   create_table "replies", force: :cascade do |t|
     t.string "text"
-    t.integer "user_id", null: false
+    t.string "parent_type", null: false
     t.integer "parent_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "parent_type"
-    t.index ["parent_id"], name: "index_replies_on_parent_id"
-    t.index ["parent_type"], name: "index_replies_on_parent_type"
+    t.integer "votes", default: 0, null: false
+    t.index ["parent_type", "parent_id"], name: "index_replies_on_parent"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
@@ -83,7 +84,6 @@ ActiveRecord::Schema.define(version: 2021_04_21_093900) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "replies", "parents"
   add_foreign_key "replies", "users"
   add_foreign_key "vote_comments", "comments"
   add_foreign_key "vote_comments", "users"
