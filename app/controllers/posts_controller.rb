@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    #@posts = Post.where(user_id: "2")
+     
   end
 
   # GET /newest or /newest.json
@@ -29,7 +31,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     #guardar el user id que toqui
-    @post.user_id = 1;
+    @post.user_id = 2;
     respond_to do |format|
       if @post.save
           
