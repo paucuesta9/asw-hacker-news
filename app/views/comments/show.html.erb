@@ -34,10 +34,8 @@
                 <td class="default">
                   <div style="margin-top:2px; margin-bottom:-10px;">
                     <span class="comhead">
-                      <a href="user?id=sherlock_h" class="hnuser">sherlock_h</a> 
-                      <span class="age">
-                        <a href="item?id=26886353">52 minutes ago</a>
-                      </span> 
+                      <%= link_to @comment.user.username %>
+                      <span class="age"><%= link_to @comment.get_time %></span> 
                       <span id="unv_26886353"></span>
                       <span class="par"> | <a href="item?id=26885803">parent</a></span> 
                       <a class="togg" n="6" href="javascript:void(0)" onclick="return toggle(event, 26886353)">[–]</a>

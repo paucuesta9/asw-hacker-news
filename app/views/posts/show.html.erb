@@ -55,7 +55,7 @@ link_to 'Back', posts_path %>
             <tr>
               <td colspan="2"></td>
               <td class="subtext">
-                <span class="score"><%=@post.points%> points</span> by <a href="user?id=ksahin" class="hnuser"><%= @post.user.username %></a> 
+                <span class="score"><%=@post.points%> points</span> by <%= link_to @comment.user.username %>
                 <span class="age"><%= link_to @post.get_time %></span> 
                 | <a href="#">hide</a> | <a href="https://hn.algolia.com/?query=The%20Architecture%20of%20a%20One-Man%20SaaS&type=story&dateRange=all&sort=byDate&storyText=false&prefix&page=0" class="hnpast">past</a> | <a href="">favorite</a> | <%= link_to @post.comments.count.to_s + ' comments', @post %>
               </td>

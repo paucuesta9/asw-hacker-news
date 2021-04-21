@@ -8,6 +8,7 @@ class RepliesController < ApplicationController
 
   # GET /replies/1 or /replies/1.json
   def show
+    @newReply = Reply.new
   end
 
   # GET /replies/new

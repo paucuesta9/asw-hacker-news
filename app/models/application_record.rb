@@ -2,9 +2,7 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
   
   def get_time
-    #(DateTime.tomorrow.to_time - Date.today.to_time)
-    #(t / 3600).to_i
-    time_res = (Date.today.to_time - updated_at).to_i
+    time_res = (Time.now - updated_at).to_i
     res = 'second(s)'
     if time_res > 60
         time_res = time_res / 60

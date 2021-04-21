@@ -1,19 +1,64 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Text:</strong>
-  <%= @reply.text %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @reply.user_id %>
-</p>
-
-<p>
-  <strong>Parent:</strong>
-  <%= @reply.parent_id %>
-</p>
-
-<%= link_to 'Edit', edit_reply_path(@reply) %> |
-<%= link_to 'Back', replies_path %>
+<center>
+  <table id="hnmain" width="85%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f6f6ef">
+    <tbody>
+      <tr>
+        <td bgcolor="#ff6600">
+          <table style="padding:2px" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr>
+                <td style="width:18px;padding-right:4px">
+                  <a href="https://news.ycombinator.com">
+                    <img src="y18.gif" style="border:1px white solid;" width="18" height="18">
+                  </a>
+                </td>
+                <td style="line-height:12pt; height:10px;"><span class="pagetop"><b>Add Reply</b></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr id="pagespace" title="Add Comment" style="height:10px"></tr>
+      <tr>
+        <td>
+          <table class="fatitem" border="0">
+            <tbody>
+              <tr class="athing" id="26886353">    
+                <td class="ind"></td>
+                <td class="votelinks" valign="top">
+                  <center>
+                    <%= link_to :controller => "vote_replies", :action => "create", :method => "post", :reply_id => @reply.id, :user_id => @reply.user_id do %>
+                      <div class="votearrow" title="upvote"></div>
+                    <% end %>
+                  </center>    
+                </td>
+                <td class="default">
+                  <div style="margin-top:2px; margin-bottom:-10px;">
+                    <span class="comhead">
+                      <%= link_to @reply.user.username %>
+                      <span class="age"><%= link_to @reply.get_time %></span> 
+                      <span id="unv_26886353"></span>
+                      <span class="par"> | <a href="item?id=26885803">parent</a></span> 
+                      <a class="togg" n="6" href="javascript:void(0)" onclick="return toggle(event, 26886353)">[–]</a>
+                      <span class="storyon"> | on: <%= link_to @reply.parent.getPost.title, @reply.getPost %></span>
+                    </span>
+                  </div>
+                  <br>
+                  <div class="comment">
+                    <span class="commtext c00"><%= @reply.text %><div class="reply"></div></span>
+                  </div>
+                </td>
+              </tr>
+              <tr style="height:10px"></tr>
+              <tr>
+                <td colspan="2"></td>
+                <td>
+                  <%= render 'replies/form', reply: @newReply, parent: @reply %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</center>
