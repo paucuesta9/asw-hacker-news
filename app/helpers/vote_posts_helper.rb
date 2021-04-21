@@ -1,0 +1,2 @@
+module VotePostsHelper
+end

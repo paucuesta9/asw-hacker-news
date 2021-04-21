@@ -1,0 +1,2 @@
+class VoteRepliesController < ApplicationController
+end

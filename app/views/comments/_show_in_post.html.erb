@@ -3,23 +3,33 @@
         <table border="0">
             <tbody>
                 <tr>
-                    <div style="margin-top:2px; margin-bottom:-10px;">
-                        <span class="comhead">
-                            <%= link_to current_comment.user.username, :controller => "users", :action => "show", :id => current_comment.user_id %> 
-                            <span class="age"><%= link_to current_comment.get_time %></span> 
-                            <a class="togg" n="66">[–]</a>
-                        </span>
-                    </div>
-                    <br>
-                    <div class="comment">
-                        <span class="commtext c00">current_comment.text
-                            <div class="reply">        
-                                <p><font size="1">
-                                    <u><a href="#">reply</a></u>
-                                </p>
-                            </div>
-                        </span>
-                    </div>              
+                    <td class="ind"><img src="s.gif" width="0" height="1"></td>
+                    <td class="votelinks" valign="top">
+                        <center>
+                            <%= link_to :controller => "vote_comments", :action => "create", :method => "post", :comment_id => current_comment.id, :user_id => current_comment.user_id do %>
+                                <div class="votearrow" title="upvote"></div>
+                            <% end %>
+                        </center>    
+                    </td>
+                    <td class="default">
+                        <div style="margin-top:2px; margin-bottom:-10px;">
+                            <span class="comhead">
+                                <%= link_to current_comment.user.username, :controller => "users", :action => "show", :id => current_comment.user_id %> 
+                                <span class="age"><%= link_to current_comment.get_time %></span> 
+                                <a class="togg" n="66">[–]</a>
+                            </span>
+                        </div>
+                        <br>
+                        <div class="comment">
+                            <span class="commtext c00"><%= current_comment.text %>
+                                <div class="reply">        
+                                    <p><font size="1">
+                                        <u><a href="#">reply</a></u>
+                                    </p>
+                                </div>
+                            </span>
+                        </div>
+                    </td>          
                 </tr>
             </tbody>
         </table>

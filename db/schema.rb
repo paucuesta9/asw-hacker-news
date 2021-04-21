@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_221605) do
+ActiveRecord::Schema.define(version: 2021_04_21_071351) do
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2021_04_20_221605) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.string "text"
+    t.integer "user_id", null: false
+    t.integer "parent_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_replies_on_parent_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
@@ -41,7 +51,42 @@ ActiveRecord::Schema.define(version: 2021_04_20_221605) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "vote_comments", force: :cascade do |t|
+    t.integer "comment_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_vote_comments_on_comment_id"
+    t.index ["user_id"], name: "index_vote_comments_on_user_id"
+  end
+
+  create_table "vote_posts", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_vote_posts_on_post_id"
+    t.index ["user_id"], name: "index_vote_posts_on_user_id"
+  end
+
+  create_table "vote_replies", force: :cascade do |t|
+    t.integer "reply_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reply_id"], name: "index_vote_replies_on_reply_id"
+    t.index ["user_id"], name: "index_vote_replies_on_user_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "replies", "parents"
+  add_foreign_key "replies", "users"
+  add_foreign_key "vote_comments", "comments"
+  add_foreign_key "vote_comments", "users"
+  add_foreign_key "vote_posts", "posts"
+  add_foreign_key "vote_posts", "users"
+  add_foreign_key "vote_replies", "replies"
+  add_foreign_key "vote_replies", "users"
 end
