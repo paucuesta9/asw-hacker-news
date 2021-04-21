@@ -9,25 +9,97 @@ link_to 'Back', posts_path %>
 	Doesnt have comments implemented%>
 
 
-<html lang="en" op="item"><head><meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="news.css?kYAZqEBDkZ1yesLxUECv">
-        <link rel="shortcut icon" href="favicon.ico">
-        <title><%= @post.title%>| Hacker News</title></head><body><center><table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
-        <tr><td bgcolor="#ff6600"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px"><tr><td style="width:18px;padding-right:4px"><a href="https://news.ycombinator.com"><img src="y18.gif" width="18" height="18" style="border:1px white solid;"></a></td>
-                  <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="news">Hacker News</a></b>
-              <a href="newest">new</a> | <a href="threads?id=wegraegrae">threads</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="ask">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a>            </span></td><td style="text-align:right;padding-right:4px;"><span class="pagetop">
-                              <a id='me' href="user?id=wegraegrae">user</a>                (0) |
-                <a id='logout' href="logout?auth=615401cb3e6a4bbd007255c3a46cf21375ff167f&amp;goto=item%3Fid%3D26737771">logout</a>                          </span></td>
-              </tr></table></td></tr>
-<tr id="pagespace" title= <%= @post.title%> style="height:10px"></tr><tr><td><table class="fatitem" border="0">
-        <tr class='athing' id='26737771'>
-      <td align="right" valign="top" class="title"><span class="rank"></span></td>      <td valign="top" class="votelinks"><center><a id='up_26737771' onclick='return vote(event, this, "up")' href='vote?id=26737771&amp;how=up&amp;auth=cc8be5c1c63ab2a4ba1425ace65fe41aa794b106&amp;goto=item%3Fid%3D26737771'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><a href="https://anthonynsimon.com/blog/one-man-saas-architecture/" class="storylink"><%= @post.title %></a><span class="sitebit comhead"> (<a href="from?site=anthonynsimon.com"><span class="sitestr"><%= @post.url %></span></a>)</span></td></tr><tr><td colspan="2"></td><td class="subtext">
-        <span class="score" id="score_26737771"><%=@post.points%> points</span> by <a href="user?id=ksahin" class="hnuser">user</a> <span class="age"><a href="item?id=26737771"><%=@post.created_at%></a></span> <span id="unv_26737771"></span> | <a href="hide?id=26737771&amp;auth=cc8be5c1c63ab2a4ba1425ace65fe41aa794b106&amp;goto=item%3Fid%3D26737771">hide</a> | <a href="https://hn.algolia.com/?query=The%20Architecture%20of%20a%20One-Man%20SaaS&type=story&dateRange=all&sort=byDate&storyText=false&prefix&page=0" class="hnpast">past</a> | <a href="fave?id=26737771&amp;auth=cc8be5c1c63ab2a4ba1425ace65fe41aa794b106">favorite</a> | <a href="item?id=26737771">0&nbsp;comments</a>
 
-                      </td></tr>
-            <tr style="height:10px"></tr><tr><td colspan="2"></td><td>
+  <center>
+    <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+      <tr>
+        <td bgcolor="#ff6600">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+            <tr>
+              <td style="width:18px;padding-right:4px">
+                <a href="https://news.ycombinator.com">
+                  <img src="y18.gif" width="18" height="18" style="border:1px white solid;">
+                </a>
+              </td>
+              <td style="line-height:12pt; height:10px;">
+                <span class="pagetop">
+                <b class="hnname"><a href="news">Hacker News</a></b>
+                <a href="newest">new</a> | <a href="threads?id=wegraegrae">threads</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="ask">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a>            
+                </span>
+              </td>
+              <td style="text-align:right;padding-right:4px;">
+                <span class="pagetop">
+                  <a id='me' href="user?id=wegraegrae">user</a>                (0) |
+                  <a id='logout' href="logout?auth=615401cb3e6a4bbd007255c3a46cf21375ff167f&amp;goto=item%3Fid%3D26737771">logout</a>                          
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr id="pagespace" title= <%= @post.title%> style="height:10px"></tr>
+      <tr>
+        <td>
+          <table class="fatitem" border="0">
+            <tr class='athing' id='26737771'>
+              <td align="right" valign="top" class="title"><span class="rank"></span></td>      
+              <td valign="top" class="votelinks">
+                <center>
+                  <a id='up_26737771' onclick='return vote(event, this, "up")' href='vote?id=26737771&amp;how=up&amp;auth=cc8be5c1c63ab2a4ba1425ace65fe41aa794b106&amp;goto=item%3Fid%3D26737771'>
+                    <div class='votearrow' title='upvote'></div>
+                  </a>
+                </center>
+              </td>
+              <td class="title"><a href="https://anthonynsimon.com/blog/one-man-saas-architecture/" class="storylink"><%= @post.title %></a><span class="sitebit comhead"> (<a href="from?site=anthonynsimon.com"><span class="sitestr"><%= @post.url %></span></a>)</span></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td class="subtext">
+                <span class="score"><%=@post.points%> points</span> by <a href="user?id=ksahin" class="hnuser"><%= @post.user.username %></a> 
+                <span class="age"><%= link_to @post.get_time %></span> 
+                | <a href="#">hide</a> | <a href="https://hn.algolia.com/?query=The%20Architecture%20of%20a%20One-Man%20SaaS&type=story&dateRange=all&sort=byDate&storyText=false&prefix&page=0" class="hnpast">past</a> | <a href="">favorite</a> | <%= link_to @post.comments.count.to_s + ' comments', @post %>
+              </td>
+            </tr>
+            <tr><td colspan="2"></td>
+            <td>
             	<%= @post.text %> <br><br>
-          <form method="post" action="comment"><input type="hidden" name="parent" value="26737771"><input type="hidden" name="goto" value="item?id=26737771"><input type="hidden" name="hmac" value="0b932198f9ee8246844d63d7e0d285bad16ff74e"><textarea name="text" rows="6" cols="60"></textarea>
-                <br><br><input type="submit" value="add comment"></form>
+
+              <small class="comment">
+                  <%= render 'comments/form', comment: @comment %>
+              </small>
+            </td>
+          </table>
+          <table class="comment-tree" border ="0">
+            <tbody>
+              <% @post.comments.each do |comment| %>
+                <%= render 'comments/show_in_post', current_comment: comment %>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="s.gif" height="10" width="0">
+          <table width="100%" cellspacing="0" cellpadding="1"><tbody><tr><td bgcolor="#ff6600"></td></tr></tbody></table>
+          <br>
+          <center>
+            <span class="yclinks"><a href="">Guidelines</a>
+              | <a href="">FAQ</a>
+              | <a href="">Lists</a>
+              | <a href="">API</a>
+              | <a href="">Security</a>
+              | <a href="">Legal</a>
+              | <a href="">Apply to YC</a>
+              | <a href="">Contact</a>
+            </span>
+            <br><br>
+            <form method="get" action="//hn.algolia.com/">Search: <input type="text" name="q" value="" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false"></form>
+          </center>
+        </td>
+      </tr>
+    </table>
+  </center>
 
 
 

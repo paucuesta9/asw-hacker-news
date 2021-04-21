@@ -20,7 +20,12 @@
                   <td class="title"><!--<a href="<%= post.url %>" class="storylink">--><%= post.title %><!--</a>--><span class="sitebit comhead"> <!--(<a href="from?site=fossil-scm.org"><span class="sitestr">fossil-scm.org</span></a>)--></span></td>
                 </tr>
                 <tr><td colspan="2"></td><td class="subtext">
-                  <span class="score" id="score_<%= post.id %>"><%= post.points %> Points</span> by <a href="user?id=mockUser" class="hnuser">mockUser</a> <span class="age"><a href="item?id=<%= post.id %>"><%= post.created_at %></a></span> <span id="unv_<%= post.id %>"></span> | <a href="hide?id=<%= post.id %>&amp;goto=news">hide</a> | <a href="item?id=<%= post.id %>">0 Comments</a></td>
+                  <span class="score" id="score_<%= post.id %>"><%= post.points %> Points</span> by <%= link_to post.user.username, :controller => "users", :action => "show", :id => post.user %> <span class="age"><%= link_to post.get_time %></span> <span id="unv_<%= post.id %>"></span> | <a href="hide?id=<%= post.id %>&amp;goto=news">hide</a> | 
+                  <% if post.comments.count != 0 %>
+                    <%= link_to post.comments.count.to_s + ' comments', post %></td>
+                  <% else %>
+                    <%= link_to 'discuss', post %></td>
+                  <% end %>
                 </tr>
                 <tr class="spacer" style="height:5px"></tr>
               <% end %>
