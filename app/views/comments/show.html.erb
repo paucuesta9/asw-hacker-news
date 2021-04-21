@@ -1,14 +1,68 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Text:</strong>
-  <%= @comment.text %>
-</p>
-
-<p>
-  <strong>Commentof:</strong>
-  <%= @comment.commentOf %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<center>
+  <table id="hnmain" width="85%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f6f6ef">
+    <tbody>
+      <tr>
+        <td bgcolor="#ff6600">
+          <table style="padding:2px" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr>
+                <td style="width:18px;padding-right:4px">
+                  <a href="https://news.ycombinator.com">
+                    <img src="y18.gif" style="border:1px white solid;" width="18" height="18">
+                  </a>
+                </td>
+                <td style="line-height:12pt; height:10px;"><span class="pagetop"><b>Add Comment</b></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr id="pagespace" title="Add Comment" style="height:10px"></tr>
+      <tr>
+        <td>
+          <table class="fatitem" border="0">
+            <tbody>
+              <tr class="athing" id="26886353">    
+                <td class="ind"></td>
+                <td class="votelinks" valign="top">
+                  <center>
+                    <a id="up_26886353" onclick="return vote(event, this, &quot;up&quot;)" href="vote?id=26886353&amp;how=up&amp;auth=b78930deba4e59c3d624c73d0cc5219bbd729fda&amp;goto=reply%3Fgoto%3Ditem%253Fid%253D26885803%252326886353%26id%3D26886353#26886353">
+                      <div class="votearrow" title="upvote"></div>
+                    </a>
+                  </center>    
+                </td>
+                <td class="default">
+                  <div style="margin-top:2px; margin-bottom:-10px;">
+                    <span class="comhead">
+                      <a href="user?id=sherlock_h" class="hnuser">sherlock_h</a> 
+                      <span class="age">
+                        <a href="item?id=26886353">52 minutes ago</a>
+                      </span> 
+                      <span id="unv_26886353"></span>
+                      <span class="par"> | <a href="item?id=26885803">parent</a></span> 
+                      <a class="togg" n="6" href="javascript:void(0)" onclick="return toggle(event, 26886353)">[–]</a>
+                      <span class="storyon"> | on: <a href="item?id=26885803">Ethereum: A Store of Value with Cash Flow</a></span>
+                    </span>
+                  </div>
+                  <br>
+                  <div class="comment">
+                    <span class="commtext c00"><div class="reply"></div></span>
+                  </div>
+                </td>
+              </tr>
+              <tr style="height:10px"></tr>
+              <tr>
+                <td colspan="2"></td>
+                <td>
+                  <form method="post" action="comment"><input type="hidden" name="parent" value="26886353"><input type="hidden" name="goto" value="item?id=26885803#26886353"><input type="hidden" name="hmac" value="ba86cceaea95d4030ee8473e5134eeb7c7a3034d"><textarea name="text" rows="6" cols="60"></textarea>
+                    <br><br><input type="submit" value="reply">
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</center>
