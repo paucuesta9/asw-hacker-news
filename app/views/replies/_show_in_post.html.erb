@@ -24,7 +24,7 @@
                             <span class="commtext c00"><%= current_reply.text %>
                                 <div class="reply">        
                                     <p><font size="1">
-                                        <u><a href="#">reply</a></u>
+                                        <u><%= link_to 'reply', current_reply %></u>
                                     </p>
                                 </div>
                             </span>
@@ -36,5 +36,5 @@
     </td>
 </tr>
 <% current_reply.replies.each do |reply| %>
-    <%= render 'replies/show_in_post', current_reply: reply, id: id + 1 %>
+    <%= render 'replies/show_in_post', current_reply: reply, num: num + 1 %>
 <% end %>
