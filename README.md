@@ -1,9 +1,10 @@
 # Hacker News
 
-Notion: https://www.notion.so/ASW-Task-Generation-Meeting-ca8d4e4896e445da970e00a1cacc6682
-
+Heroku: https://hacker-news-fib.herokuapp.com/
+Notion (Tasks): https://www.notion.so/ASW-Task-Generation-Meeting-ca8d4e4896e445da970e00a1cacc6682
 
 ## Project info
+
 - Project name: Hacker News
 - Subject: Arquitectura i Serveis Webs (ASW)
 - University: Facultat d'Informàtica de Barcelona (FIB- UPC)
@@ -17,13 +18,16 @@ Notion: https://www.notion.so/ASW-Task-Generation-Meeting-ca8d4e4896e445da970e00
 > - [Vilarrasa Cubí, Joan](mailto:joan.vilarrasa@estudiantat.upc.edu)
 
 ## Install
+
 ### Clone the repository
+
 ```shell
 git clone https://github.com/paucuesta9/asw-hacker-news.git
 cd asw-hacker-news
 ```
 
 ### Chechk your Ruby version
+
 ```shell
 ruby --version
 ```
@@ -33,14 +37,19 @@ The output should start with something like `ruby 2.7.2`
 If not, install the right ruby version from [Ruby Downloads Page](https://www.ruby-lang.org/en/downloads/)
 
 ### Install dependencies
+
 Using Bundler
+
 ```shell
 bundle install
 ```
 
 ## Start server
+
 You can start the rails server using the command given below
+
 ```shell
 rails server
 ```
+
 And now you can visit the site with the URL [http://localhost:3000](http://localhost:3000)
