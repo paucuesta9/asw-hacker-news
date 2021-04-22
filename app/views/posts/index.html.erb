@@ -37,10 +37,10 @@
                   <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
                   <td class="title">
                     <% if post.typePost == 'ask'%>
-                      <%= link_to post.title, post  %>
+                      <%= link_to post.title, post, :class => "storylink" %>
                     <%else%>
                       <%= link_to "http://#{post.url}" do %>
-                        <%= post.title %><span class="sitebit comhead">(<span class="sitestr"><%=post.url%></span>)</span>
+                        <%= post.title %><span class="sitebit comhead"> (<span class="sitestr"><%=post.url%></span>)</span>
                       <%end%>
                     <%end%>
                 </tr>
@@ -82,5 +82,3 @@
     </tbody>
   </table>
 </center>
-
-<%= link_to 'New Post', new_post_path %>

@@ -50,7 +50,15 @@ link_to 'Back', posts_path %>
                   </a>
                 </center>
               </td>
-              <td class="title"><a href="https://anthonynsimon.com/blog/one-man-saas-architecture/" class="storylink"><%= @post.title %></a><span class="sitebit comhead"> (<a href="from?site=anthonynsimon.com"><span class="sitestr"><%= @post.url %></span></a>)</span></td>
+              <td class="title">
+                <% if @post.typePost == 'ask'%>
+                  <%= link_to @post.title, @post, :class => "storylink"  %>
+                <%else%>
+                  <%= link_to "http://#{@post.url}", :class => "storylink" do %>
+                    <%= @post.title %><span class="sitebit comhead"> (<span class="sitestr"><%=@post.url%></span>)</span>
+                  <%end%>
+                <%end%>
+              </td>
             </tr>
             <tr>
               <td colspan="2"></td>
