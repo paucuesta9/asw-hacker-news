@@ -1,11 +1,6 @@
 class RepliesController < ApplicationController
   before_action :set_reply, only: %i[ show edit update destroy ]
 
-  # GET /replies or /replies.json
-  def index
-    @replies = Reply.all
-  end
-
   # GET /replies/1 or /replies/1.json
   def show
     @newReply = Reply.new
@@ -23,19 +18,23 @@ class RepliesController < ApplicationController
   # POST /replies or /replies.json
   def create
     @reply = Reply.new(reply_params)
-    @reply.user_id = @current_user.id
-    respond_to do |format|
-      if @reply.save
-        @vote = VoteReply.new(:user_id => @current_user.id, :reply_id => @reply.id)
-        @vote.save
-        @reply.points += 1
-        @reply.save
-        format.html { redirect_to @reply, notice: "Reply was successfully created." }
-        format.json { render :show, status: :created, location: @reply }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reply.errors, status: :unprocessable_entity }
+    if not @reply.text.empty?
+      @reply.user_id = @current_user.id
+      respond_to do |format|
+        if @reply.save
+          @vote = VoteReply.new(:user_id => @current_user.id, :reply_id => @reply.id)
+          @vote.save
+          @reply.points += 1
+          @reply.save
+          format.html { redirect_to @reply, notice: "Reply was successfully created." }
+          format.json { render :show, status: :created, location: @reply }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @reply.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to request.referrer, notice: 'Text empty'
     end
   end
 

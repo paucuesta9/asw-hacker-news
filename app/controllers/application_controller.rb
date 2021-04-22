@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
-    before_action :authenticate, only: %i[ new, edit, update, create, destroy ]
+    before_action :authenticate, only: [ :new, :edit, :update, :create, :destroy ]
 
     # Authenticate
     def authenticate
