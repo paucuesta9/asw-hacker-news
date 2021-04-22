@@ -35,7 +35,17 @@
                 <tr class="athing" id="<%= post.id %>">
                   <td align="right" valign="top" class="title"><span class="rank"></span></td>
                   <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
-                  <td class="title"><!--<a href="<%= post.url %>" class="storylink">--><%= post.title %><!--</a>--><span class="sitebit comhead"> <!--(<a href="from?site=fossil-scm.org"><span class="sitestr">fossil-scm.org</span></a>)--></span></td>
+                  <td class="title">
+                    <% if post.typePost == 'ask'%>
+                      <%= link_to post.title, post  %>
+                    <%else%>
+                      <%= link_to post.url do %>
+                        (<span class="sitebit comhead"><span class="sitestr">post.url</span>)</span>
+                      <%end%>
+                    <%end%>
+                    <span class="sitebit comhead"> 
+                    
+                    <!--(<a href="from?site=fossil-scm.org"><span class="sitestr">fossil-scm.org</span></a>)--></span></td>
                 </tr>
                 <tr><td colspan="2"></td><td class="subtext">
                   <span class="score" id="score_<%= post.id %>"><%= post.points %> Points</span> by <%= link_to post.user.username, :controller => "users", :action => "show", :id => post.user %> <span class="age"><%= link_to post.get_time %></span> <span id="unv_<%= post.id %>"></span> | <a href="hide?id=<%= post.id %>&amp;goto=news">hide</a> | 
