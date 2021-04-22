@@ -34,26 +34,27 @@
                   <% if @ask != nil %> 
                     <% cont = 1%>
                     <% @asks.each do |ask| %>
-                    <tr class="athing" id="26825017">
+                    <tr class="athing" id="<%= ask.id%>">
                       <td align="right" valign="top" class="title">
                         <span class="rank"><%= cont %>.</span>
                         <% cont = cont + 1 %>
                       </td>
                       <td valign="top" class="votelinks">
                         <center>
-                          <a id="up_26825017" onclick="return vote(event, this, &quot;up&quot;)" href="vote?id=26825017&amp;how=up&amp;auth=131c00cfd570f7f4c67ea13a5310065a1a7c900c&amp;goto=ask">
+                          <a id="up_<%= ask.id%>" onclick="return vote(event, this, &quot;up&quot;)" href="vote?id=<%= ask.id%>&amp;how=up&amp;auth=131c00cfd570f7f4c67ea13a5310065a1a7c900c&amp;goto=ask">
                             <div class="votearrow" title="upvote"></div>
                           </a>
                         </center>
                       </td>
-                      <td class="title"><a href="item?id=26825017" class="storylink"><%= ask.title %></a></td>
+                      <td class="title"><a href="item?id=<%= ask.id%>" class="storylink"><%= ask.title %></a></td>
                     </tr>
                     <tr>
                       <td colspan="2"></td>
                       <td class="subtext">
-                        <span class="score" id="score_26825017"><%= ask.points %> X points</span> by <a href="user?id=<%= ask.user.username %>" class="hnuser"><%= ask.user.username %></a>
-                        <span class="age"><a href="item?id=26825017"><%= time_ago_in_words(ask.created_at)%> ago</a></span>
-                        <span id="unv_26825017"></span> | <a href="item?id=26825017">780&nbsp;comments</a>
+                        <span class="score" id="score_<%= ask.id%>"><%= ask.points %> X points</span> by 
+                        <a href="user?id=<%= ask.user.username %>" class="hnuser"><%= ask.user.username %></a>
+                        <span class="age"><a href="item?id=<%= ask.id%>"><%= time_ago_in_words(ask.created_at)%> ago</a></span>
+                        <span id="unv_<%= ask.id%>"></span> | <a href="item?id=<%= ask.id%>"> <%= ask.comments.count %> 780&nbsp;comments</a>
                       </td>
                     </tr>
                     
