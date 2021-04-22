@@ -56,24 +56,27 @@ class PostsController < ApplicationController
     unless(@post.url.empty?) 
       @post.typePost = "url"
     end
-  
     
-    respond_to do |format|
-      if @post.save
-        if @post.typePost == "url" and not @post.text.empty?
-          @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
-          @comment.save
+    unless @post.typePost == "url" and Post.find_by(url: @post.url)
+      respond_to do |format|
+        if @post.save
+          if @post.typePost == "url" and not @post.text.empty?
+            @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
+            @comment.save
+          end
+          @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
+          @vote.save
+          @post.points = 1
+          @post.save
+          format.html { redirect_to @post, notice: "Post was successfully created." }
+          format.json { render :show, status: :created, location: @post }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
-        @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
-        @vote.save
-        @post.points = 1
-        @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
+    else
+      redirect_to Post.find_by(url: @post.url), notice: "Post with this url is already created."
     end
   end
 
