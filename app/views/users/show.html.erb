@@ -55,6 +55,12 @@
                     <a href="/user/upvoted/<%=@user.id%>"><u>upvoted submissions</u></a>
                   </td>
                 </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/upvoted_comments"><u>upvoted comments</u></a>
+                  </td>
+                </tr>
               </table>
               <% if session[:user_id] == @user.id %>
                 <br><%= form.submit %>
