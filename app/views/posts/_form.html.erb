@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field helptitle">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-title" %>
   </div>
 
-  <div class="field">
+  <div class="field helpurl">
     <%= form.label :url %>
-    <%= form.text_field :url %>
+    <%= form.text_field :url, class: "form-url" %>
   </div>
 
-  <div class="field">
+  <div class="theor">
+    <b>or</b>
+  </div> 
+
+  <div class="field helptext">
     <%= form.label :text %>
-    <%= form.text_field :text %>
+    <%= form.text_area :text,  size: "60x7", class: "form-text" %>
   </div>
 
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type %>
-  </div>
-
-  <div class="actions">
+  <div class="actions createpost">
     <%= form.submit %>
   </div>
+
+  <p style="padding-left:30px">Leave url blank to submit a question for discussion. If there is no url, the text (if any) will appear at the top of the thread.</p>
 <% end %>
