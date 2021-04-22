@@ -19,10 +19,10 @@ class RepliesController < ApplicationController
   def create
     @reply = Reply.new(reply_params)
     if not @reply.text.empty?
-      @reply.user_id = @current_user.id
+      @reply.user_id = current_user.id
       respond_to do |format|
         if @reply.save
-          @vote = VoteReply.new(:user_id => @current_user.id, :reply_id => @reply.id)
+          @vote = VoteReply.new(:user_id => current_user.id, :reply_id => @reply.id)
           @vote.save
           @reply.points += 1
           @reply.save
