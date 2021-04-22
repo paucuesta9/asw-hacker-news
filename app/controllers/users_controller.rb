@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy comments ]
 
   # GET /users or /users.json
   def index
@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def comments
+    @comments = Comment.where(user_id:@user.id)
+  end
+  
   # POST /users or /users.json
   def create
     @user = User.new(user_params)

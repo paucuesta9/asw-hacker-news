@@ -47,7 +47,7 @@
                     
                   </td>
                 </tr>
-                <% if session[:username] %>
+                <% if session[:username] and session[:user_id] == @user.id %>
                     <tr>
                   <td valign="top">about:</td>
                   <td style="overflow:hidden;">

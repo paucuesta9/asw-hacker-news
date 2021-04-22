@@ -1,0 +1,42 @@
+<tr class="athing comtr">
+    <td>
+        <table border="0">
+            <tbody>
+                <tr>
+                    <td class="ind"><img src="s.gif" width="0" height="1"></td>
+                    <td class="votelinks" valign="top">
+                        <center>
+                            <%= link_to :controller => "vote_comments", :action => "create", :method => "post", :comment_id => current_comment.id, :user_id => current_comment.user_id do %>
+                                <div class="votearrow" title="upvote"></div>
+                            <% end %>
+                        </center>    
+                    </td>
+                    <td class="default">
+                        <div style="margin-top:2px; margin-bottom:-10px;">
+                            <span class="comhead">
+                                <% if session[:username] and current_comment.user.username == session[:username] %>
+                                    <%= link_to current_comment.user do %>
+                                        <font color="#3c963c"><%= current_comment.user.username %></font>
+                                    <%end%>
+                                <% else %>
+                                    <%= link_to current_comment.user.username, :controller => "users", :action => "show", :id => current_comment.user %> 
+                                <% end %>
+                                <span class="age"><%= link_to time_ago_in_words(current_comment.created_at) + ' ago', current_comment %></span> 
+                            </span>
+                        </div>
+                        <br>
+                        <div class="comment">
+                            <span class="commtext c00"><%= current_comment.text %>
+                                <div class="reply">        
+                                    <p><font size="1">
+                                        <u><%= link_to 'reply', current_comment %></u>
+                                    </p>
+                                </div>
+                            </span>
+                        </div>
+                    </td>          
+                </tr>
+            </tbody>
+        </table>
+    </td>
+</tr>
