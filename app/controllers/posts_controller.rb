@@ -82,7 +82,7 @@ class PostsController < ApplicationController
   def asks
     @posts = Post.all
     @asks = []
-    
+
     for i in @posts
       if i.url != ""
         @asks << i

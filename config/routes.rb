@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :vote_posts
   resources :vote_replies
   get '/newest', to: 'posts#newest'
-  get '/asks', to: 'posts#asks'
+  get '/ask', to: 'posts#asks'
   get '/threads', to: 'comments#threads'
   get '/upvoted_comments', to: 'comments#upvoted'
   get '/auth/:provider/callback' => 'sessions#omniauth'
