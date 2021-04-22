@@ -6,13 +6,9 @@ class PostsController < ApplicationController
     @posts = Post.where(typePost: 'url').order('posts.created_at DESC') 
   end
 
-  def newest
-    @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
-  end
-
   # GET /newest or /newest.json
   def newest
-    @posts = Post.all
+    @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
   end
 
   # GET /posts/1 or /posts/1.json

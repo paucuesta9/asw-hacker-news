@@ -2,53 +2,22 @@
 <center>
   <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
     <tbody>
-    <tr>
-      <td bgcolor="#ff6600"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px"><tbody><tr><td style="width:18px;padding-right:4px"><a href="https://news.ycombinator.com"><img src="y18.gif" width="18" height="18" style="border:1px white solid;"></a></td>
-        <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="news">Hacker News</a></b><a href="newest">new</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="ask">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a></span></td>
-        <td style="text-align:right;padding-right:4px;"><span class="pagetop"><a href="login?goto=news">login</a></span></td></tr></tbody></table></td>
-    </tr>
-    <tr id="pagespace" title="" style="height:10px"></tr>
+    <%= render 'header' %>
+    <%% id="pagespace" title="" style="height:10px"></%%>
 
     <tr>
       <td>
         <table border="0" cellpadding="0" class="itemlist">
           <tbody>
           <% @posts.each_with_index do |post, index| %>
-            <tr class="athing" id="<%= post.id %>">
-              <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
-              <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
-              <td class="title"><!--<a href="<%= post.url %>" class="storylink">--><%= post.title %><!--</a>--><span class="sitebit comhead"> <!--(<a href="from?site=fossil-scm.org"><span class="sitestr">fossil-scm.org</span></a>)--></span></td>
-            </tr>
-            <tr><td colspan="2"></td><td class="subtext">
-              <span class="score" id="score_<%= post.id %>"><%= post.points %> Points</span> by <a href="user?id=mockUser" class="hnuser">mockUser</a> <span class="age"><a href="item?id=<%= post.id %>"><%= post.created_at %></a></span> <span id="unv_<%= post.id %>"></span> | <a href="hide?id=<%= post.id %>&amp;goto=news">hide</a> | <a href="item?id=<%= post.id %>">0 Comments</a></td>
-            </tr>
-            <tr class="spacer" style="height:5px"></tr>
+            <%=render 'post_in_list', post: post, index: index%>
           <% end %>
           <tr class="morespace" style="height:10px"></tr><tr><td colspan="2"></td><td class="title"><a href="news?p=2" class="morelink" rel="next">More</a></td></tr>
           </tbody>
         </table>
       </td>
     </tr>
-    <tr>
-      <td>
-        <img src="s.gif" height="10" width="0">
-        <table width="100%" cellspacing="0" cellpadding="1"><tbody><tr><td bgcolor="#ff6600"></td></tr></tbody></table>
-        <br>
-        <center>
-            <span class="yclinks"><a href="">Guidelines</a>
-              | <a href="">FAQ</a>
-              | <a href="">Lists</a>
-              | <a href="">API</a>
-              | <a href="">Security</a>
-              | <a href="">Legal</a>
-              | <a href="">Apply to YC</a>
-              | <a href="">Contact</a>
-            </span>
-          <br><br>
-          <form method="get" action="//hn.algolia.com/">Search: <input type="text" name="q" value="" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false"></form>
-        </center>
-      </td>
-    </tr>
+    <%=render 'footer'%>
     </tbody>
   </table>
 </center>
