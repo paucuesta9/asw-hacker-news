@@ -3,9 +3,11 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
-    #@posts = Post.where(user_id: "2")
-     
+    @posts = Post.where(typePost: 'url').order('posts.created_at DESC') 
+  end
+
+  def newest
+    @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
   end
 
   # GET /newest or /newest.json
