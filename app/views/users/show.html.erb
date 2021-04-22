@@ -12,3 +12,97 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+<center>
+  <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+    <tbody>
+      <tr>
+        <td bgcolor="#ff6600">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+            <tbody>
+              <tr>
+                <td style="width:18px;padding-right:4px"><a href="https://news.ycombinator.com"><img src="y18.gif" width="18" height="18" style="border:1px white solid;"></a></td>
+                <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="/news">Hacker News</a></b><a href="/newest">new</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="/asks">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="/submit">submit</a></span></td>
+                <td style="text-align:right;padding-right:4px;">
+                  <% if session[:username] %>
+                    <span class="pagetop"> <a href="/user/<%= session[:user_id]%>"><%= session[:username]%></a></span>
+                    <span class="pagetop"><a href="logout">Logout</a></span>
+             
+                  <% else %>
+                    <span class="pagetop"><%= button_to "Log in with Google", '/auth/google_oauth2'  %></span>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr id="pagespace" title="" style="height:10px"></tr>
+        <tr id="pagespace" title="Profile: wanderingp" style="height:10px"></tr>
+        <tr>
+          <td>
+            <table border="0" cellpadding="0" cellspacing="0">
+              
+            </table>
+            <form class="profileform" method="post" action="/xuser">
+              
+              <table border="0">
+                <tr class='athing'>
+                  <td valign="top">user:</td>
+                  <td timestamp="1618914348"><a href="/user/<%= @user.id %>" class="hnuser"><font color="#3c963c"><%= @user.username %></font></a></td>
+                </tr>
+                <tr>
+                  <td valign="top">created:</td>
+                <td><a href="front?day=2021-04-20&birth=wanderingp"><%= @user.created_at %><</a></td>
+                </tr>
+                <tr>
+                  <td valign="top">karma:</td>
+                  <td>
+                    1          
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">about:</td>
+                  <td style="overflow:hidden;">
+                    <textarea cols="60" rows="5" wrap="virtual" name="about">
+                    </textarea> <font size="-2"><a href="formatdoc" tabindex="-1"><font color="#afafaf">help</font></a></font>          
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">email:</td>
+                  <td></td>
+                </tr>
+                
+                
+                <tr>
+                  <td></td>
+                  <td><a href="/user/submissions/<%=@user.id%>"><u>submissions</u></a></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><a href="threads?id=wanderingp"><u>comments</u></a></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><a href="hidden"><u>hidden</u></a></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="favorites?id=wanderingp"><u>favorite submissions</u></a> /
+                    <a href="favorites?id=wanderingp&amp;comments=t"><u>comments</u></a>
+                    &nbsp;<span style='font-style:italic'>(shared)</span>
+                  </td>
+                </tr>
+              </table>
+              <br><input type="submit" value="update">
+            </form>
+            <br><br>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+  <script type='text/javascript' src='hn.js?CZk51y0z29TYBzr1LRkl'></script>
+</html>

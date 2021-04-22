@@ -1,42 +1,28 @@
-<html lang="en" op="ask">
-  <head><meta name="referrer" content="origin">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="news.css?WmOPHVu15TVF5xOnDKhL">
-    <link rel="shortcut icon" href="favicon.ico">
-    <title>Ask | Hacker News</title>
-  </head>
-  
-  <body>
-    <center>
-      <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
-        <tbody>
-          <tr>
-            <td bgcolor="#ff6600">
-              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
-                <tbody>
-                  <tr>
-                    <td style="width:18px;padding-right:4px">
-                      <a href="https://news.ycombinator.com"> <img src="y18.gif" width="18" height="18" style="border:1px white solid;"> </a>
-                    </td>
-                    
-                    <td style="line-height:12pt; height:10px;">
-                      <span class="pagetop">
-                        <b class="hnname"><a href="news">Hacker News</a></b>
-                        <a href="newest">new</a> | <a href="threads?id=Jhamir">threads</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <span class="topsel"><a href="ask">ask</a></span> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a>
-                      </span>
-                    </td>
-                    
-                    <td style="text-align:right;padding-right:4px;">
-                      <span class="pagetop">
-                        <a id="me" href="user?id=Jhamir">Jhamir</a>                (1) |
-                        <a id="logout" href="logout?auth=161152b9323b2c1a761a7dc1d160dadd7f126ebb&amp;goto=ask">logout</a>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
+<center>
+  <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+    <tbody>
+      <tr>
+        <td bgcolor="#ff6600">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+            <tbody>
+              <tr>
+                <td style="width:18px;padding-right:4px"><a href="https://news.ycombinator.com"><img src="y18.gif" width="18" height="18" style="border:1px white solid;"></a></td>
+                <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="news">Hacker News</a></b><a href="newest">new</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="ask">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="/submit">submit</a></span></td>
+                <td style="text-align:right;padding-right:4px;">
+                  <% if session[:username] %>
+                    <span class="pagetop"> <a href="session/"><%= session[:username]%></a></span>
+                    <span class="pagetop"><a href="logout">Logout</a></span>
+             
+                  <% else %>
+                    <span class="pagetop"><%= button_to "Log in with Google", '/auth/google_oauth2'  %></span>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr id="pagespace" title="" style="height:10px"></tr>
           
           <tr id="pagespace" title="Ask" style="height:10px"></tr>
           
@@ -65,7 +51,7 @@
                     <tr>
                       <td colspan="2"></td>
                       <td class="subtext">
-                        <span class="score" id="score_26825017"><%= ask.points %> X points</span> by <a href="user?id=snakedoctor" class="hnuser"><%= UsersController %></a>
+                        <span class="score" id="score_26825017"><%= ask.points %> X points</span> by <a href="user?id=<%= ask.user.username %>" class="hnuser"><%= ask.user.username %></a>
                         <span class="age"><a href="item?id=26825017"><%= time_ago_in_words(ask.created_at)%> ago</a></span>
                         <span id="unv_26825017"></span> | <a href="item?id=26825017">780&nbsp;comments</a>
                       </td>

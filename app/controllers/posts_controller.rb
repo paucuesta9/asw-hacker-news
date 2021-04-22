@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     #guardar el user id que toqui
-    @post.user_id = 2;
+    @post.user_id = session[:user_id];
     respond_to do |format|
       if @post.save
           
