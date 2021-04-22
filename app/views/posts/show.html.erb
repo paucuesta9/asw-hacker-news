@@ -1,7 +1,7 @@
   <center>
     <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
       <%=render 'header' %>
-      <tr id="pagespace" title=""> style="height:10px"></tr>
+      <tr id="pagespace" title="" style="height:10px"></tr>
       <tr>
         <td>
           <table class="fatitem" border="0">
@@ -27,8 +27,15 @@
             <tr>
               <td colspan="2"></td>
               <td class="subtext">
-                <span class="score"><%=@post.points%> points</span> by <%= link_to @comment.user.username %>
-                <span class="age"><%= link_to @post.get_time %></span> | <%= link_to @post.comments.count.to_s + ' comments', @post %>
+                <span class="score"><%=@post.points%> points</span> by 
+                <% if session[:username] and @post.user.username == session[:username] %>
+                    <%= link_to @post.user do %>
+                        <font color="#3c963c"><%= @post.user.username %></font>
+                    <%end%>
+                <% else %>
+                    <%= link_to @post.user.username, :controller => "users", :action => "show", :id => @post.user %> 
+                <% end %>
+                <span class="age"><%= link_to time_ago_in_words(@post.created_at) + ' ago' %></span> | <%= link_to @post.comments.count.to_s + ' comments', @post %>
               </td>
             </tr>
             <tr><td colspan="2"></td>

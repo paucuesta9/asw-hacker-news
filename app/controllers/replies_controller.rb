@@ -24,7 +24,7 @@ class RepliesController < ApplicationController
         if @reply.save
           @vote = VoteReply.new(:user_id => current_user.id, :reply_id => @reply.id)
           @vote.save
-          @reply.points += 1
+          @reply.votes += 1
           @reply.save
           format.html { redirect_to @reply, notice: "Reply was successfully created." }
           format.json { render :show, status: :created, location: @reply }
