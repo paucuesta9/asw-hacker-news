@@ -22,13 +22,22 @@
         <td>
           <table class="fatitem" border="0">
             <tbody>
-              <tr class="athing" id="26886353">    
+              <tr class="athing">    
                 <td class="ind"></td>
+                <%if @voted %>
+                    <td class="votelinks" valign="top">
+                    <center><font color="#ff6600">*</font>
+                    <img src="s.gif" width="1" height="1"></center>    
+                    </td>
+                <% else %>
+                    <td valign="top" class="votelinks"><center>
+                    <%= link_to :controller => "vote_replies", :action => "create", :method => "post", :reply_id => @reply.id, :user_id => session[:user_id] do %>
+                      <div class="votearrow" title="upvote"></div>
+                    <% end %></a></center></td>
+                <%end%>
                 <td class="votelinks" valign="top">
                   <center>
-                    <%= link_to :controller => "vote_replies", :action => "create", :method => "post", :reply_id => @reply.id, :user_id => @reply.user_id do %>
-                      <div class="votearrow" title="upvote"></div>
-                    <% end %>
+                    
                   </center>    
                 </td>
                 <td class="default">
