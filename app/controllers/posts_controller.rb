@@ -76,6 +76,11 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+    
+  # GET /posts/asks
+  def asks
+    @asks = Post.where(:typePost => "ask").order('posts.created_at DESC')
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -88,11 +93,6 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :url, :text)
     end
     
-    
-      # GET /posts/asks
-  def asks
-    @asks = Post.where(typePost: "ask")
-  end
     
     
 end
