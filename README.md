@@ -27,7 +27,7 @@ git clone https://github.com/paucuesta9/asw-hacker-news.git
 cd asw-hacker-news
 ```
 
-### Chechk your Ruby version
+### Check your Ruby version
 
 ```shell
 ruby --version
