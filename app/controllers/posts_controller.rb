@@ -5,11 +5,17 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(typePost: 'url').order('posts.created_at DESC') 
     @voted = VotePost.where(user_id: session[:user_id])
+    #@posts= Post.all
   end
 
   # GET /newest or /newest.json
   def newest
     @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
+    @voted = VotePost.where(user_id: session[:user_id])
+  end
+  
+  def submitted
+    @posts = Post.where(user_id: session[:user_id]).order('posts.created_at DESC')
     @voted = VotePost.where(user_id: session[:user_id])
   end
     
