@@ -2,24 +2,21 @@
 <center>
   <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
     <tbody>
-    <%= render 'header' %>
-    <%% id="pagespace" title="" style="height:10px"></%%>
+    <%= render 'header'%>
+    <tr id="pagespace" title="" style="height:10px"></tr>
 
     <tr>
       <td>
         <table border="0" cellpadding="0" class="itemlist">
           <tbody>
           <% @posts.each_with_index do |post, index| %>
-            <%=render 'post_in_list', post: post, index: index%>
+            <%= render 'post_in_list', post: post, index: index%>
           <% end %>
-          <tr class="morespace" style="height:10px"></tr><tr><td colspan="2"></td><td class="title"><a href="news?p=2" class="morelink" rel="next">More</a></td></tr>
           </tbody>
         </table>
       </td>
     </tr>
-    <%=render 'footer'%>
+    <%= render 'footer' %>
     </tbody>
   </table>
 </center>
-
-<%= link_to 'New Post', new_post_path %>

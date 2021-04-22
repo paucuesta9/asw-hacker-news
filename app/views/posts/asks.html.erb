@@ -1,27 +1,7 @@
 <center>
   <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
     <tbody>
-      <tr>
-        <td bgcolor="#ff6600">
-          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
-            <tbody>
-              <tr>
-                <td style="width:18px;padding-right:4px"><a href="https://news.ycombinator.com"><img src="y18.gif" width="18" height="18" style="border:1px white solid;"></a></td>
-                <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="news">Hacker News</a></b><a href="newest">new</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="ask">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="/submit">submit</a></span></td>
-                <td style="text-align:right;padding-right:4px;">
-                  <% if session[:username] %>
-                    <span class="pagetop"> <a href="session/"><%= session[:username]%></a></span>
-                    <span class="pagetop"><a href="logout">Logout</a></span>
-             
-                  <% else %>
-                    <span class="pagetop"><%= button_to "Log in with Google", '/auth/google_oauth2'  %></span>
-                  <% end %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
+      <%= render 'header' %>
       <tr id="pagespace" title="" style="height:10px"></tr>
           
           <tr id="pagespace" title="Ask" style="height:10px"></tr>
@@ -32,89 +12,16 @@
                 <tbody>
                   <!-- /////////////////ASK///////////////-->
                   <% cont = 0%>
-                  <% @asks.each do |ask| %>
-                  <tr class="athing" id="<%= ask.id%>">
-                    <td align="right" valign="top" class="title">
-                      <span class="rank"><%= cont %>.</span>
-                      <% cont = cont + 1 %>
-                    </td>
-                    <td valign="top" class="votelinks">
-                      <center>
-                        <a id="up_<%= ask.id%>" onclick="return vote(event, this, &quot;up&quot;)" href="/posts/<%= ask.id%>&amp;how=up&amp;auth=131c00cfd570f7f4c67ea13a5310065a1a7c900c&amp;goto=ask">
-                          <div class="votearrow" title="upvote"></div>
-                        </a>
-                      </center>
-                    </td>
-                    <td class="title"><a href="/posts/<%= ask.id%>" class="storylink"><%= ask.title %></a></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"></td>
-                    <td class="subtext">
-                      <span class="score" id="score_<%= ask.id%>"><%= ask.points %> points</span> by 
-                      
-                      
-                      <% if session[:username] and ask.user.username == session[:username] %>
-                          <%= link_to ask.user do %>
-                              <font color="#3c963c"><%= ask.user.username %></font>
-                          <%end%>
-                      <% else %>
-                          <%= link_to ask.user.username, :controller => "users", :action => "show", :id => ask.user %> 
-                      <% end %>
-                      
-                      
-                      <!--<a href="/users/<% ask.user.username %>" class="hnuser"><%=ask.user.username %></a>-->
-                      
-                      
-                      
-                      
-                      <span class="age"><a href="/posts/<%= ask.id%>"><%= time_ago_in_words(ask.created_at)%> ago</a></span>
-                      <span id="unv_<%= ask.id%>"></span> | <a href="/posts/<%= ask.id%>"> <%= ask.comments.count %> &nbsp;comments</a>
-                    </td>
-                  </tr>
-                  
-                  <tr class="spacer" style="height:5px"></tr>
+                  <% @asks.each_with_index do |ask, index| %>
+                    <%=render 'post_in_list', post: ask, index: index %>
                   <% end %>
                   <!-- /////////////////FI POST///////////////-->
-                  
-                  <tr class="morespace" style="height:10px"></tr>
-                  <tr>
-                    <td colspan="2"></td>
-                    <td class="title"><a href="ask?p=2" class="morelink" rel="next">More</a></td>
-                  </tr>
                 </tbody>
               </table>
             </td>
           </tr>
           
-          <tr>
-            <td>
-              <img src="s.gif" height="10" width="0">
-              <table width="100%" cellspacing="0" cellpadding="1">
-                <tbody>
-                  <tr>
-                    <td bgcolor="#ff6600"></td>
-                  </tr>
-                </tbody>
-              </table>
-              <br>
-              
-              <center>
-                <span class="yclinks"><a href="newsguidelines.html">Guidelines</a>
-                  | <a href="newsfaq.html">FAQ</a>
-                  | <a href="lists">Lists</a>
-                  | <a href="https://github.com/HackerNews/API">API</a>
-                  | <a href="security.html">Security</a>
-                  | <a href="http://www.ycombinator.com/legal/">Legal</a>
-                  | <a href="http://www.ycombinator.com/apply/">Apply to YC</a>
-                  | <a href="mailto:hn@ycombinator.com">Contact</a>
-                </span>
-                <br><br>
-                <form method="get" action="//hn.algolia.com/">Search:
-                    <input type="text" name="q" value="" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false">
-                </form>
-              </center>
-            </td>
-          </tr>
+          <%= render 'footer'%>
         </tbody>
       </table>
     </center>
