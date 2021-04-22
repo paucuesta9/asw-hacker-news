@@ -38,6 +38,60 @@
         <td>
           <table border="0" cellpadding="0" class="itemlist">
             <tbody>           
+              <% @posts.each do |post| %>
+              <tr class="athing comtr">
+                  <td>
+                    <table border="0">
+                      <tbody>
+                        <tr>    
+                          <td class="ind">
+                            <img src="s.gif" width="0" height="1">
+                          </td>
+                          <td class="votelinks" valign="top">
+                            <center><font color="#ff6600">*</font>
+                            <br>
+                            <img src="s.gif" width="14" height="1"></center>    
+                          </td>
+                          <td class="default">
+                            <div style="margin-top:2px; margin-bottom:-10px;">
+                              <span class="comhead">
+                                <% if session[:username] and post.user.username == session[:username] %>
+                                    <%= link_to post.user do %>
+                                        <font color="#3c963c"><%= post.user.username %></font>
+                                    <%end%>
+                                <% else %>
+                                    <%= link_to post.user.username, :controller => "users", :action => "show", :id => post.user %> 
+                                <% end %>
+                              </span>
+                            </div>
+                            <br>
+                            <div class="comment">
+                              <span class="commtext c00"><%=post.text%></span>
+                              <div class="reply">        
+                                <p>
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             </tbody>
           </table>

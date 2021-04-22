@@ -23,10 +23,14 @@ class UsersController < ApplicationController
     @comments = Comment.where(user_id:@user.id)
   end
   
+  def upvoted
+    @posts = Post.joins(:users).where(id: current_user.id)
+  end
+  
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    session[:id] = 2
+    session[:id] = user_id
     #@postsusu = User.posts.where(user_id: @user.id)
     respond_to do |format|
       if @user.save
