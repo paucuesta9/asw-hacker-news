@@ -23,9 +23,13 @@ class RepliesController < ApplicationController
   # POST /replies or /replies.json
   def create
     @reply = Reply.new(reply_params)
-    @reply.user_id = 1
+    @reply.user_id = @current_user.id
     respond_to do |format|
       if @reply.save
+        @vote = VoteReply.new(:user_id => @current_user.id, :reply_id => @reply.id)
+        @vote.save
+        @reply.points += 1
+        @reply.save
         format.html { redirect_to @reply, notice: "Reply was successfully created." }
         format.json { render :show, status: :created, location: @reply }
       else
@@ -50,6 +54,9 @@ class RepliesController < ApplicationController
 
   # DELETE /replies/1 or /replies/1.json
   def destroy
+    while not Reply.find_by(parent: @reply).nil? do
+      Reply.find_by(parent: @reply).destroy
+    end
     @reply.destroy
     respond_to do |format|
       format.html { redirect_to replies_url, notice: "Reply was successfully destroyed." }

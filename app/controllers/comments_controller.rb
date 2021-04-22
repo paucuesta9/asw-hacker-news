@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+      @comment = Comment.new
   end
 
   # GET /comments/1/edit
@@ -33,9 +33,13 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_id = 1
+    @comment.user_id = @current_user.id
     respond_to do |format|
       if @comment.save
+        @vote = VoteComment.new(:user_id => @current_user.id, :comment_id => @comment.id)
+        @vote.save
+        @comment.points += 1
+        @comment.save
         format.html { redirect_to :controller => "posts", :action => "show", :id => @comment.post_id, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
@@ -60,6 +64,9 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
+    while not Reply.find_by(parent: @comment).nil? do
+      Reply.find_by(parent: @comment).destroy
+    end
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
