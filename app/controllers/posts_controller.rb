@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   
   def submitted
     @posts = Post.where(user_id: session[:user_id]).order('posts.created_at DESC')
+    @voted = VotePost.where(user_id: session[:user_id])
   end
     
   # GET /posts/asks
