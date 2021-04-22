@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+      @comment = Comment.new
   end
 
   # GET /comments/1/edit
@@ -32,16 +32,20 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
-    @comment.user_id = 1
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to :controller => "posts", :action => "show", :id => @comment.post_id, notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+    if @current_user
+      @comment = Comment.new(comment_params)
+      @comment.user_id = @current_user.id
+      respond_to do |format|
+        if @comment.save
+          format.html { redirect_to :controller => "posts", :action => "show", :id => @comment.post_id, notice: "Comment was successfully created." }
+          format.json { render :show, status: :created, location: @comment }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to '/auth/google_oauth2'
     end
   end
 
