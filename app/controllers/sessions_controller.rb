@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     if user.valid?
       session[:user_id] = user.id
       session[:username] = user.username
+      current_user
       redirect_to '/'
     else
       redirect_to '/login'

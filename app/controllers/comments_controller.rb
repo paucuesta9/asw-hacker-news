@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
 
   #GET /threads
   def threads
-    @comments = Comment.where(user_id: @current_user.id)
+    @comments = Comment.where(user_id: current_user.id)
   end
 
   #GET /upvoted 
   def upvoted
-    @comments = Comment.joins(:users).where(id: @current_user.id)
+    @comments = Comment.joins(:users).where(id: current_user.id)
   end
 
   # GET /comments/1 or /comments/1.json
@@ -28,11 +28,11 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_id = @current_user.id
+    @comment.user_id = current_user.id
     if not @reply.text.empty?
       respond_to do |format|
         if @comment.save
-          @vote = VoteComment.new(:user_id => @current_user.id, :comment_id => @comment.id)
+          @vote = VoteComment.new(:user_id => current_user.id, :comment_id => @comment.id)
           @vote.save
           @comment.points += 1
           @comment.save
