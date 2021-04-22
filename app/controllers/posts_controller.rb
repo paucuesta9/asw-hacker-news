@@ -43,11 +43,13 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        unless @post.typePost == "url" and not @post.text.empty?
+        if @post.typePost == "url" and not @post.text.empty?
           @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
           @comment.save
           @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
           @vote.save
+          @post.points += 1
+          @post.save
         end
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
