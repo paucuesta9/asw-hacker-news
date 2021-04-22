@@ -1,12 +1,18 @@
 <tr class="athing" id="<%= post.id %>">
     <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
-    <%if @voted and @voted.where(post_id: post.id)%>
+    <%if @voted and @voted.find_by(post_id: post.id)%>
         <td class="votelinks" valign="top">
+        <%= link_to :controller => "vote_posts", :action => "unvote", :id => post.id do %>
         <center><font color="#ff6600">*</font>
         <img src="s.gif" width="1" height="1"></center>    
-        </td>
+    <% end %>
+    </td>
     <% else %>
-        <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
+        <td valign="top" class="votelinks"><center>
+        <%= link_to :controller => "vote_posts", :action => "upvote", :id => post.id do %>
+        <div class="votearrow" title="upvote"></div>
+        <% end %>
+        </center></td>
     <%end%>
     <td class="title">
     <% if post.typePost == 'ask'%>

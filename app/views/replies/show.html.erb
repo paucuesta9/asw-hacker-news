@@ -25,16 +25,19 @@
               <tr class="athing">    
                 <td class="ind"></td>
                 <%if @voted %>
-                    <td class="votelinks" valign="top">
-                    <center><font color="#ff6600">*</font>
-                    <img src="s.gif" width="1" height="1"></center>    
+                        <td class="votelinks" valign="top">
+                        <%= link_to :controller => "vote_replies", :action => "unvote", :id => @reply.id do %>
+                        <center><font color="#ff6600">*</font>
+                        <img src="s.gif" width="1" height="1"></center>    
+                    <% end %>
                     </td>
-                <% else %>
-                    <td valign="top" class="votelinks"><center>
-                    <%= link_to :controller => "vote_replies", :action => "create", :method => "post", :reply_id => @reply.id, :user_id => session[:user_id] do %>
-                      <div class="votearrow" title="upvote"></div>
-                    <% end %></a></center></td>
-                <%end%>
+                    <% else %>
+                        <td valign="top" class="votelinks"><center>
+                        <%= link_to :controller => "vote_replies", :action => "upvote", :id => @reply.id do %>
+                        <div class="votearrow" title="upvote"></div>
+                        <% end %>
+                        </center></td>
+                    <%end%>
                 <td class="votelinks" valign="top">
                   <center>
                     

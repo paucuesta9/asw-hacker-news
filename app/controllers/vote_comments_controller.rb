@@ -55,6 +55,22 @@ class VoteCommentsController < ApplicationController
         format.json { head :no_content }
       end
     end
+    
+    def upvote
+    @comment = Comment.find(params[:id])
+    VoteComment.create(user_id: session[:user_id], comment_id: @comment.id)
+    @comment.votes +=1
+    @comment.save
+    redirect_to request.referrer
+    end
+  
+    def unvote
+    @comment = Comment.find(params[:id])
+    VoteComment.find_by(user_id: session[:user_id], comment_id: @comment.id).destroy
+    @comment.votes -= 1
+    @comment.save
+    redirect_to request.referrer
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
