@@ -24,7 +24,7 @@
             <tbody>
               <tr class="athing">    
                 <td class="ind"></td>
-                <%if @voted %>
+                <%if @votedreplies and @votedreplies.find_by(reply_id: @reply)%>
                         <td class="votelinks" valign="top">
                         <%= link_to :controller => "vote_replies", :action => "unvote", :id => @reply.id do %>
                         <center><font color="#ff6600">*</font>
@@ -38,11 +38,6 @@
                         <% end %>
                         </center></td>
                     <%end%>
-                <td class="votelinks" valign="top">
-                  <center>
-                    
-                  </center>    
-                </td>
                 <td class="default">
                   <div style="margin-top:2px; margin-bottom:-10px;">
                     <span class="comhead">

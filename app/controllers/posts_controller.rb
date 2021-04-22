@@ -29,6 +29,8 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @voted = VotePost.find_by(user_id: session[:user_id], post_id: @post.id)
+    @votedcomments = VoteComment.where(user_id: session[:user_id])
+    @votedreplies = VoteReply.where(user_id: session[:user_id])
   end
 
   # GET /posts/new

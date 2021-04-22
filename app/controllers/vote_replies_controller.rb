@@ -57,17 +57,17 @@ class VoteRepliesController < ApplicationController
     end
     
     def upvote
-    @replies = Replies.find(params[:id])
-    VoteReplies.create(user_id: session[:user_id], replies_id: @replies.id)
-    @replies.points += 1
+    @replies = Reply.find(params[:id])
+    VoteReply.create(user_id: session[:user_id], reply_id: @replies.id)
+    @replies.votes += 1
     @replies.save
     redirect_to request.referrer
     end
   
    def unvote
-    @replies = Replies.find(params[:id])
-    VoteReplies.find_by(user_id: session[:user_id], replies_id: @replies.id).destroy
-    @replies.points -= 1
+    @replies = Reply.find(params[:id])
+    VoteReply.find_by(user_id: session[:user_id], reply_id: @replies.id).destroy
+    @replies.votes -= 1
     @replies.save
     redirect_to request.referrer
    end

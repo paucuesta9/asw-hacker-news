@@ -4,7 +4,7 @@
             <tbody>
                 <tr>
                     <td class="ind"><img src="s.gif" width="<%= num * 40 %>" height="1"></td>
-                    <%if @voted and @voted.find_by(reply_id: current_reply)%>
+                    <%if @votedreplies and @votedreplies.find_by(reply_id: current_reply)%>
                         <td class="votelinks" valign="top">
                         <%= link_to :controller => "vote_replies", :action => "unvote", :id => current_reply.id do %>
                         <center><font color="#ff6600">*</font>

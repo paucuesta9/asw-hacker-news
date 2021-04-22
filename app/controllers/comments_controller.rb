@@ -4,19 +4,21 @@ class CommentsController < ApplicationController
   #GET /threads
   def threads
     @comments = Comment.where(user_id: current_user.id)
-    @voted = VoteComment.where(user_id: session[:user_id])
+    @votedcomments = VoteComment.where(user_id: session[:user_id])
   end
 
   #GET /upvoted 
   def upvoted
     @comments = Comment.joins(:users).where(id: current_user.id)
-    @voted = VoteComment.where(user_id: session[:user_id])
+    @votedcomments = VoteComment.where(user_id: session[:user_id])
   end
 
   # GET /comments/1 or /comments/1.json
   def show
     @reply = Reply.new
-    @voted = VoteComment.find_by(user_id: session[:user_id], comment_id: @comment.id)
+    @votedcomments = VoteComment.find_by(user_id: session[:user_id])
+    @votedreplies = VoteReply.where(user_id: session[:user_id])
+    
   end
 
   # GET /comments/new

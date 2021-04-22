@@ -3,14 +3,24 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts
   resources :users
-  resources :vote_comments
+  resources :vote_comments do
+  member do
+    get 'upvote'
+    get 'unvote'
+    end
+  end
   resources :vote_posts do
   member do
     get 'upvote'
     get 'unvote'
     end
   end
-  resources :vote_replies
+  resources :vote_replies do
+  member do
+    get 'upvote'
+    get 'unvote'
+    end
+  end
   get '/submit', to: 'posts#new'
   get '/newest', to: 'posts#newest'
   get '/ask', to: 'posts#asks'
