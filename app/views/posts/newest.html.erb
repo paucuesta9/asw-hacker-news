@@ -12,7 +12,6 @@
           <% @posts.each_with_index do |post, index| %>
             <%= render 'post_in_list', post: post, index: index%>
           <% end %>
-          <tr class="morespace" style="height:10px"></tr><tr><td colspan="2"></td><td class="title"><a href="news?p=2" class="morelink" rel="next">More</a></td></tr>
           </tbody>
         </table>
       </td>
