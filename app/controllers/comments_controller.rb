@@ -1,19 +1,14 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
 
-  # GET /comments or /comments.json
-  def index
-    @comments = Comment.all
-  end
-
   #GET /threads
   def threads
-    @comments = Comment.where(user_id: 1)
+    @comments = Comment.where(user_id: @current_user.id)
   end
 
   #GET /upvoted 
   def upvoted
-    @comments = Comment.joins(:users).where(id: 1)
+    @comments = Comment.joins(:users).where(id: @current_user.id)
   end
 
   # GET /comments/1 or /comments/1.json
@@ -34,18 +29,22 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = @current_user.id
-    respond_to do |format|
-      if @comment.save
-        @vote = VoteComment.new(:user_id => @current_user.id, :comment_id => @comment.id)
-        @vote.save
-        @comment.points += 1
-        @comment.save
-        format.html { redirect_to :controller => "posts", :action => "show", :id => @comment.post_id, notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+    if not @reply.text.empty?
+      respond_to do |format|
+        if @comment.save
+          @vote = VoteComment.new(:user_id => @current_user.id, :comment_id => @comment.id)
+          @vote.save
+          @comment.points += 1
+          @comment.save
+          format.html { redirect_to :controller => "posts", :action => "show", :id => @comment.post_id, notice: "Comment was successfully created." }
+          format.json { render :show, status: :created, location: @comment }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to request.referrer, notice: 'Text empty'
     end
   end
 
