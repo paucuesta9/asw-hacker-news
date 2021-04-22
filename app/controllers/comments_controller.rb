@@ -8,12 +8,12 @@ class CommentsController < ApplicationController
 
   #GET /threads
   def threads
-    @comments = Comment.where(user_id: 1)
+    @comments = Comment.where(user_id: @current_user.id)
   end
 
   #GET /upvoted 
   def upvoted
-    @comments = Comment.joins(:users).where(id: 1)
+    @comments = Comment.joins(:users).where(id: @current_user.id)
   end
 
   # GET /comments/1 or /comments/1.json
