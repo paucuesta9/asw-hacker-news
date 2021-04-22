@@ -62,8 +62,9 @@ link_to 'Back', posts_path %>
             </tr>
             <tr><td colspan="2"></td>
             <td>
+              <% if @post.typePost == 'ask'%>
             	<%= @post.text %> <br><br>
-
+              <%end%>
               <small class="comment">
                   <%= render 'comments/form', comment: @comment %>
               </small>
