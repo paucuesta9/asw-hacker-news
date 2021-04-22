@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/logout', :controller => 'sessions', :action => 'destroy'
   get '/user/:id', to: 'users#show'
   get '/user/submissions/:id', to: 'users#submitted'
+  get '/user/comments/:id', to: 'users#comments'
+  get '/user/upvoted/:id', to: 'users#upvoted'
   root :to => 'posts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
