@@ -47,8 +47,8 @@
                     
                   </td>
                 </tr>
-                <% if session[:user_id] == @user.id %>
-                <tr>
+                <% if session[:username] and session[:user_id] == @user.id %>
+                    <tr>
                   <td valign="top">about:</td>
                   <td style="overflow:hidden;">
                     <%= form.text_area :about, size: "40x7"%>
