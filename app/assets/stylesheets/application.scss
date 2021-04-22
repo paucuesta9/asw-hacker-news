@@ -47,15 +47,16 @@ a:visited {
 
 .helpurl {
   padding-top: 4px;
-  padding-left: 10px;
 }
 
 .theor {
   padding-top: 4px;
-  padding-left: 33px;
+  padding-left: 40px;
+  padding-bottom: 4px;
 }
 .helptext {
-  padding-top: 4px;
+  display: flex;
+  align-items: center;
 }
 
 .createpost {
@@ -63,14 +64,16 @@ a:visited {
   padding-left: 33px;
 }
 .form-title {
-  width: 22.5%;
+  width: 500px;
+  margin-left: 5px;
 }
 .form-url {
-  width: 22.6%;
+  width: 500px;
+  margin-left: 16px;
 }
+
 .form-text {
-  height: 75px;
-  width: 22.5%;
+  margin-left: 8px;
 }
 
 .default {
