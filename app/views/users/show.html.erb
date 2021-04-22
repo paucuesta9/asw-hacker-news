@@ -11,7 +11,7 @@
                 <td style="text-align:right;padding-right:4px;">
                   <% if session[:username] %>
                     <span class="pagetop"> <a href="/user/<%= session[:user_id]%>"><%= session[:username]%></a></span>
-                    <span class="pagetop"><a href="logout">Logout</a></span>
+                    <span class="pagetop"><a href="/logout">Logout</a></span>
              
                   <% else %>
                     <span class="pagetop"><%= button_to "Log in with Google", '/auth/google_oauth2'  %></span>
@@ -29,7 +29,7 @@
             <table border="0" cellpadding="0" cellspacing="0">
               
             </table>
-            <form class="profileform" method="post" action="/xuser">
+            <%= form_with model: @user do |form| %>
               
               <table border="0">
                 <tr class='athing'>
@@ -47,21 +47,21 @@
                     
                   </td>
                 </tr>
-                <% if session[:username] %>
-                    <tr>
+                <% if session[:user_id] == @user.id %>
+                <tr>
                   <td valign="top">about:</td>
                   <td style="overflow:hidden;">
-                    <textarea cols="60" rows="5" wrap="virtual" name="about">
-                    </textarea> <font size="-2"><a href="formatdoc" tabindex="-1"><font color="#afafaf">help</font></a></font>          
+                    <%= form.text_area :about, size: "40x7"%>
+                    <font size="-2"><a href="formatdoc" tabindex="-1"><font color="#afafaf">help</font></a></font>          
                   </td>
                 </tr>
              
-                  <% else %>
-                   <tr>
+                <% else %>
+                <tr>
                   <td valign="top">about:</td>
-                   <%= @user.created_at %>
+                  <td valign="top"><%= @user.about %></td>
                 </tr>
-                  <% end %>
+                <% end %>
                 
                 <tr>
                 </tr>
@@ -82,10 +82,10 @@
                   </td>
                 </tr>
               </table>
-              <% if session[:username] %>
-              <br><input type="submit" value="update">
+              <% if session[:user_id] == @user.id %>
+                <br><%= form.submit %>
               <% end %>
-            </form>
+            <% end %>
             <br><br>
           </td>
         </tr>
