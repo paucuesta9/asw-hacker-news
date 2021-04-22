@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
     @reply = Reply.new
     @votedcomments = VoteComment.find_by(user_id: session[:user_id])
     @votedreplies = VoteReply.where(user_id: session[:user_id])
-    
   end
 
   # GET /comments/new

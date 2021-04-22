@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate, only: [ :new, :edit, :update, :create, :destroy ]
+    before_action :authenticate, only: [ :new, :edit, :update, :create, :destroy, :threads, :upvoted, :submitted, :comments, :upvoted, :upvote, :unvote ]
 
     def current_user
       return unless session[:user_id]
