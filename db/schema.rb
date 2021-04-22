@@ -23,16 +23,6 @@ ActiveRecord::Schema.define(version: 2021_04_21_210841) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "g_users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "full_name"
-    t.string "uid"
-    t.string "avatar_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_g_users_on_email", unique: true
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "url"

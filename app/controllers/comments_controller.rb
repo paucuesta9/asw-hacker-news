@@ -1,19 +1,14 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
 
-  # GET /comments or /comments.json
-  def index
-    @comments = Comment.all
-  end
-
   #GET /threads
   def threads
-    @comments = Comment.where(user_id: 1)
+    @comments = Comment.where(user_id: current_user.id)
   end
 
   #GET /upvoted 
   def upvoted
-    @comments = Comment.joins(:users).where(id: 1)
+    @comments = Comment.joins(:users).where(id: current_user.id)
   end
 
   # GET /comments/1 or /comments/1.json
@@ -23,7 +18,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+      @comment = Comment.new
   end
 
   # GET /comments/1/edit
@@ -33,15 +28,23 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_id = 1
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to :controller => "posts", :action => "show", :id => @comment.post_id, notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+    @comment.user_id = current_user.id
+    if not @comment.text.empty?
+      respond_to do |format|
+        if @comment.save
+          @vote = VoteComment.new(:user_id => current_user.id, :comment_id => @comment.id)
+          @vote.save
+          @comment.votes += 1
+          @comment.save
+          format.html { redirect_to :controller => "posts", :action => "show", :id => @comment.post_id, notice: "Comment was successfully created." }
+          format.json { render :show, status: :created, location: @comment }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to request.referrer, notice: 'Text empty'
     end
   end
 
@@ -60,6 +63,9 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
+    while not Reply.find_by(parent: @comment).nil? do
+      Reply.find_by(parent: @comment).destroy
+    end
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }

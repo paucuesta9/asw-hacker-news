@@ -47,15 +47,16 @@ a:visited {
 
 .helpurl {
   padding-top: 4px;
-  padding-left: 10px;
 }
 
 .theor {
   padding-top: 4px;
-  padding-left: 33px;
+  padding-left: 40px;
+  padding-bottom: 4px;
 }
 .helptext {
-  padding-top: 4px;
+  display: flex;
+  align-items: center;
 }
 
 .createpost {
@@ -63,15 +64,66 @@ a:visited {
   padding-left: 33px;
 }
 .form-title {
-  width: 22.5%;
+  width: 500px;
+  margin-left: 5px;
 }
 .form-url {
-  width: 22.6%;
+  width: 500px;
+  margin-left: 16px;
 }
+
 .form-text {
-  height: 75px;
-  width: 22.5%;
+  margin-left: 8px;
 }
+
+$white: #fff;
+$google-blue: #4285f4;
+$button-active-blue: #1669f2;
+.myClass {
+  background-color: transparent;
+  border: transparent;
+}
+.google-btn {
+  width: 184px;
+  height: 22px;
+  background-color: $google-blue;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background-color: $white;
+  }
+  .google-icon {
+    position: absolute;
+    left: 0px;
+    margin-top: 2px;
+    margin-left: 2px;
+    width: 15px;
+    height: 15px;
+  }
+  .btn-text {
+    float: right;
+    margin: 2px 20px 0 0;
+    color: $white;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: "Roboto";
+  }
+  &:hover {
+    box-shadow: 0 0 6px $google-blue;
+    cursor: pointer;
+  }
+  &:active {
+    background: $button-active-blue;
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
 .default {
   font-family: Verdana, Geneva, sans-serif;

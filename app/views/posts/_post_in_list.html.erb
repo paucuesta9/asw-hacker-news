@@ -1,0 +1,29 @@
+<tr class="athing" id="<%= post.id %>">
+    <td align="right" valign="top" class="title"><span class="rank"><%= index %>.</span></td>
+    <td valign="top" class="votelinks"><center><a id="up_<%= post.id %>" href="vote?id=<%= post.id %>&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td>
+    <td class="title">
+    <% if post.typePost == 'ask'%>
+        <%= link_to post.title, post, :class => "storylink" %>
+    <%else%>
+        <%= link_to "http://#{post.url}" do %>
+        <%= post.title %><span class="sitebit comhead"> (<span class="sitestr"><%=post.url%></span>)</span>
+        <%end%>
+    <%end%>
+</tr>
+<tr><td colspan="2"></td><td class="subtext">
+    <span class="score" id="score_<%= post.id %>"><%= post.points %> Points</span> by 
+    <% if session[:username] and post.user.username == session[:username] %>
+        <%= link_to post.user do %>
+            <font color="#3c963c"><%= post.user.username %></font>
+        <%end%>
+    <% else %>
+        <%= link_to post.user.username, :controller => "users", :action => "show", :id => post.user %> 
+    <% end %>
+    <span class="age"><%= time_ago_in_words(post.created_at)%></span> <span id="unv_<%= post.id %>"></span> | 
+    <% if post.comments.count != 0 %>
+    <%= link_to post.comments.count.to_s + ' comments', post %></td>
+    <% else %>
+    <%= link_to 'discuss', post %></td>
+    <% end %>
+</tr>
+<tr class="spacer" style="height:5px"></tr>

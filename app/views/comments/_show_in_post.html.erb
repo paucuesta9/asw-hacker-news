@@ -14,9 +14,14 @@
                     <td class="default">
                         <div style="margin-top:2px; margin-bottom:-10px;">
                             <span class="comhead">
-                                <%= link_to current_comment.user.username, :controller => "users", :action => "show", :id => current_comment.user_id %> 
-                                <span class="age"><%= link_to current_comment.get_time %></span> 
-                                <a class="togg" n="66">[–]</a>
+                                <% if session[:username] and current_comment.user.username == session[:username] %>
+                                    <%= link_to current_comment.user do %>
+                                        <font color="#3c963c"><%= current_comment.user.username %></font>
+                                    <%end%>
+                                <% else %>
+                                    <%= link_to current_comment.user.username, :controller => "users", :action => "show", :id => current_comment.user %> 
+                                <% end %>
+                                <span class="age"><%= link_to time_ago_in_words(current_comment.created_at) + ' ago', current_comment %></span> 
                             </span>
                         </div>
                         <br>

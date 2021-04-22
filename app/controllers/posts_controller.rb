@@ -3,14 +3,12 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
-    #@posts = Post.where(user_id: "2")
-     
+    @posts = Post.where(typePost: 'url').order('posts.created_at DESC') 
   end
 
   # GET /newest or /newest.json
   def newest
-    @posts = Post.all
+    @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
   end
 
   # GET /posts/1 or /posts/1.json
@@ -31,10 +29,28 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     #guardar el user id que toqui
-    @post.user_id = 2;
+    @post.user_id = session[:user_id];
+    
+    
+    unless(@post.text.empty?) 
+      @post.typePost = "ask"
+    end
+    
+    unless(@post.url.empty?) 
+      @post.typePost = "url"
+    end
+  
+    
     respond_to do |format|
       if @post.save
-          
+        if @post.typePost == "url" and not @post.text.empty?
+          @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
+          @comment.save
+          @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
+          @vote.save
+          @post.points += 1
+          @post.save
+        end
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -65,6 +81,11 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+    
+  # GET /posts/asks
+  def asks
+    @asks = Post.where(:typePost => "ask").order('posts.created_at DESC')
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -77,18 +98,6 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :url, :text)
     end
     
-    
-      # GET /posts/asks
-  def asks
-    @posts = Post.all
-    @asks = []
-    
-    for i in @posts
-      if i.url != ""
-        @asks << i
-      end
-    end
-  end
     
     
 end

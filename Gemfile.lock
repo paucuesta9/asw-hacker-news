@@ -189,6 +189,7 @@ GEM
       thor (~> 1.0)
     rake (13.0.3)
     regexp_parser (2.1.1)
+    repost (0.3.7)
     ruby2_keywords (0.0.4)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -262,6 +263,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.3)
+  repost
   sass-rails (>= 6)
   selenium-webdriver
   sqlite3 (~> 1.4)
