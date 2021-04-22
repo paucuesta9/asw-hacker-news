@@ -32,6 +32,17 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     #guardar el user id que toqui
     @post.user_id = session[:user_id];
+    
+    
+    unless(@post.text.empty?) 
+      @post.typePost = "ask"
+    end
+    
+    unless(@post.url.empty?) 
+      @post.typePost = "url"
+    end
+  
+    
     respond_to do |format|
       if @post.save
           
@@ -80,14 +91,7 @@ class PostsController < ApplicationController
     
       # GET /posts/asks
   def asks
-    @posts = Post.all
-    @asks = []
-
-    for i in @posts
-      if i.url != ""
-        @asks << i
-      end
-    end
+    @asks = Post.where(typePost: "ask")
   end
     
     
