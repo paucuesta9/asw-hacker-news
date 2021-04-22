@@ -40,13 +40,7 @@
                   <td valign="top">created:</td>
                 <td><a><%= @user.created_at %></a></td>
                 </tr>
-                <tr>
-                  <td valign="top">karma:</td>
-                  <td>
-                    1:hard coded 
-                    
-                  </td>
-                </tr>
+                
                 <% if session[:username] and session[:user_id] == @user.id %>
                     <tr>
                   <td valign="top">about:</td>
