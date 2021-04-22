@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#omniauth'
   get '/logout', :controller => 'sessions', :action => 'destroy'
   get '/user/:id', to: 'users#show'
-  get '/user/submissions/:id', to: 'users#submitted'
+  get '/submissions', to: 'posts#submitted'
   get '/user/comments/:id', to: 'users#comments'
   get '/user/upvoted/:id', to: 'users#upvoted'
   root :to => 'posts#index'
