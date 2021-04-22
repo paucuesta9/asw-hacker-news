@@ -4,16 +4,25 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.where(typePost: 'url').order('posts.created_at DESC') 
+    @voted = VotePost.where(user_id: session[:user_id])
   end
 
   # GET /newest or /newest.json
   def newest
     @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
+    @voted = VotePost.where(user_id: session[:user_id])
+  end
+    
+  # GET /posts/asks
+  def asks
+    @asks = Post.where(:typePost => "ask").order('posts.created_at DESC')
+    @voted = VotePost.where(user_id: session[:user_id])
   end
 
   # GET /posts/1 or /posts/1.json
   def show
     @comment = Comment.new
+    @voted = VotePost.find_by(user_id: session[:user_id], post_id: @post.id)
   end
 
   # GET /posts/new
@@ -46,11 +55,11 @@ class PostsController < ApplicationController
         if @post.typePost == "url" and not @post.text.empty?
           @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
           @comment.save
-          @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
-          @vote.save
-          @post.points += 1
-          @post.save
         end
+        @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
+        @vote.save
+        @post.points = 1
+        @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -80,11 +89,6 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
-    
-  # GET /posts/asks
-  def asks
-    @asks = Post.where(:typePost => "ask").order('posts.created_at DESC')
   end
 
   private

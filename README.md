@@ -1,6 +1,7 @@
 # Hacker News
 
 Heroku: https://hacker-news-fib.herokuapp.com/
+
 Notion (Tasks): https://www.notion.so/ASW-Task-Generation-Meeting-ca8d4e4896e445da970e00a1cacc6682
 
 ## Project info
