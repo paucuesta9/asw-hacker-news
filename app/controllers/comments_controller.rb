@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
   #GET /upvoted 
   def upvoted
-    @comments = Comment.joins(:users).where(id: session[:user_id])
+    @comments = Comment.where(id: VoteComment.where(user_id: session[:user_id]).select(:comment_id))
     @votedcomments = VoteComment.where(user_id: session[:user_id])
   end
 
