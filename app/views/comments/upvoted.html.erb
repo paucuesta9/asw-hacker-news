@@ -43,7 +43,7 @@
                                 <% else %>
                                     <%= link_to comment.user.username, :controller => "users", :action => "show", :id => comment.user %> 
                                 <% end %>
-                                <span class="age"><%= link_to time_ago_in_words(@reply.created_at) + ' ago', comment %></span> 
+                                <span class="age"><%= link_to time_ago_in_words(comment.created_at) + ' ago', comment %></span> 
                                 <span class="par"> | <%= link_to 'parent', comment.post %></span> 
                                 <span class="storyon"> | on: <%= link_to comment.getPost.title, comment.getPost %></span>
                               </span>
