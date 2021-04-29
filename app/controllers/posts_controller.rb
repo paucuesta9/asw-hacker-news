@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.where(typePost: 'url').order('posts.created_at DESC') 
+    @posts = Post.where(typePost: 'url').order('posts.points DESC') 
     @voted = VotePost.where(user_id: session[:user_id])
     #@posts= Post.all
   end
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     
   # GET /posts/asks
   def asks
-    @asks = Post.where(:typePost => "ask").order('posts.created_at DESC')
+    @asks = Post.where(:typePost => "ask").order('posts.points DESC')
     @voted = VotePost.where(user_id: session[:user_id])
   end
 
