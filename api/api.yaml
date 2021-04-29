@@ -62,17 +62,17 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Tweet'
-  /tweets/{tweetId}:
+  /user/{userId}:
     get:
       tags:
-      - tweets
-      summary: Finds a Tweet by its ID
-      description: Returns a single Tweet
-      operationId: getTweetById
+      - users
+      summary: Finds User by its Id
+      description: Return the User
+      operationId: getUserById
       parameters:
-      - name: tweetId
+      - name: userId
         in: path
-        description: ID of Tweet to return
+        description: ID of User to return
         required: true
         schema:
           type: integer
@@ -83,63 +83,65 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Tweet'
+              #  $ref: '#/components/schemas/User'
         404:
           description: 'Error: Not Found'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResult'
+                #$ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error404'
-    delete:
-      tags:
-      - tweets
-      summary: Deletes a Tweet
-      operationId: deleteTweet
-      parameters:
-      - name: tweetId
-        in: path
-        description: Tweet id to delete
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        204:
-          description: Tweet deleted
-          content:
-            application/json: {}
-        404:
-          description: 'Error: Not Found'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error404'
-        401:
-          description: 'Error: Unauthorized'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error401'
-        403:
-          description: 'Error: Forbidden'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error403'
-      security:
-      - ApiKeyAuth: []
+                  #$ref: '#/components/examples/error404'
+    #put:
+    #  tags:
+    #  - users
+    #  summary: Updates a User
+    #  operationId: updateUser
+    #  parameters:
+    #  - name: userId
+    #    in: path
+    #    description: User id to update
+    #    required: true
+    #    schema:
+    #      type: integer
+    #      format: int64
+    #  responses:
+    #    200:
+    #      description: User updated
+    #      content:
+    #        application/json:
+    #          schema:
+    #          #  $ref: '#/components/schemas/User'
+    #    404:
+    #      description: 'Error: Not Found'
+    #      content:
+    #        application/json:
+    #          schema:
+    #            $ref: '#/components/schemas/ErrorResult'
+    #          examples:
+    #            errorExample:
+    #              $ref: '#/components/examples/error404'
+    #    401:
+    #      description: 'Error: Unauthorized'
+    #      content:
+    #        application/json:
+    #          schema:
+    #            $ref: '#/components/schemas/ErrorResult'
+    #          examples:
+    #            errorExample:
+    #              $ref: '#/components/examples/error401'
+    #    403:
+    #      description: 'Error: Forbidden'
+    #      content:
+    #        application/json:
+    #          schema:
+    #            $ref: '#/components/schemas/ErrorResult'
+    #          examples:
+    #            errorExample:
+    #              $ref: '#/components/examples/error403'
+    #  security:
+    #  - ApiKeyAuth: []
   /tweets/{tweetId}/likes:
     post:
       tags:
