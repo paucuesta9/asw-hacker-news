@@ -3,13 +3,13 @@ class CommentsController < ApplicationController
 
   #GET /threads
   def threads
-    @comments = Comment.where(user_id: current_user.id)
+    @comments = Comment.where(user_id: session[:user_id])
     @votedcomments = VoteComment.where(user_id: session[:user_id])
   end
 
   #GET /upvoted 
   def upvoted
-    @comments = Comment.joins(:users).where(id: current_user.id)
+    @comments = Comment.joins(:users).where(id: session[:user_id])
     @votedcomments = VoteComment.where(user_id: session[:user_id])
   end
 
