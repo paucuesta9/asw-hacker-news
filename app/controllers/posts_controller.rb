@@ -42,22 +42,47 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
+    require 'uri'
     @post = Post.new(post_params)
     #guardar el user id que toqui
-    @post.user_id = session[:user_id];
-    
-    
-    unless(@post.text.empty?) 
+    @post.user_id = session[:user_id]
+    bool = false
+    booltita = false
+    booltext = false
+    boolurl = false
+    if @post.title.empty?
+      booltita = true;
+    end
+    if(!@post.text.empty?) 
       @post.typePost = "ask"
     end
-    
-    unless(@post.url.empty?) 
-      @post.typePost = "url"
+    if(@post.text.empty?) 
+      booltext = true
     end
-  
+    
+    if(!@post.url.empty?) 
+      if @post.url =~ URI::regexp
+          @post.typePost = "url"
+      else
+        bool = true
+      end
+    end
+    if(@post.url.empty?) 
+      boolurl = true;
+    end
+    if boolurl && booltext
+      booltita = true
+    end
     
     respond_to do |format|
-      if @post.save
+      if booltita
+        format.html { redirect_to '/submit', notice: "Some fields are not correct" }
+        format.json { render :show, status: :created, location: @post }
+      elsif bool == true
+        format.html { redirect_to '/submit', notice: "URL not valid" }
+        format.json { render :show, status: :created, location: @post }
+      
+      elsif @post.save
         if @post.typePost == "url" and not @post.text.empty?
           @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
           @comment.save
@@ -66,8 +91,9 @@ class PostsController < ApplicationController
         @vote.save
         @post.points = 1
         @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
+        format.html { redirect_to '/newest', notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
+    
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
