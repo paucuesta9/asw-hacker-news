@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_190137) do
+ActiveRecord::Schema.define(version: 2021_05_02_091114) do
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
-    t.integer "commentOf"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", default: 1, null: false
@@ -28,10 +27,10 @@ ActiveRecord::Schema.define(version: 2021_04_22_190137) do
     t.string "title"
     t.string "url"
     t.string "text"
-    t.integer "points", default: 0
-    t.string "typePost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "points", default: 0
+    t.string "typePost"
     t.integer "user_id", default: 1, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -55,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_190137) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "uid"
     t.string "provider"
-    t.string "about", default: ""
+    t.string "about"
   end
 
   create_table "vote_comments", force: :cascade do |t|
