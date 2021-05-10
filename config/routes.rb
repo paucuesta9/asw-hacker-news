@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     put '/posts/:postId' => 'api/v1/posts#update'
     delete '/posts/:postId' => 'api/v1/posts#destroy'
     post '/posts' => 'api/v1/posts#create'
-end
+  end
 
   resources :replies
   resources :comments

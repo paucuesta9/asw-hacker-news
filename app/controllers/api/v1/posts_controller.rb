@@ -1,5 +1,6 @@
 class Api::V1::PostsController < ApplicationController
-    skip_before_action :verify_authenticity_token
+    skip_before_action :authenticate, :verify_authenticity_token
+
     def show
         @post = Post.select(:id, :title, :url, :text, :points, :user_id, :created_at).find_by(:id => params[:postId])
         if !@post.nil?
@@ -36,10 +37,10 @@ class Api::V1::PostsController < ApplicationController
                 unless @post.typePost == "url" and Post.find_by(url: @post.url)
                     if @post.save
                         if @post.typePost == "url" and not @post.text.empty?
-                            @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
+                            @comment = Comment.new(text: @post.text, user_id: @user.id, post_id: @post.id, votes: 1)
                             @comment.save
                         end
-                        @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
+                        @vote = VotePost.new(:user_id => @user.id, :post_id => @post.id)
                         @vote.save
                         @post.points = 1
                         @post.save
@@ -55,7 +56,7 @@ class Api::V1::PostsController < ApplicationController
             end
         else
             respond_to do |format|
-                format.json { render json: {status: 401, error: 'Uauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+                format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
             end
         end    
     end
@@ -88,7 +89,7 @@ class Api::V1::PostsController < ApplicationController
             end
         else
             respond_to do |format|
-                format.json { render json: {status: 401, error: 'Uauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+                format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
             end
         end
     end
@@ -118,5 +119,10 @@ class Api::V1::PostsController < ApplicationController
                 format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
             end
         end
+    end
+
+    private
+    def post_params
+      params.require(:post).permit(:title, :url, :text)
     end
 end

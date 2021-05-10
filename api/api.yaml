@@ -309,6 +309,72 @@ paths:
       security:
         - ApiKeyAuth: []
 
+  /comments:
+    post:
+      tags:
+        - comments
+      summary: Creates a new Comment
+      description: Creates a new Comment and returns its info
+      operationId: newComment
+      requestBody:
+        description: Provide the title & content of the new Comment
+        content:
+          application/json:
+            schema:
+              required:
+              - title
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 4
+                  example: 'My name'
+                url:
+                  type: string
+                  format: url
+                  example: 'https://www.github.com'
+                text:
+                  type: string
+                  minLength: 4
+                  example: 'My text'
+        required: true
+      responses:
+        201:
+          description: Post created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddPostResult'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
+      security:
+        - ApiKeyAuth: []
+
 ### COMPONENTS
 components:
   schemas:
