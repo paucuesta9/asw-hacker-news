@@ -33,6 +33,11 @@ Rails.application.routes.draw do
   get '/submissions', to: 'posts#submitted'
   get '/user/comments/:id', to: 'users#comments'
   get '/user/upvoted/:id', to: 'users#upvoted'
+  
+  
+  
+  #API
+  get '/api/posts/points', to: 'posts#apiPoints'
   root :to => 'posts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

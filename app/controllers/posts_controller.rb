@@ -34,6 +34,12 @@ class PostsController < ApplicationController
     @votedcomments = VoteComment.where(user_id: session[:user_id])
     @votedreplies = VoteReply.where(user_id: session[:user_id])
   end
+  
+    # GET /posts/points or /posts/points.json
+  def apiPoints
+    @posts = Post.all
+    format.json { render json: @users.order(:points) }
+  end
 
   # GET /posts/new
   def new
