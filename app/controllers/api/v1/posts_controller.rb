@@ -13,6 +13,47 @@ class Api::V1::PostsController < ApplicationController
         end
     end
 
+    def create
+        if !request.headers["HTTP_X_API_KEY"].nil?
+            @post = Post.new(post_params)
+            
+            @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
+            
+            
+            unless(@post.text.empty?) 
+                @post.typePost = "ask"
+            end
+            
+            unless(@post.url.empty?) 
+                @post.typePost = "url"
+            end
+            
+            unless @post.typePost == "url" and Post.find_by(url: @post.url)
+                if @post.save
+                    if @post.typePost == "url" and not @post.text.empty?
+                        @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
+                        @comment.save
+                    end
+                    @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
+                    @vote.save
+                    @post.points = 1
+                    @post.save
+                    respond_to do |format|
+                        format.json { render json: @post, status: 200}
+                    end
+                end
+            else
+                respond_to do |format|
+                    format.json { render json: {status: 409, error: 'Conflict', message: "Post with the same url already created"}, status: 409 }
+                end
+            end
+        else
+            respond_to do |format|
+                format.json { render json: {status: 401, error: 'Uauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+            end
+        end    
+    end
+
     def update
         if !request.headers["HTTP_X_API_KEY"].nil?
             @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
