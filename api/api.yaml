@@ -212,30 +212,6 @@ paths:
       security:
       - ApiKeyAuth: []
       
-    #/POST/DATE
-      /posts/date:
-    get:
-      tags:
-      - posts
-      summary: Get all posts ordered by date
-      description: Return all posts ordered by date of creation
-      operationId: getPostsByDate
-      
-      
-            security:
-      - ApiKeyAuth: []
-
-
-  #/POST/POINTS
-  /posts/points:
-    get:
-      tags:
-      - posts
-      summary: Get all posts ordered by points
-      description: Return all posts ordered by points
-      operationId: getPostsByPoints
-      
-      
 
   ### POSTS/:ID/VOTE
   /posts/{postId}/vote:
