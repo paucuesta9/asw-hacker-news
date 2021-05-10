@@ -6,6 +6,7 @@ info:
 servers:
   - url: 'http://127.0.0.1:3000/api/v1/'
 paths:
+  ### /POSTS
   /posts:
     post:
       tags:
@@ -71,7 +72,8 @@ paths:
                   $ref: '#/components/examples/error409'
       security:
         - ApiKeyAuth: []
-      
+
+  ### /POSTS/:ID
   /posts/{postId}:
     get:
       tags:
@@ -208,6 +210,106 @@ paths:
                   $ref: '#/components/examples/error403'
       security:
       - ApiKeyAuth: []
+
+  ### POSTS/:ID/VOTE
+  /posts/{postId}/vote:
+    post:
+      tags:
+        - posts
+        - votes
+      summary: Vote a Post
+      description: Vote a Post
+      operationId: votePost
+      responses:
+        201:
+          description: Vote done
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409Vote'
+      security:
+        - ApiKeyAuth: []
+    delete:
+      tags:
+        - posts
+        - votes
+      summary: Unvote a Post
+      description: Unvote a Post
+      operationId: unvotePost
+      responses:
+        204:
+          description: Unvote done
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409Unvote'
+      security:
+        - ApiKeyAuth: []
+
+### COMPONENTS
 components:
   schemas:
     Post:
@@ -282,6 +384,16 @@ components:
         status: 409
         error: "Conflict"
         message: "Post with the same url already created"
+    error409Vote:
+      value:
+        status: 409
+        error: "Conflict"
+        message: "Vote to the same Contribution already created"
+    error409Unvote:
+      value:
+        status: 409
+        error: "Conflict"
+        message: "No Vote to the Contribution exists"
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

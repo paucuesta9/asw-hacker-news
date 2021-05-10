@@ -27,24 +27,30 @@ class Api::V1::PostsController < ApplicationController
             unless(@post.url.empty?) 
                 @post.typePost = "url"
             end
-            
-            unless @post.typePost == "url" and Post.find_by(url: @post.url)
-                if @post.save
-                    if @post.typePost == "url" and not @post.text.empty?
-                        @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
-                        @comment.save
-                    end
-                    @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
-                    @vote.save
-                    @post.points = 1
-                    @post.save
-                    respond_to do |format|
-                        format.json { render json: @post, status: 200}
-                    end
+
+            if ((@post.url.empty? && @post.text.empty?) || @post.title.empty?)
+                respond_to do |format|
+                    format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
                 end
             else
-                respond_to do |format|
-                    format.json { render json: {status: 409, error: 'Conflict', message: "Post with the same url already created"}, status: 409 }
+                unless @post.typePost == "url" and Post.find_by(url: @post.url)
+                    if @post.save
+                        if @post.typePost == "url" and not @post.text.empty?
+                            @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
+                            @comment.save
+                        end
+                        @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
+                        @vote.save
+                        @post.points = 1
+                        @post.save
+                        respond_to do |format|
+                            format.json { render json: @post, status: 200}
+                        end
+                    end
+                else
+                    respond_to do |format|
+                        format.json { render json: {status: 409, error: 'Conflict', message: "Post with the same url already created"}, status: 409 }
+                    end
                 end
             end
         else
