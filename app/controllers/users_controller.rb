@@ -21,10 +21,7 @@ class UsersController < ApplicationController
 
   def comments
     @comments = Comment.where(user_id:@user.id)
-  end
-  
-  def upvoted
-    @posts = Post.joins(:users).where(id: current_user.id)
+    @voted = VotePost.where(user_id: session[:user_id])
   end
   
   # POST /users or /users.json

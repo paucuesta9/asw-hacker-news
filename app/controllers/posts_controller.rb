@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.where(typePost: 'url').order('posts.created_at DESC') 
+    @posts = Post.where(typePost: 'url').order('posts.points DESC') 
     @voted = VotePost.where(user_id: session[:user_id])
     #@posts= Post.all
   end
@@ -18,10 +18,16 @@ class PostsController < ApplicationController
     @posts = Post.where(user_id: session[:user_id]).order('posts.created_at DESC')
     @voted = VotePost.where(user_id: session[:user_id])
   end
+  
+  # GET /upvoted
+  def upvoted
+     @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
+     @voted = VotePost.where(user_id: session[:user_id])
+  end
     
   # GET /posts/asks
   def asks
-    @asks = Post.where(:typePost => "ask").order('posts.created_at DESC')
+    @asks = Post.where(:typePost => "ask").order('posts.points DESC')
     @voted = VotePost.where(user_id: session[:user_id])
   end
 
@@ -29,6 +35,8 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @voted = VotePost.find_by(user_id: session[:user_id], post_id: @post.id)
+    @votedcomments = VoteComment.where(user_id: session[:user_id])
+    @votedreplies = VoteReply.where(user_id: session[:user_id])
   end
 
   # GET /posts/new
@@ -98,6 +106,8 @@ class PostsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
+    else
+      redirect_to Post.find_by(url: @post.url), notice: "Post with this url is already created."
     end
   end
 
@@ -122,6 +132,8 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -4,13 +4,20 @@
             <tbody>
                 <tr>
                     <td class="ind"><img src="s.gif" width="0" height="1"></td>
-                    <td class="votelinks" valign="top">
-                        <center>
-                            <%= link_to :controller => "vote_comments", :action => "create", :method => "post", :comment_id => current_comment.id, :user_id => current_comment.user_id do %>
-                                <div class="votearrow" title="upvote"></div>
-                            <% end %>
-                        </center>    
+                    <%if @votedcomments and @votedcomments.find_by(comment_id: current_comment)%>
+                        <td class="votelinks" valign="top">
+                        <%= link_to :controller => "vote_comments", :action => "unvote", :id => current_comment.id do %>
+                        <center><font color="#ff6600">*</font>
+                        <img src="s.gif" width="1" height="1"></center>    
+                    <% end %>
                     </td>
+                    <% else %>
+                        <td valign="top" class="votelinks"><center>
+                        <%= link_to :controller => "vote_comments", :action => "upvote", :id => current_comment.id do %>
+                        <div class="votearrow" title="upvote"></div>
+                        <% end %>
+                        </center></td>
+                    <%end%>
                     <td class="default">
                         <div style="margin-top:2px; margin-bottom:-10px;">
                             <span class="comhead">
@@ -22,6 +29,8 @@
                                     <%= link_to current_comment.user.username, :controller => "users", :action => "show", :id => current_comment.user %> 
                                 <% end %>
                                 <span class="age"><%= link_to time_ago_in_words(current_comment.created_at) + ' ago', current_comment %></span> 
+                                <span class="par"> | <%= link_to 'parent', current_comment.post %></span> 
+                                <span class="storyon"> | on: <%= link_to current_comment.getPost.title, current_comment.getPost %></span>
                             </span>
                         </div>
                         <br>

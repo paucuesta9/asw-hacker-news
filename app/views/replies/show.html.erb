@@ -7,7 +7,7 @@
             <tbody>
               <tr>
                 <td style="width:18px;padding-right:4px">
-                  <a href="https://news.ycombinator.com">
+                  <a href="https://hacker-news-fib.herokuapp.com/">
                     <img src=<%=asset_path('y18.gif') %> style="border:1px white solid;" width="18" height="18">
                   </a>
                 </td>
@@ -24,22 +24,20 @@
             <tbody>
               <tr class="athing">    
                 <td class="ind"></td>
-                <%if @voted %>
-                    <td class="votelinks" valign="top">
-                    <center><font color="#ff6600">*</font>
-                    <img src="s.gif" width="1" height="1"></center>    
+                <%if @votedreplies and @votedreplies.find_by(reply_id: @reply)%>
+                        <td class="votelinks" valign="top">
+                        <%= link_to :controller => "vote_replies", :action => "unvote", :id => @reply.id do %>
+                        <center><font color="#ff6600">*</font>
+                        <img src="s.gif" width="1" height="1"></center>    
+                    <% end %>
                     </td>
-                <% else %>
-                    <td valign="top" class="votelinks"><center>
-                    <%= link_to :controller => "vote_replies", :action => "create", :method => "post", :reply_id => @reply.id, :user_id => session[:user_id] do %>
-                      <div class="votearrow" title="upvote"></div>
-                    <% end %></a></center></td>
-                <%end%>
-                <td class="votelinks" valign="top">
-                  <center>
-                    
-                  </center>    
-                </td>
+                    <% else %>
+                        <td valign="top" class="votelinks"><center>
+                        <%= link_to :controller => "vote_replies", :action => "upvote", :id => @reply.id do %>
+                        <div class="votearrow" title="upvote"></div>
+                        <% end %>
+                        </center></td>
+                    <%end%>
                 <td class="default">
                   <div style="margin-top:2px; margin-bottom:-10px;">
                     <span class="comhead">

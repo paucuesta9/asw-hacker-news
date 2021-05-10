@@ -7,7 +7,7 @@
             <tbody>
               <tr>
                 <td style="width:18px;padding-right:4px">
-                  <a href="https://news.ycombinator.com">
+                  <a href="https://hacker-news-fib.herokuapp.com/">
                     <img src=<%=asset_path('y18.gif') %> style="border:1px white solid;" width="18" height="18">
                   </a>
                 </td>
@@ -24,13 +24,20 @@
             <tbody>
               <tr class="athing" id="26886353">    
                 <td class="ind"></td>
-                <td class="votelinks" valign="top">
-                  <center>
-                    <%= link_to :controller => "vote_comments", :action => "create", :method => "post", :comment_id => @comment.id, :user_id => @comment.user_id do %>
-                      <div class="votearrow" title="upvote"></div>
+                <%if @votedcomments %>
+                        <td class="votelinks" valign="top">
+                        <%= link_to :controller => "vote_comments", :action => "unvote", :id => @comment.id do %>
+                        <center><font color="#ff6600">*</font>
+                        <img src="s.gif" width="1" height="1"></center>    
                     <% end %>
-                  </center>    
-                </td>
+                    </td>
+                    <% else %>
+                        <td valign="top" class="votelinks"><center>
+                        <%= link_to :controller => "vote_comments", :action => "upvote", :id => @comment.id do %>
+                        <div class="votearrow" title="upvote"></div>
+                        <% end %>
+                        </center></td>
+                    <%end%>
                 <td class="default">
                   <div style="margin-top:2px; margin-bottom:-10px;">
                     <span class="comhead">

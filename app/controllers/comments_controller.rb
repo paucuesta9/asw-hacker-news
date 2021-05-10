@@ -3,17 +3,21 @@ class CommentsController < ApplicationController
 
   #GET /threads
   def threads
-    @comments = Comment.where(user_id: current_user.id)
+    @comments = Comment.where(user_id: session[:user_id])
+    @votedcomments = VoteComment.where(user_id: session[:user_id])
   end
 
   #GET /upvoted 
   def upvoted
-    @comments = Comment.joins(:users).where(id: current_user.id)
+    @comments = Comment.where(id: VoteComment.where(user_id: session[:user_id]).select(:comment_id))
+    @votedcomments = VoteComment.where(user_id: session[:user_id])
   end
 
   # GET /comments/1 or /comments/1.json
   def show
     @reply = Reply.new
+    @votedcomments = VoteComment.find_by(user_id: session[:user_id])
+    @votedreplies = VoteReply.where(user_id: session[:user_id])
   end
 
   # GET /comments/new
@@ -23,6 +27,15 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+  end
+  
+  #GET comments (api))
+  def search
+    comments = find_comment(param[:comment])
+    unless  comments
+      flash[:alert] = 'Comment Not Found'
+      return render action :index
+    end
   end
 
   # POST /comments or /comments.json

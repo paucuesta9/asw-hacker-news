@@ -55,6 +55,22 @@ class VoteRepliesController < ApplicationController
         format.json { head :no_content }
       end
     end
+    
+    def upvote
+    @replies = Reply.find(params[:id])
+    VoteReply.create(user_id: session[:user_id], reply_id: @replies.id)
+    @replies.votes += 1
+    @replies.save
+    redirect_to request.referrer
+    end
+  
+   def unvote
+    @replies = Reply.find(params[:id])
+    VoteReply.find_by(user_id: session[:user_id], reply_id: @replies.id).destroy
+    @replies.votes -= 1
+    @replies.save
+    redirect_to request.referrer
+   end
   
     private
       # Use callbacks to share common setup or constraints between actions.

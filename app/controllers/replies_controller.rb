@@ -4,6 +4,7 @@ class RepliesController < ApplicationController
   # GET /replies/1 or /replies/1.json
   def show
     @newReply = Reply.new
+    @votedreplies = VoteReply.where(user_id: session[:user_id])
   end
 
   # GET /replies/new
@@ -26,6 +27,7 @@ class RepliesController < ApplicationController
           @vote.save
           @reply.votes += 1
           @reply.save
+          format.html { redirect_to :controller => "posts", :action => "show", :id => @reply.getPost.id, notice: "Comment was successfully created." }
           format.html { redirect_to @reply, notice: "Reply was successfully created." }
           format.json { render :show, status: :created, location: @reply }
         else
