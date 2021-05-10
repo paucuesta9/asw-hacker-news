@@ -41,8 +41,6 @@ Rails.application.routes.draw do
   get '/user/:id', to: 'users#show'
   get '/submissions', to: 'posts#submitted'
   get '/user/comments/:id', to: 'users#comments'
-  get '/upvoted_submissions', to: 'posts#upvoted'
-  get '/search' => 'comment#search'
   root :to => 'posts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

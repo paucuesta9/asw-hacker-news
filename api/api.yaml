@@ -308,6 +308,36 @@ paths:
                   $ref: '#/components/examples/error409Unvote'
       security:
         - ApiKeyAuth: []
+
+  /posts/date:
+    get:
+      tags:
+      - posts
+      summary: Get all posts ordered by date
+      description: Return all posts ordered by date of creation
+      operationId: getPostsByDate
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostList'
+
+  /posts/points:
+    get:
+      tags:
+      - posts
+      summary: Get all posts ordered by points
+      description: Return all posts ordered by points
+      operationId: getPostsByPoints
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostList'
      
   ### USER/:UID
   /user/{uid}:
@@ -503,6 +533,10 @@ components:
         created_at:
           type: string
           format: date-time
+    PostList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Post'
     User:
       type: object
       properties:

@@ -18,7 +18,7 @@
                 </tr>
                 <tr>
                   <td valign="top">created:</td>
-                <td><a><%= @user.created_at %></a></td>
+                <td><a><%= time_ago_in_words(@user.created_at) + ' ago' %></a></td>
                 </tr>
                 
                 <% if session[:username] and session[:user_id] == @user.id %>
@@ -51,7 +51,7 @@
                 
                 <tr>
                   <td></td>
-                  <td><a href="/submissions"><u>submissions</u></a></td>
+                  <td><a href="/submissions?id=<%=@user.id%>"><u>submissions</u></a></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -67,18 +67,6 @@
                   <td></td>
                   <td>
                     <a href="/upvoted_comments"><u>upvoted comments</u></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <%= form_with(url: search_path, method: 'get', local: true) do %>
-                      <div class="form-group">
-                        <%= label_tag :comment, 'Search for a comment '%>
-                        <%= text_field_tag :comment, nil, placeholder: 'Eg. aaaa', class: 'form-control' %>
-                      </div>
-                      <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
-                    <% end %>
                   </td>
                 </tr>
               </table>

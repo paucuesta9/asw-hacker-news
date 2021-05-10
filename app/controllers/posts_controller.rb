@@ -14,9 +14,11 @@ class PostsController < ApplicationController
     @voted = VotePost.where(user_id: session[:user_id])
   end
   
+  #GET /submissions?id=id
   def submitted
-    @posts = Post.where(user_id: session[:user_id]).order('posts.created_at DESC')
-    @voted = VotePost.where(user_id: session[:user_id])
+    @id = params[:id]
+    @posts = Post.where(user_id: @id).order('posts.created_at DESC')
+    @voted = VotePost.where(user_id: @id)
   end
   
   # GET /upvoted
@@ -37,6 +39,12 @@ class PostsController < ApplicationController
     @voted = VotePost.find_by(user_id: session[:user_id], post_id: @post.id)
     @votedcomments = VoteComment.where(user_id: session[:user_id])
     @votedreplies = VoteReply.where(user_id: session[:user_id])
+  end
+  
+    # GET /posts/points or /posts/points.json
+  def apiPoints
+    @posts = Post.all
+    format.json { render json: @users.order(:points) }
   end
 
   # GET /posts/new
