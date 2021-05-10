@@ -308,6 +308,38 @@ paths:
                   $ref: '#/components/examples/error409Unvote'
       security:
         - ApiKeyAuth: []
+     
+  ### USER/:UID
+  /user/{uid}:
+    get:
+      tags:
+      - users
+      summary: Finds User by its uid
+      description: Return the User
+      operationId: getUserByUid
+      parameters:
+      - name: uid
+        in: path
+        description: UID of User to return
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
 
   ### COMMENTS
   /comments:
@@ -403,6 +435,21 @@ components:
           type: integer
           format: int64
           example: 1
+        created_at:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+          example: 'someuserId'
+        username:
+          type: string
+          example: 'someUserName'
+        about:
+          type: string
+          example: 'somthing about the user'
         created_at:
           type: string
           format: date-time
