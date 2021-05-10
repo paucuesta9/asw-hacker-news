@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.1  
 info:
   version: 1.0.0
   title: Hacker News
@@ -6,142 +6,7 @@ info:
 servers:
   - url: 'https://hacker-news-fib.herokuapp.com/'
 paths:
-  /tweets:
-    post:
-      tags:
-      - tweets
-      summary: Adds a new Tweet to the Wall of Tweets
-      operationId: addTweet
-      requestBody:
-        description: Provide the author & content of the new Tweet
-        content:
-          application/json:
-            schema:
-              required:
-              - author
-              - content
-              type: object
-              properties:
-                author:
-                  type: string
-                  minLength: 4
-                  example: 'My name'
-                content:
-                  type: string
-                  minLength: 4
-                  maxLength: 280
-                  example: 'My content'
-        required: true
-      responses:
-        201:
-          description: Tweet created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddTweetResult'
-        400:
-          description: 'Error: Bad Request'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error400'
-    get:
-      tags:
-      - tweets
-      summary: Retrieves all the Tweets
-      operationId: getAllTweets
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tweet'
-  /user/{userId}:
-    get:
-      tags:
-      - users
-      summary: Finds User by its Id
-      description: Return the User
-      operationId: getUserById
-      parameters:
-      - name: userId
-        in: path
-        description: ID of User to return
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        200:
-          description: successful operation
-          #content:
-            #application/json:
-              #schema:
-              #  $ref: '#/components/schemas/User'
-        404:
-          description: 'Error: Not Found'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error404'
-    #put:
-    #  tags:
-    #  - users
-    #  summary: Updates a User
-    #  operationId: updateUser
-    #  parameters:
-    #  - name: userId
-    #    in: path
-    #    description: User id to update
-    #    required: true
-    #    schema:
-    #      type: integer
-    #      format: int64
-    #  responses:
-    #    200:
-    #      description: User updated
-    #      content:
-    #        application/json:
-    #          schema:
-    #          #  $ref: '#/components/schemas/User'
-    #    404:
-    #      description: 'Error: Not Found'
-    #      content:
-    #        application/json:
-    #          schema:
-    #            $ref: '#/components/schemas/ErrorResult'
-    #          examples:
-    #            errorExample:
-    #              $ref: '#/components/examples/error404'
-    #    401:
-    #      description: 'Error: Unauthorized'
-    #      content:
-    #        application/json:
-    #          schema:
-    #            $ref: '#/components/schemas/ErrorResult'
-    #          examples:
-    #            errorExample:
-    #              $ref: '#/components/examples/error401'
-    #    403:
-    #      description: 'Error: Forbidden'
-    #      content:
-    #        application/json:
-    #          schema:
-    #            $ref: '#/components/schemas/ErrorResult'
-    #          examples:
-    #            errorExample:
-    #              $ref: '#/components/examples/error403'
-    #  security:
-    #  - ApiKeyAuth: []
+  ###GET /COMMENTS/:ID
   /comments/:id:
     get:
       tags:
@@ -172,36 +37,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error404'
-    #post:
-    #  tags:
-    #  - tweets
-    #  summary: Likes a Tweet
-    #  operationId: likeTweet
-    #  parameters:
-    #  - name: tweetId
-    #    in: path
-    #    description: Tweet id to like
-    #    required: true
-    #    schema:
-    #      type: integer
-    #      format: int64
-    #  responses:
-    #    200:
-    #      description: Liked Tweet
-    #      content:
-    #        application/json:
-    #          schema:
-    #            $ref: '#/components/schemas/Tweet'
-    #    404:
-    #     description: 'Error: Not Found'
-    #      content:
-    #        application/json:
-    #          schema:
-    #            $ref: '#/components/schemas/ErrorResult'
-    #          examples:
-    #            errorExample:
-    #              $ref: '#/components/examples/error404'
+                  $ref: '#/components/examples/error404Comment'
+  ###GET /REPLIES/:ID
   /replies/:id:
     get:
       tags:
@@ -232,7 +69,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error404'
+                  $ref: '#/components/examples/error404Reply'
 components:
   schemas:
     Comment:
@@ -242,6 +79,25 @@ components:
           type: integer
           format: int64
           example: 2
+        text:
+          type: string
+          minLength: 4
+          example: 'Text'
+        votes:
+          type: integer
+          format: int64
+          example: 3
+        userId:
+          type: integer
+          format: int64
+          example: 4
+        postId:
+          type: integer
+          format: int64
+          example: 5
+        created_at:
+          type: string
+          format: date-time
     Reply:
       type: object
       properties:
@@ -249,43 +105,29 @@ components:
           type: integer
           format: int64
           example: 2
-    Tweet:
-      type: object
-      properties:
-        id:
+        text:
+          type: string
+          minLength: 4
+          example: 'Text Reply'
+        votes:
           type: integer
           format: int64
-          example: 2
-        author:
-          type: string
-          minLength: 4
-          example: 'My name'
-        content:
-          type: string
-          minLength: 4
-          maxLength: 280
-          example: 'My content'
-        likes:
+          example: 3
+        userId:
           type: integer
-          format: int32
+          format: int64
+          example: 4
+        parentId:
+          type: integer
+          format: int64
+          example: 5
+        parentType:
+          type: string
+          minLength: 4
+          example: 'Comment'
         created_at:
           type: string
           format: date-time
-        _links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: url
-              example: 'https://asw-api-demo.herokuapp.com/tweets/2'
-    AddTweetResult:
-      type: object
-      properties:
-        new_tweet:
-          $ref: '#/components/schemas/Tweet'
-        api_key:
-          type: string
-          example: "MjAyMC0wNC0xOCAxMjoyODo0MSBVVEM=\n"
     ErrorResult:
       type: object
       properties:
@@ -313,11 +155,16 @@ components:
         status: 403
         error: "Forbidden"
         message: "Your api key (X-API-KEY Header) is not valid"
-    error404:
+    error404Comment:
       value:
         status: 404
         error: "Not Found"
-        message: "No Tweet with that ID"
+        message: "No Comment with that ID"
+    error404Reply:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No Reply with that ID"
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
