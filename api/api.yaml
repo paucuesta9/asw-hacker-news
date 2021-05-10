@@ -4,7 +4,7 @@ info:
   title: Hacker News
   description: "This is the Open API documentation for the REST API of our beloved application **Hacker News** deployed at <https://hacker-news-fib.herokuapp.com/>. <br>All operations are executable. Only one operation requires authentication: `deleteTweet`. In this case, you must **Authorize** your request by providing the api_key vaule you got when you created the tweet."
 servers:
-  - url: 'https://hacker-news-fib.herokuapp.com/'
+  - url: 'https://hacker-news-fib.herokuapp.com/api/v1/'
 paths:
   /posts:
     post:
