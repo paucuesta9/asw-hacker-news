@@ -28,6 +28,15 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
   end
+  
+  #GET comments (api))
+  def search
+    comments = find_comment(param[:comment])
+    unless  comments
+      flash[:alert] = 'Comment Not Found'
+      return render action :index
+    end
+  end
 
   # POST /comments or /comments.json
   def create

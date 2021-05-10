@@ -29,6 +29,8 @@
                                     <%= link_to current_comment.user.username, :controller => "users", :action => "show", :id => current_comment.user %> 
                                 <% end %>
                                 <span class="age"><%= link_to time_ago_in_words(current_comment.created_at) + ' ago', current_comment %></span> 
+                                <span class="par"> | <%= link_to 'parent', current_comment.post %></span> 
+                                <span class="storyon"> | on: <%= link_to current_comment.getPost.title, current_comment.getPost %></span>
                             </span>
                         </div>
                         <br>

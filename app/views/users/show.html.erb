@@ -39,7 +39,15 @@
                 
                 <tr>
                 </tr>
-                
+                <!--  -->
+    
+                  <!-- ... -->
+                  <div class="col-lg-12 mt-5">
+                    <% if flash[:alert] %>
+                      <div class="alert alert-warning"><%= flash[:alert] %></div>
+                    <% end %>
+                    <div class="mx-auto mt-5" style="width: 400px">
+                  <!-- ... -->
                 
                 <tr>
                   <td></td>
@@ -48,6 +56,18 @@
                 <tr>
                   <td></td>
                   <td><a href="/user/comments/<%=@user.id%>"><u>comments</u></a></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/upvoted_submissions"><u>upvoted submissions</u></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/upvoted_comments"><u>upvoted comments</u></a>
+                  </td>
                 </tr>
               </table>
               <% if session[:user_id] == @user.id %>

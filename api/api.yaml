@@ -1,12 +1,315 @@
-openapi: 3.0.1
+openapi: 3.0.1  
 info:
   version: 1.0.0
   title: Hacker News
   description: "This is the Open API documentation for the REST API of our beloved application **Hacker News** deployed at <https://hacker-news-fib.herokuapp.com/>. <br>All operations are executable. Only one operation requires authentication: `deleteTweet`. In this case, you must **Authorize** your request by providing the api_key vaule you got when you created the tweet."
 servers:
-  - url: 'https://hacker-news-fib.herokuapp.com/'
+  - url: 'http://127.0.0.1:3000/api/v1/'
 paths:
-    /posts/date:
+  ### /POSTS
+  /posts:
+    post:
+      tags:
+        - posts
+      summary: Creates a new Post
+      description: Creates a new Post and returns its info
+      operationId: newPost
+      requestBody:
+        description: Provide the title & content of the new Post
+        content:
+          application/json:
+            schema:
+              required:
+              - title
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 4
+                  example: 'My name'
+                url:
+                  type: string
+                  format: url
+                  example: 'https://www.github.com'
+                text:
+                  type: string
+                  minLength: 4
+                  example: 'My text'
+        required: true
+      responses:
+        201:
+          description: Post created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddPostResult'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
+      security:
+        - ApiKeyAuth: []
+
+  ### /POSTS/:ID
+  /posts/{postId}:
+    get:
+      tags:
+      - posts
+      summary: Finds Post by its Id
+      description: Return the Post
+      operationId: getPostById
+      parameters:
+      - name: postId
+        in: path
+        description: ID of Post to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+    put:
+      tags:
+        - posts
+      summary: Updates Post by its Id
+      description: Update the Post with the new info
+      operationId: updatePostById
+      parameters:
+        - name: postId
+          in: path
+          description: Post id to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Post updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
+      security:
+        - ApiKeyAuth: []
+    delete:
+      tags:
+        - posts
+      summary: Deletes Post by its Id
+      description: Delete the Post
+      operationId: deletePostById
+      parameters:
+        - name: postId
+          in: path
+          description: Post id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        204:
+          description: Post removed
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+      security:
+      - ApiKeyAuth: []
+
+  ### POSTS/:ID/VOTE
+  /posts/{postId}/vote:
+    post:
+      tags:
+        - posts
+        - votes
+      summary: Vote a Post
+      description: Vote a Post
+      operationId: votePost
+      responses:
+        201:
+          description: Vote done
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409Vote'
+      security:
+        - ApiKeyAuth: []
+    delete:
+      tags:
+        - posts
+        - votes
+      summary: Unvote a Post
+      description: Unvote a Post
+      operationId: unvotePost
+      responses:
+        204:
+          description: Unvote done
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409Unvote'
+      security:
+        - ApiKeyAuth: []
+
+  /posts/date:
     get:
       tags:
       - posts
@@ -19,11 +322,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Post'
-      security:
-      - ApiKeyAuth: []
-
-
+                $ref: '#/components/schemas/PostList'
 
   /posts/points:
     get:
@@ -38,6 +337,356 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Post'
+                $ref: '#/components/schemas/PostList'
+     
+  ### USER/:UID
+  /user/{uid}:
+    get:
+      tags:
+      - users
+      summary: Finds User by its uid
+      description: Return the User
+      operationId: getUserByUid
+      parameters:
+      - name: uid
+        in: path
+        description: UID of User to return
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404User'
+
+  ### COMMENTS
+  /comments:
+    post:
+      tags:
+        - comments
+      summary: Creates a new Comment
+      description: Creates a new Comment and returns its info
+      operationId: newComment
+      requestBody:
+        description: Provide the title & content of the new Comment
+        content:
+          application/json:
+            schema:
+              required:
+              - text
+              - postId
+              type: object
+              properties:
+                text:
+                  type: string
+                  minLength: 4
+                  example: 'My text'
+                postId:
+                  type: integer
+                  format: int64
+                  example: 2
+        required: true
+      responses:
+        201:
+          description: Post created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddPostResult'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
       security:
-      - ApiKeyAuth: []
+        - ApiKeyAuth: []
+
+  /comments/{commentId}:
+    get:
+      tags:
+      - comments
+      summary: Finds Comment by its Id
+      description: Return the Comment
+      operationId: getCommentById
+      parameters:
+      - name: commentId
+        in: path
+        description: ID of Comment to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Comment'
+  
+  ### REPLIES
+  /replies/{replyId}:
+    get:
+      tags:
+      - replies
+      summary: Finds Reply by its Id
+      description: Return the Reply
+      operationId: getReplyById
+      parameters:
+      - name: replyId
+        in: path
+        description: ID of Reply to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Reply'
+
+### COMPONENTS
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        title:
+          type: string
+          minLength: 4
+          example: 'Post Title'
+        url:
+          type: string
+          format: url
+          example: 'https::www.github.com'
+        text:
+          type: string
+          minLength: 4
+          example: 'Post text'
+        points:
+          type: integer
+          format: int64
+          example: 5
+        userId:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+    PostList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Post'
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+          example: 'someuserId'
+        username:
+          type: string
+          example: 'someUserName'
+        about:
+          type: string
+          example: 'somthing about the user'
+        created_at:
+          type: string
+          format: date-time
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        text:
+          type: string
+          minLength: 4
+          example: 'Comment Text'
+        votes:
+          type: integer
+          format: int64
+          example: 5
+        userId:
+          type: integer
+          format: int64
+          example: 3
+        postId:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+    Reply:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        text:
+          type: string
+          minLength: 4
+          example: 'Reply Text'
+        votes:
+          type: integer
+          format: int64
+          example: 5
+        userId:
+          type: integer
+          format: int64
+          example: 3
+        parentId:
+          type: integer
+          format: int64
+          example: 1
+        parentType:
+          type: string
+          minLength: 4
+          example: 'Comment'
+        created_at:
+          type: string
+          format: date-time
+    AddPostResult:
+      type: object
+      properties:
+        new_post:
+          $ref: '#/components/schemas/Post'
+    AddCommentResult:
+      type: object
+      properties:
+        new_post:
+          $ref: '#/components/schemas/Comment'
+    AddReplyResult:
+      type: object
+      properties:
+        new_post:
+          $ref: '#/components/schemas/Reply'
+    ErrorResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          enum: [400, 401, 403, 404, 409]
+        error: 
+          type: string
+          enum: ["Bad Request", "Unauthorized", "Forbidden", "Not Found", "Conflict"]
+        message: 
+          type: string
+  examples:
+    error400:
+      value:
+        status: 400
+        error: "Bad Request"
+        message: "Content is empty"
+    error401:
+      value:
+        status: 401
+        error: "Unauthorized"
+        message: "You provided no api key (X-API-KEY Header)"
+    error403:
+      value:
+        status: 403
+        error: "Forbidden"
+        message: "Your api key (X-API-KEY Header) is not valid"
+    error404Comment:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No Comment with that ID"
+    error404Reply:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No Reply with that ID"
+    error404Post:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No Post with that ID"
+    error404User:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No User with that UID"
+    error409:
+      value:
+        status: 409
+        error: "Conflict"
+        message: "Post with the same url already created"
+    error409Vote:
+      value:
+        status: 409
+        error: "Conflict"
+        message: "Vote to the same Contribution already created"
+    error409Unvote:
+      value:
+        status: 409
+        error: "Conflict"
+        message: "No Vote to the Contribution exists"
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: X-API-KEY
+      in: header

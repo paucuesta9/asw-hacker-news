@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+
+  scope "/api/v1" ,defaults: {format: 'json'} do
+    get '/posts/:postId' => 'api/v1/posts#show'
+    put '/posts/:postId' => 'api/v1/posts#update'
+    delete '/posts/:postId' => 'api/v1/posts#destroy'
+    post '/posts' => 'api/v1/posts#create'
+  end
+
   resources :replies
   resources :comments
   resources :posts
   resources :users
+  resources :api
   resources :vote_comments do
   member do
     get 'upvote'
@@ -32,12 +41,6 @@ Rails.application.routes.draw do
   get '/user/:id', to: 'users#show'
   get '/submissions', to: 'posts#submitted'
   get '/user/comments/:id', to: 'users#comments'
-  get '/user/upvoted/:id', to: 'users#upvoted'
-  
-  
-  
-  #API
-  get '/api/posts/points', to: 'posts#apiPoints'
   root :to => 'posts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
