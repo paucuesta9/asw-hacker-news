@@ -108,6 +108,7 @@ paths:
         - posts
       summary: Updates Post by its Id
       description: Update the Post with the new info
+      operationId: updatePostById
       parameters:
         - name: postId
           in: path
@@ -166,6 +167,7 @@ paths:
         - posts
       summary: Deletes Post by its Id
       description: Delete the Post
+      operationId: deletePostById
       parameters:
         - name: postId
           in: path
