@@ -309,6 +309,7 @@ paths:
       security:
         - ApiKeyAuth: []
 
+  ### COMMENTS
   /comments:
     post:
       tags:
@@ -322,21 +323,18 @@ paths:
           application/json:
             schema:
               required:
-              - title
+              - text
+              - postId
               type: object
               properties:
-                title:
-                  type: string
-                  minLength: 4
-                  example: 'My name'
-                url:
-                  type: string
-                  format: url
-                  example: 'https://www.github.com'
                 text:
                   type: string
                   minLength: 4
                   example: 'My text'
+                postId:
+                  type: integer
+                  format: int64
+                  example: 2
         required: true
       responses:
         201:
@@ -469,6 +467,16 @@ components:
       properties:
         new_post:
           $ref: '#/components/schemas/Post'
+    AddCommentResult:
+      type: object
+      properties:
+        new_post:
+          $ref: '#/components/schemas/Comment'
+    AddReplyResult:
+      type: object
+      properties:
+        new_post:
+          $ref: '#/components/schemas/Reply'
     ErrorResult:
       type: object
       properties:
