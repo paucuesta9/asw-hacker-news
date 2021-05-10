@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+
+  scope "/api/v1" ,defaults: {format: 'json'} do
+    get '/posts/:postId' => 'api/v1/posts#show'
+    put '/posts/:postId' => 'api/v1/posts#update'
+    delete '/posts/:postId' => 'api/v1/posts#destroy'
+    post '/posts' => 'api/v1/posts#create'
+  end
+
   resources :replies
   resources :comments
   resources :posts
   resources :users
+  resources :api
   resources :vote_comments do
   member do
     get 'upvote'
