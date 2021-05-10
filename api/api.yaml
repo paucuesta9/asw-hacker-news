@@ -6,6 +6,72 @@ info:
 servers:
   - url: 'https://hacker-news-fib.herokuapp.com/'
 paths:
+  /posts:
+    post:
+      tags:
+        - posts
+      summary: Creates a new Post
+      description: Creates a new Post and returns its info
+      operationId: newPost
+      requestBody:
+        description: Provide the title & content of the new Post
+        content:
+          application/json:
+            schema:
+              required:
+              - title
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 4
+                  example: 'My name'
+                url:
+                  type: string
+                  format: url
+                  example: 'https://www.github.com'
+                text:
+                  type: string
+                  minLength: 4
+                  example: 'My text'
+        required: true
+      responses:
+        201:
+          description: Post created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddPostResult'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
+      security:
+        - ApiKeyAuth: []
+      
   /posts/{postId}:
     get:
       tags:
@@ -172,14 +238,11 @@ components:
         created_at:
           type: string
           format: date-time
-    AddTweetResult:
+    AddPostResult:
       type: object
       properties:
-        new_tweet:
+        new_post:
           $ref: '#/components/schemas/Post'
-        api_key:
-          type: string
-          example: "MjAyMC0wNC0xOCAxMjoyODo0MSBVVEM=\n"
     ErrorResult:
       type: object
       properties:
@@ -196,7 +259,7 @@ components:
       value:
         status: 400
         error: "Bad Request"
-        message: "Content is too long (maximum is 280 characters)"
+        message: "Content is empty"
     error401:
       value:
         status: 401
