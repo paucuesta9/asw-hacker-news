@@ -1,7 +1,7 @@
 class Api::V1::PostsController < ApplicationController
     def show
-        if Post.exists?(:id => params[:postId])
-            @post = Post.select(:id, :title, :url, :text, :points, :user_id, :created_at).find(params[:postId])
+        @post = Post.select(:id, :title, :url, :text, :points, :user_id, :created_at).find_by(:id => params[:postId])
+        if !@post.nil?
             respond_to do |format|
                 format.json { render json: @post, status: 200}
             end
