@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.1  
 info:
   version: 1.0.0
   title: Hacker News
@@ -373,6 +373,71 @@ paths:
       security:
         - ApiKeyAuth: []
 
+  /comments/{commentId}:
+    get:
+      tags:
+      - comments
+      summary: Finds Comment by its Id
+      description: Return the Comment
+      operationId: getCommentById
+      parameters:
+      - name: commentId
+        in: path
+        description: ID of Comment to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Comment'
+  
+  ### REPLIES
+  /replies/{replyId}:
+    get:
+      tags:
+      - replies
+      summary: Finds Reply by its Id
+      description: Return the Reply
+      operationId: getReplyById
+      parameters:
+      - name: replyId
+        in: path
+        description: ID of Reply to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Reply'
+
 ### COMPONENTS
 components:
   schemas:
@@ -442,7 +507,7 @@ components:
         text:
           type: string
           minLength: 4
-          example: 'Comment Text'
+          example: 'Reply Text'
         votes:
           type: integer
           format: int64
@@ -504,6 +569,16 @@ components:
         status: 403
         error: "Forbidden"
         message: "Your api key (X-API-KEY Header) is not valid"
+    error404Comment:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No Comment with that ID"
+    error404Reply:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No Reply with that ID"
     error404Post:
       value:
         status: 404

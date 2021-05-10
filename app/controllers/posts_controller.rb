@@ -18,6 +18,12 @@ class PostsController < ApplicationController
     @posts = Post.where(user_id: session[:user_id]).order('posts.created_at DESC')
     @voted = VotePost.where(user_id: session[:user_id])
   end
+  
+  # GET /upvoted
+  def upvoted
+     @posts = Post.where(:typePost => "url").or(Post.where(:typePost => "ask")).order('posts.created_at DESC')
+     @voted = VotePost.where(user_id: session[:user_id])
+  end
     
   # GET /posts/asks
   def asks

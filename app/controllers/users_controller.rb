@@ -24,11 +24,6 @@ class UsersController < ApplicationController
     @voted = VotePost.where(user_id: session[:user_id])
   end
   
-  def upvoted
-    @posts = Post.joins(:users).where(id: current_user.id)
-    @voted = VotePost.where(user_id: session[:user_id])
-  end
-  
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
