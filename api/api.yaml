@@ -339,7 +339,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error404'
+                  $ref: '#/components/examples/error404User'
 
   ### COMMENTS
   /comments:
@@ -631,6 +631,11 @@ components:
         status: 404
         error: "Not Found"
         message: "No Post with that ID"
+    error404User:
+      value:
+        status: 404
+        error: "Not Found"
+        message: "No User with that UID"
     error409:
       value:
         status: 409
