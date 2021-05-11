@@ -16,6 +16,12 @@
                   <td valign="top">user:</td>
                   <td timestamp="1618914348"><a href="/user/<%= @user.id %>" class="hnuser"><font color="#3c963c"><%= @user.username %></font></a></td>
                 </tr>
+                <% if session[:user_id] == @user.id %>
+                  <tr class='athing'>
+                    <td valign="top">Api key:</td>
+                    <td timestamp="1618914348"><%= @user.uid %></td>
+                  </tr>
+                <% end %>
                 <tr>
                   <td valign="top">created:</td>
                 <td><a><%= time_ago_in_words(@user.created_at) + ' ago' %></a></td>
