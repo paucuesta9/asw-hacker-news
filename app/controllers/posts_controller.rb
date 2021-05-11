@@ -106,9 +106,6 @@ class PostsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
-    else
-      redirect_to Post.find_by(url: @post.url), notice: "Post with this url is already created."
-    end
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
@@ -145,7 +142,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :url, :text)
     end
-    
-    
-    
+  end
 end

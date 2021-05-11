@@ -7,7 +7,7 @@
                 <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="/">Hacker News</a></b><a href="/newest">new</a> | <a href="/threads">threads</a> | <a href="/ask">ask</a> | <a href="/submit">submit</a></span></td>
                 <td style="text-align:right;padding-right:4px;">
                   <% if session[:username] %>
-                    <span class="pagetop"> <a href="/user/<%= session[:user_id]%>"><%= session[:username]%></a></span>
+                    <span class="pagetop"> <a href="/user/<%= session[:user_id]%>"><%= session[:uid]%><%= session[:username]%></a></span>
                     <span class="pagetop"><a href="/logout">Logout</a></span>
              
                   <% else %>
