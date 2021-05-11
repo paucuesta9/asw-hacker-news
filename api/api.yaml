@@ -342,20 +342,21 @@ paths:
                 $ref: '#/components/schemas/PostList'
      
   ### USER/:UID
-  /user/{uid}:
+  /users/{userId}:
     get:
       tags:
       - users
-      summary: Finds User by its uid
+      summary: Finds User by its id
       description: Return the User
-      operationId: getUserByUid
+      operationId: getUserById
       parameters:
-      - name: uid
+      - name: userId
         in: path
-        description: UID of User to return
+        description: ID of the user to return
         required: true
         schema:
-          type: string
+          type: integer
+          format: int64
       responses:
         200:
           description: successful operation
@@ -363,6 +364,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404User'
+  /users/{userId}/posts:
+    get:
+      tags:
+        - posts
+        - users
+      summary: Finds Posts of the User
+      description: Return the Posts of the user
+      operationId: getPostsByUser
+      parameters:
+      - name: userId
+        in: path
+        description: ID of the user
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostList'
         404:
           description: 'Error: Not Found'
           content:
