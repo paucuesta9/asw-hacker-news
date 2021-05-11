@@ -405,6 +405,71 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404User'
+  /users/{userId}/posts_upvoted:
+    get:
+      tags:
+        - posts
+        - users
+      summary: Finds Upvoted Posts of the User
+      description: Return the Upvoted Posts of the user
+      operationId: getUpvotedPostsByUser
+      parameters:
+      - name: userId
+        in: path
+        description: ID of the user
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostList'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404User'
+  /users/{userId}/comments_upvoted:
+    get:
+      tags:
+        - users
+        - comments
+        - replies
+      summary: Finds Upvoted Comments and Replies of the User
+      description: Return the Upvoted Comments and Replies of the User
+      operationId: getUpvotedCommentsAndRepliesByUser
+      parameters:
+      - name: userId
+        in: path
+        description: ID of the user
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentReplyList'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404User'
 
   ### COMMENTS
   /comments:
@@ -643,6 +708,12 @@ components:
         created_at:
           type: string
           format: date-time
+    CommentReplyList:
+      type: array
+      items:
+        oneOf:
+          - $ref: '#/components/schemas/Comment'
+          - $ref: '#/components/schemas/Reply'
     AddPostResult:
       type: object
       properties:
