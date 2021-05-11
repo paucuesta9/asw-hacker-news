@@ -437,6 +437,8 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404User'
+      security:
+        - ApiKeyAuth: []
   /users/{userId}/comments_upvoted:
     get:
       tags:
@@ -470,6 +472,8 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404User'
+      security:
+          - ApiKeyAuth: []
 
   ### COMMENTS
   /comments:
