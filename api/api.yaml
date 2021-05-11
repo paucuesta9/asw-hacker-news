@@ -346,16 +346,17 @@ paths:
     get:
       tags:
       - users
-      summary: Finds User by its uid
+      summary: Finds User by its id
       description: Return the User
-      operationId: getUserByUid
+      operationId: getUserById
       parameters:
-      - name: uid
+      - name: id
         in: path
-        description: UID of User to return
+        description: ID of User to return
         required: true
         schema:
-          type: string
+          type: integer
+          format: int64
       responses:
         200:
           description: successful operation
@@ -542,18 +543,19 @@ components:
     User:
       type: object
       properties:
-        uid:
-          type: string
-          example: 'someuserId'
+        id:
+          type: integer
+          format: int64
+          example: 1
         username:
           type: string
           example: 'someUserName'
         about:
           type: string
           example: 'somthing about the user'
-        created_at:
+        url:
           type: string
-          format: date-time
+          format: url
     Comment:
       type: object
       properties:
