@@ -552,6 +552,84 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error403'
+      security:
+          - ApiKeyAuth: []   
+    put:
+      tags:
+        - comments
+      summary: Updates Comment by its Id
+      description: Update the Comment with the new info
+      operationId: updateCommentById
+      parameters:
+        - name: commentId
+          in: path
+          description: Comment id to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Comment updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Comment'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
+      security:
+        - ApiKeyAuth: []
+    delete:
+      tags:
+        - comments
+      summary: Deletes Comment by its Id
+      description: Delete the Comment
+      operationId: deleteCommentById
+      parameters:
+        - name: commentId
+          in: path
+          description: Coment id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        204:
+          description: Comment removed
         404:
           description: 'Error: Not Found'
           content:
@@ -561,8 +639,28 @@ paths:
               examples:
                 errorUser:
                   $ref: '#/components/examples/error404User'
+                errorExample:
+                  $ref: '#/components/examples/error404Comment'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
       security:
-          - ApiKeyAuth: []    
+      - ApiKeyAuth: []
   
   ### REPLIES
   /replies/{replyId}:
@@ -596,6 +694,111 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404Reply'
+    put:
+      tags:
+        - replies
+      summary: Updates Reply by its Id
+      description: Update the Reply with the new info
+      operationId: updateReplyById
+      parameters:
+        - name: replyId
+          in: path
+          description: Reply id to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Reply updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Reply'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
+      security:
+        - ApiKeyAuth: []
+    delete:
+      tags:
+        - replies
+      summary: Deletes Reply by its Id
+      description: Delete the Reply
+      operationId: deleteReplyById
+      parameters:
+        - name: replyId
+          in: path
+          description: Reply id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        204:
+          description: Post removed
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Reply'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+      security:
+      - ApiKeyAuth: []
 
 ### COMPONENTS
 components:
