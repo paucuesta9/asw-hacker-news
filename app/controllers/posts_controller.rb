@@ -14,9 +14,11 @@ class PostsController < ApplicationController
     @voted = VotePost.where(user_id: session[:user_id])
   end
   
+  #GET /submissions?id=id
   def submitted
-    @posts = Post.where(user_id: session[:user_id]).order('posts.created_at DESC')
-    @voted = VotePost.where(user_id: session[:user_id])
+    @id = params[:id]
+    @posts = Post.where(user_id: @id).order('posts.created_at DESC')
+    @voted = VotePost.where(user_id: @id)
   end
   
   # GET /upvoted
@@ -37,6 +39,12 @@ class PostsController < ApplicationController
     @voted = VotePost.find_by(user_id: session[:user_id], post_id: @post.id)
     @votedcomments = VoteComment.where(user_id: session[:user_id])
     @votedreplies = VoteReply.where(user_id: session[:user_id])
+  end
+  
+    # GET /posts/points or /posts/points.json
+  def apiPoints
+    @posts = Post.all
+    format.json { render json: @users.order(:points) }
   end
 
   # GET /posts/new
@@ -74,37 +82,37 @@ class PostsController < ApplicationController
       else
         bool = true
       end
-    end
-    if(@post.url.empty?) 
-      boolurl = true;
-    end
-    if boolurl && booltext
-      booltita = true
-    end
+      if(@post.url.empty?) 
+        boolurl = true;
+      end
+      if boolurl && booltext
+        booltita = true
+      end
     
-    respond_to do |format|
-      if booltita
-        format.html { redirect_to '/submit', notice: "Some fields are not correct" }
-        format.json { render :show, status: :created, location: @post }
-      elsif bool == true
-        format.html { redirect_to '/submit', notice: "URL not valid" }
-        format.json { render :show, status: :created, location: @post }
+      respond_to do |format|
+        if booltita
+          format.html { redirect_to '/submit', notice: "Some fields are not correct" }
+          format.json { render :show, status: :created, location: @post }
+        elsif bool == true
+          format.html { redirect_to '/submit', notice: "URL not valid" }
+          format.json { render :show, status: :created, location: @post }
+        
+        elsif @post.save
+          if @post.typePost == "url" and not @post.text.empty?
+            @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
+            @comment.save
+          end
+          @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
+          @vote.save
+          @post.points = 1
+          @post.save
+          format.html { redirect_to '/newest', notice: "Post was successfully created." }
+          format.json { render :show, status: :created, location: @post }
       
-      elsif @post.save
-        if @post.typePost == "url" and not @post.text.empty?
-          @comment = Comment.new(text: @post.text, user_id: current_user.id, post_id: @post.id, votes: 1)
-          @comment.save
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
-        @vote = VotePost.new(:user_id => current_user.id, :post_id => @post.id)
-        @vote.save
-        @post.points = 1
-        @post.save
-        format.html { redirect_to '/newest', notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
-    
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
   end
 
