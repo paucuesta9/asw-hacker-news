@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     put '/posts/:postId' => 'api/v1/posts#update'
     delete '/posts/:postId' => 'api/v1/posts#destroy'
     post '/posts' => 'api/v1/posts#create'
+    post '/comment/:id/vote' => 'api/v1/comments#upvote'
+    delete '/comment/:id/vote' => 'api/v1/comments#unvote'
   end
 
   resources :replies
