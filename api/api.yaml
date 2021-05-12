@@ -391,7 +391,7 @@ paths:
       security:
           - ApiKeyAuth: []    
      
-  ### USER/:UID
+  ### USER/:ID
   /users/{userId}:
     get:
       tags:
@@ -840,9 +840,10 @@ components:
     User:
       type: object
       properties:
-        uid:
-          type: string
-          example: 'someuserId'
+        id:
+         type: integer
+          format: int64
+          example: 2
         username:
           type: string
           example: 'someUserName'
