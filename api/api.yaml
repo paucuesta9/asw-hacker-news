@@ -354,13 +354,6 @@ paths:
       summary: Finds Posts Upvoted by a User
       description: Return the Posts Upvoted by a User
       operationId: getPostsUpvoted
-      parameters:
-      - name: user_id
-        in: query
-        description: ID of the user
-        schema:
-          type: integer
-          format: int64
       responses:
         200:
           description: successful operation
@@ -534,13 +527,6 @@ paths:
       summary: Finds Comments and Replies Upvoted by a User
       description: Return the Comments and Replies Upvoted by a User
       operationId: getCommentsUpvoted
-      parameters:
-      - name: user_id
-        in: query
-        description: ID of the user
-        schema:
-          type: integer
-          format: int64
       responses:
         200:
           description: successful operation
