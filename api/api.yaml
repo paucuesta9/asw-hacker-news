@@ -9,6 +9,41 @@ paths:
     
   ### /POSTS
   /posts:
+    get:
+      tags:
+        - posts
+      summary: Finds Posts
+      description: Return the Posts
+      operationId: getPosts
+      parameters:
+      - name: user_id
+        in: query
+        description: ID of the user
+        schema:
+          type: integer
+          format: int64
+      - name: order_by
+        in: query
+        description: Type of ordering
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostList'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorUser:
+                  $ref: '#/components/examples/error404User'
+                  
     post:
       tags:
         - posts
@@ -165,6 +200,7 @@ paths:
                   $ref: '#/components/examples/error409'
       security:
         - ApiKeyAuth: []
+
     delete:
       tags:
         - posts
@@ -309,15 +345,15 @@ paths:
                 errorExample:
                   $ref: '#/components/examples/error409Unvote'
       security:
-        - ApiKeyAuth: []
-
-  /posts/date:
+        - ApiKeyAuth: []    
+  
+  /posts/upvoted:
     get:
       tags:
-      - posts
-      summary: Get all posts ordered by date
-      description: Return all posts ordered by date of creation
-      operationId: getPostsByDate
+        - posts
+      summary: Finds Posts Upvoted by a User
+      description: Return the Posts Upvoted by a User
+      operationId: getPostsUpvoted
       responses:
         200:
           description: successful operation
@@ -325,37 +361,52 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostList'
-
-  /posts/points:
-    get:
-      tags:
-      - posts
-      summary: Get all posts ordered by points
-      description: Return all posts ordered by points
-      operationId: getPostsByPoints
-      responses:
-        200:
-          description: successful operation
+        401:
+          description: 'Error: Unauthorized'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostList'
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorUser:
+                  $ref: '#/components/examples/error404User'
+      security:
+          - ApiKeyAuth: []    
      
   ### USER/:UID
-  /user/{uid}:
+  /users/{userId}:
     get:
       tags:
       - users
-      summary: Finds User by its uid
+      summary: Finds User by its id
       description: Return the User
-      operationId: getUserByUid
+      operationId: getUserById
       parameters:
-      - name: uid
+      - name: userId
         in: path
-        description: UID of User to return
+        description: ID of the user to return
         required: true
         schema:
-          type: string
+          type: integer
+          format: int64
       responses:
         200:
           description: successful operation
@@ -468,6 +519,41 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404Comment'
+  /comments/upvoted:
+    get:
+      tags:
+        - comments
+        - replies
+      summary: Finds Comments and Replies Upvoted by a User
+      description: Return the Comments and Replies Upvoted by a User
+      operationId: getCommentsUpvoted
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentReplyList'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+      security:
+          - ApiKeyAuth: []   
     put:
       tags:
         - comments
@@ -551,6 +637,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
+                errorUser:
+                  $ref: '#/components/examples/error404User'
                 errorExample:
                   $ref: '#/components/examples/error404Comment'
         401:
@@ -820,6 +908,12 @@ components:
         created_at:
           type: string
           format: date-time
+    CommentReplyList:
+      type: array
+      items:
+        oneOf:
+          - $ref: '#/components/schemas/Comment'
+          - $ref: '#/components/schemas/Reply'
     AddPostResult:
       type: object
       properties:
