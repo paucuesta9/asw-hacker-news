@@ -151,6 +151,10 @@ class Api::V1::PostsController < ApplicationController
                 @post = Post.find_by(:id => params[:postId])
                 if !@post.nil?
                     if @user.id == @post.user_id
+                        @votes = VotePost.where(:post_id => @post.id)
+                        @votes.each do |v|
+                            v.destroy
+                        end
                         @post.destroy
                         respond_to do |format|
                             format.json { head :no_content, status: 204 }

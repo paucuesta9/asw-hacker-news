@@ -157,6 +157,10 @@ class Api::V1::RepliesController < ApplicationController
             @reply = Reply.find_by(:id => params[:reply_id])
             if !@reply.nil?
                 if @user.id == @reply.user_id
+                    @votes = VoteReply.where(reply_id: @reply.id)
+                    @votes.each do |v|
+                      v.destroy
+                    end
                     @reply.destroy
                     respond_to do |format|
                         format.json { head :no_content, status: 204 }

@@ -9,13 +9,13 @@ class Api::V1::CommentsController < ApplicationController
             format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
           end
         else
-          @comment = Comment.find_by(id: params[:id])
+          @comment = Comment.find_by(id: params[:commentId])
           if(@comment.nil?)
               respond_to do |format|
                 format.json { render json: {status: 404, error: 'Not found', message: "No Reply with that ID"}, status: 404 }
               end
           else
-            @vote = VoteComment.find_by(reply_id: params[:id], user_id: @user.id)
+            @vote = VoteComment.find_by(comment_id: params[:commentId], user_id: @user.id)
             if(!@vote.nil?)
               respond_to do |format|
                 format.json { render json: {status: 409, error: 'Conflict', message: "Vote to the same Contribution already created"}, status: 409 }
@@ -25,7 +25,7 @@ class Api::V1::CommentsController < ApplicationController
           @comment.votes +=1
           @comment.save
           respond_to do |format|
-                    format.json { render json: @comments, status: 201}
+                    format.json { render json: Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).find(@comment.id), status: 201}
                 end
             end
           end
@@ -45,13 +45,13 @@ class Api::V1::CommentsController < ApplicationController
             format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
           end
         else
-          @comment = Comment.find_by(id: params[:id])
+          @comment = Comment.find_by(id: params[:commentId])
           if(@comment.nil?)
               respond_to do |format|
                 format.json { render json: {status: 404, error: 'Not found', message: "No Comment with that ID"}, status: 404 }
               end
           else
-            @vote = VoteComment.find_by(comment_id: params[:id], user_id: @user.id)
+            @vote = VoteComment.find_by(comment_id: params[:commentId], user_id: @user.id)
             if(@vote.nil?)
               respond_to do |format|
                 format.json { render json: {status: 409, error: 'Conflict', message: "No Vote to the Contribution exists"}, status: 409 }
@@ -61,7 +61,7 @@ class Api::V1::CommentsController < ApplicationController
                 @comment.votes -=1
                 @comment.save
                 respond_to do |format|
-                    format.json { render json: @comments, status: 201}
+                    format.json { render json: Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).find(@comment.id), status: 201}
                 end
             end
           end
@@ -74,7 +74,7 @@ class Api::V1::CommentsController < ApplicationController
     end
     
     def show
-        @comment = Comment.select(:id, :text, :created_at, :user_id, :post_id, :votes).find_by(:id => params[:commentId])
+        @comment = Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).find_by(:id => params[:commentId])
         if !@comment.nil?
             respond_to do |format|
                 format.json { render json: @comment, status: 200}
@@ -108,7 +108,7 @@ class Api::V1::CommentsController < ApplicationController
                       @comment.votes = 1
                       @comment.save
                       respond_to do |format|
-                          format.json { render json: @comment, status: 201}
+                          format.json { render json: Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).find(@comment.id), status: 201}
                       end
                   end
               end
@@ -128,7 +128,7 @@ class Api::V1::CommentsController < ApplicationController
                     if @user.id == @comment.user_id
                         @comment.update(comment_params)
                         respond_to do |format|
-                            format.json { render json: @comment, status: 200}
+                            format.json { render json: Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).find(@comment.id), status: 200}
                         end
                     else
                         respond_to do |format|
@@ -158,6 +158,10 @@ class Api::V1::CommentsController < ApplicationController
               @comment = Comment.find_by(:id => params[:commentId])
               if !@comment.nil?
                   if @user.id == @comment.user_id
+                      @votes = VoteComment.where(comment_id: @comment.id)
+                      @votes.each do |v|
+                        v.destroy
+                      end
                       @comment.destroy
                       respond_to do |format|
                           format.json { head :no_content, status: 204 }
@@ -178,6 +182,30 @@ class Api::V1::CommentsController < ApplicationController
                 format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
             end
         end
+    end
+
+    def upvoted
+      if !request.headers["HTTP_X_API_KEY"].nil?
+        @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
+        if(@user.nil?)
+          respond_to do |format|
+            format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
+          end
+        else
+            @comments_ids = VoteComment.select(:comment_id).where(user_id: @user.id)
+            @comments = Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).where(id: @comments_ids)
+            @replies_ids = VoteReply.select(:reply_id).where(user_id: @user.id)
+            @replies = Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).where(id: @replies_ids)
+            @return = @comments + @replies
+            respond_to do |format|
+                format.json { render json: @return.sort_by! {|r| r.created_at}.reverse!, status: 200}
+            end
+        end
+      else
+        respond_to do |format|
+          format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+        end
+      end
     end
 
     private
