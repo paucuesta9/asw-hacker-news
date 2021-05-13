@@ -239,7 +239,7 @@ class Api::V1::PostsController < ApplicationController
                     respond_to do |format|
                         format.json { render json: Post.select(:id, :title, :url, :text, :points, :user_id, :created_at).find_by(:id => @post.id), status: 201}
                     end
-              end
+                end
             end
           end
         else
@@ -263,11 +263,11 @@ class Api::V1::PostsController < ApplicationController
                     format.json { render json: @posts, status: 200}
                 end
             end
-          else
+        else
             respond_to do |format|
               format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
             end
-          end
+        end
     end
 
     private
