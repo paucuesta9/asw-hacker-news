@@ -7,16 +7,22 @@ class Api::V1::CommentsController < ApplicationController
           format.json { render json: {status: 400, error: 'Bad Request', message: "Post id empty"}, status: 400 }
         end
       else
-        @comment_ids = Comment.select(:id).where(post_id: params[:post_id])
-        logger.debug "Ids: #{@comment_ids}"
-        if(@comments_ids.nil?)
+        @post = Post.find_by(id: params[:post_id])
+        if (@post.nil?)
           respond_to do |format|
             format.json { render json: {status: 404, error: 'Not found', message: "No Comments from a post with that ID"}, status: 404 }
           end
         else
-          @comments = Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).where(id: @reply_ids)
-          respond_to do |format|
-            format.json { render json: @comments, status: 200}
+          @comments_ids = Comment.select(:id).where(post_id: params[:post_id])
+          if(@comments_ids.nil?)
+            respond_to do |format|
+              format.json { render json: {status: 404, error: 'Not found', message: "No Comments from a post with that ID"}, status: 404 }
+            end
+          else
+            @comments = Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).where(id: @comments_ids)
+            respond_to do |format|
+              format.json { render json: @comments, status: 200}
+            end
           end
         end
       end

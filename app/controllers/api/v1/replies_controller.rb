@@ -11,7 +11,7 @@ class Api::V1::RepliesController < ApplicationController
       @comment = Comment.find_by(id: params[:parent_id])
       if (@comment.nil?)
         respond_to do |format|
-          format.json { render json: {status: 400, error: 'Bad Request', message: "Comment id not exists"}, status: 400 }
+          format.json { render json: {status: 404, error: 'Not found', message: "Comment id not exists"}, status: 404 }
         end
       else
         @reply_ids = Reply.select(:id).where(parent_id: params[:parent_id], parent_type: "Comment")
@@ -29,7 +29,7 @@ class Api::V1::RepliesController < ApplicationController
       @reply = Reply.find_by(id: params[:parent_id])
       if (@reply.nil?)
         respond_to do |format|
-          format.json { render json: {status: 400, error: 'Bad Request', message: "Reply id not exists"}, status: 400 }
+          format.json { render json: {status: 404, error: 'Not found', message: "Reply id not exists"}, status: 404 }
         end
       else
         @reply_ids = Reply.select(:reply_id).where(parent_id: params[:parent_id], parent_type: "Reply")

@@ -557,7 +557,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error400Order'
+                  $ref: '#/components/examples/error400'
         404:
           description: 'Error: Not Found'
           content:
@@ -566,7 +566,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorUser:
-                  $ref: '#/components/examples/error404User'
+                  $ref: '#/components/examples/error404Post'
     post:
       tags:
         - comments
@@ -948,7 +948,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error400Order'
+                  $ref: '#/components/examples/error400'
         404:
           description: 'Error: Not Found'
           content:
@@ -956,8 +956,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
-                errorUser:
-                  $ref: '#/components/examples/error404User'
+                errorComment:
+                  $ref: '#/components/examples/error404Comment'
+                errorReply:
+                  $ref: '#/components/examples/error404Reply'
 
     post:
       tags:
