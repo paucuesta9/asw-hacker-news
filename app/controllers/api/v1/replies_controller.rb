@@ -25,7 +25,7 @@ class Api::V1::RepliesController < ApplicationController
               @replies.votes += 1
               @replies.save
               respond_to do |format|
-                  format.json { render json: @replies, status: 201}
+                  format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@reply.id), status: 201}
               end
             end
           end
@@ -61,7 +61,7 @@ class Api::V1::RepliesController < ApplicationController
               @replies.votes -= 1
               @replies.save
               respond_to do |format|
-                  format.json { render json: @replies, status: 204}
+                  format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@reply.id), status: 204}
               end
             end
           end
@@ -88,14 +88,37 @@ class Api::V1::RepliesController < ApplicationController
     
     def create
         if !request.headers["HTTP_X_API_KEY"].nil?
-            @reply = Reply.new(reply_params)
-            
             @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
             if (@user.nil?)
               respond_to do |format|
                 format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
               end
             else
+              if reply_params[:parent_id].nil?
+                respond_to do |format|
+                  format.json { render json: {status: 400, error: 'Bad Request', message: "Parent id empty"}, status: 400 }
+                end
+              end
+              if reply_params[:parent_type] == "Comment"
+                @comment = Comment.find_by(id: reply_params[:parent_id])
+                if (@comment.nil?)
+                  respond_to do |format|
+                    format.json { render json: {status: 400, error: 'Bad Request', message: "Comment id not exists"}, status: 400 }
+                  end
+                end
+              elsif reply_params[:parent_type] == "Reply"
+                @reply = Reply.find_by(id: reply_params[:parent_id])
+                if (@reply.nil?)
+                  respond_to do |format|
+                    format.json { render json: {status: 400, error: 'Bad Request', message: "Reply id not exists"}, status: 400 }
+                  end
+                end
+              else
+                respond_to do |format|
+                  format.json { render json: {status: 400, error: 'Bad Request', message: "Type is empty or not valid"}, status: 400}
+                end
+              end
+              @reply = Reply.new(text: reply_params[:text], parent_id: reply_params[:parent_id], parent_type: reply_params[:parent_type], user_id: @user.id)
               if (@reply.text.empty?)
                   respond_to do |format|
                       format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
@@ -107,7 +130,7 @@ class Api::V1::RepliesController < ApplicationController
                       @reply.votes = 1
                       @reply.save
                       respond_to do |format|
-                          format.json { render json: @reply, status: 201}
+                          format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@reply.id), status: 201}
                       end
                   end
               end
@@ -127,7 +150,7 @@ class Api::V1::RepliesController < ApplicationController
                     if @user.id == @reply.user_id
                         @reply.update(reply_params)
                         respond_to do |format|
-                            format.json { render json: @reply, status: 200}
+                            format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@reply.id), status: 200}
                         end
                     else
                         respond_to do |format|
@@ -185,7 +208,7 @@ class Api::V1::RepliesController < ApplicationController
     
     private
     def reply_params
-      params.require(:reply).permit(:text, :user_id, :parent_id, :parent_type)
+      params.require(:reply).permit(:text, :parent_id, :parent_type)
     end
       # Use callbacks to share common setup or constraints between actions.
     def set_vote_post
