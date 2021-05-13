@@ -2,9 +2,9 @@ openapi: 3.0.1
 info:
   version: 1.0.0
   title: Hacker News
-  description: "This is the Open API documentation for the REST API of our beloved application **Hacker News** deployed at <https://hacker-news-fib.herokuapp.com/>. <br>All operations are executable. Only one operation requires authentication: `deleteTweet`. "
+  description: "This is the Open API documentation for the REST API of our beloved application **Hacker News** deployed at <https://hacker-news-fib.herokuapp.com/>."
 servers:
-  - url: 'http://127.0.0.1:3000/api/v1/'
+  - url: 'https://hacker-news-fib.herokuapp.com/api/v1/'
 paths:
     
   ### /POSTS
