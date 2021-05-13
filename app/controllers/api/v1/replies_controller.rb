@@ -1,5 +1,50 @@
 class Api::V1::RepliesController < ApplicationController
   skip_before_action :authenticate, :verify_authenticity_token
+
+  def index
+    if reply_params[:parent_id].blank?
+      respond_to do |format|
+        format.json { render json: {status: 400, error: 'Bad Request', message: "Parent id empty"}, status: 400 }
+      end
+    end
+    if reply_params[:parent_type] == "Comment"
+      @comment = Comment.find_by(id: reply_params[:parent_id])
+      if (@comment.nil?)
+        respond_to do |format|
+          format.json { render json: {status: 400, error: 'Bad Request', message: "Comment id not exists"}, status: 400 }
+        end
+      else
+        @reply_ids = Reply.select(:reply_id).where(parent_id: reply_params[:parent_id], parent_type: "Comment")
+        if(@reply_ids.nil?)
+          respond_to do |format|
+            format.json { render json: {status: 404, error: 'Not found', message: "No Replies from a Comment with that ID"}, status: 404 }
+          end
+        end
+        @replies = Reply.select(:id, :text, :created_at, :user_id, :parent_id, :votes).where(id: @reply_ids)
+        respond_to do |format|
+          format.json { render json: @replies, status: 200}
+        end
+      end
+    elsif reply_params[:parent_type] == "Reply"
+      @reply = Reply.find_by(id: reply_params[:parent_id])
+      if (@reply.nil?)
+        respond_to do |format|
+          format.json { render json: {status: 400, error: 'Bad Request', message: "Reply id not exists"}, status: 400 }
+        end
+      else
+        @reply_ids = Reply.select(:reply_id).where(parent_id: reply_params[:parent_id], parent_type: "Reply")
+        if(@reply_ids.nil?)
+          respond_to do |format|
+            format.json { render json: {status: 404, error: 'Not found', message: "No Replies from a Reply with that ID"}, status: 404 }
+          end
+        end
+        @replies = Reply.select(:id, :text, :created_at, :user_id, :parent_id, :votes).where(id: @reply_ids)
+        respond_to do |format|
+          format.json { render json: @replies, status: 200}
+        end
+      end
+    end
+  end 
   
     def upvote
       if !request.headers["HTTP_X_API_KEY"].nil?
@@ -209,78 +254,6 @@ class Api::V1::RepliesController < ApplicationController
             end
         end
     end
-    
-    def allfromComment
-      if reply_params[:parent_id].blank?
-        respond_to do |format|
-          format.json { render json: {status: 400, error: 'Bad Request', message: "Parent id empty"}, status: 400 }
-        end
-      end
-      if reply_params[:parent_type] == "Comment"
-        @comment = Comment.find_by(id: reply_params[:parent_id])
-        if (@comment.nil?)
-          respond_to do |format|
-            format.json { render json: {status: 400, error: 'Bad Request', message: "Comment id not exists"}, status: 400 }
-          end
-        end
-      elsif reply_params[:parent_type] == "Reply"
-        @reply = Reply.find_by(id: reply_params[:parent_id])
-        if (@reply.nil?)
-          respond_to do |format|
-            format.json { render json: {status: 400, error: 'Bad Request', message: "Reply id not exists"}, status: 400 }
-          end
-        end
-      end
-      @reply_ids = Reply.select(:reply_id).where(parent_id: reply_params[:parent_id], parent_type: "Comment")
-      if(@reply_ids.nil?)
-        respond_to do |format|
-          format.json { render json: {status: 404, error: 'Not found', message: "No Replies from a Comment with that ID"}, status: 404 }
-        end
-      end
-      @replies = Reply.select(:id, :text, :created_at, :user_id, :parent_id, :votes).where(id: @reply_ids)
-      respond_to do |format|
-        format.json { render json: @replies, status: 200}
-      end
-    end
-    
-    
-    def allfromReply
-      if reply_params[:parent_id].blank?
-        respond_to do |format|
-          format.json { render json: {status: 400, error: 'Bad Request', message: "Parent id empty"}, status: 400 }
-        end
-      end
-      if reply_params[:parent_type] == "Comment"
-        @comment = Comment.find_by(id: reply_params[:parent_id])
-        if (@comment.nil?)
-          respond_to do |format|
-            format.json { render json: {status: 400, error: 'Bad Request', message: "Comment id not exists"}, status: 400 }
-          end
-        end
-      elsif reply_params[:parent_type] == "Reply"
-        @reply = Reply.find_by(id: reply_params[:parent_id])
-        if (@reply.nil?)
-          respond_to do |format|
-            format.json { render json: {status: 400, error: 'Bad Request', message: "Reply id not exists"}, status: 400 }
-          end
-        end
-      end
-      @reply_ids = Reply.select(:reply_id).where(parent_id: reply_params[:parent_id], parent_type: "Reply")
-      if(@reply_ids.nil?)
-        respond_to do |format|
-          format.json { render json: {status: 404, error: 'Not found', message: "No Replies from a Reply with that ID"}, status: 404 }
-        end
-      end
-      @replies = Reply.select(:id, :text, :created_at, :user_id, :parent_id, :votes).where(id: @reply_ids)
-      respond_to do |format|
-        format.json { render json: @replies, status: 200}
-      end
-    end
-    
-    
-    
-    
-    
     
     private
     def reply_params

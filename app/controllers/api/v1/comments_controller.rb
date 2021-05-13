@@ -1,5 +1,23 @@
 class Api::V1::CommentsController < ApplicationController
   skip_before_action :authenticate, :verify_authenticity_token
+
+    def index
+      if comment_params[:post_id].blank?
+        respond_to do |format|
+          format.json { render json: {status: 400, error: 'Bad Request', message: "Post id empty"}, status: 400 }
+        end
+      end
+      @comment_ids = Comment.select(:comment_id).where(post_id: comment_params[:post_id])
+      if(@comments_ids.nil?)
+        respond_to do |format|
+          format.json { render json: {status: 404, error: 'Not found', message: "No Comments from a post with that ID"}, status: 404 }
+        end
+      end
+      @comments = Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).where(id: @reply_ids)
+      respond_to do |format|
+        format.json { render json: @comments, status: 200}
+      end
+    end
     
     def upvote
       if !request.headers["HTTP_X_API_KEY"].nil?
@@ -219,23 +237,7 @@ class Api::V1::CommentsController < ApplicationController
     end
     
     
-    def allfromPost
-      if comment_params[:post_id].blank?
-        respond_to do |format|
-          format.json { render json: {status: 400, error: 'Bad Request', message: "Post id empty"}, status: 400 }
-        end
-      end
-      @comment_ids = Comment.select(:comment_id).where(post_id: comment_params[:post_id])
-      if(@comments_ids.nil?)
-        respond_to do |format|
-          format.json { render json: {status: 404, error: 'Not found', message: "No Comments from a post with that ID"}, status: 404 }
-        end
-      end
-      @comments = Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).where(id: @reply_ids)
-      respond_to do |format|
-        format.json { render json: @comments, status: 200}
-      end
-    end
+    
 
     private
     def comment_params

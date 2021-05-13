@@ -1282,6 +1282,10 @@ components:
         created_at:
           type: string
           format: date-time
+    CommentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Comment'
     Reply:
       type: object
       properties:
@@ -1312,6 +1316,10 @@ components:
         created_at:
           type: string
           format: date-time
+    ReplyList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Reply'
     CommentReplyList:
       type: array
       items:
