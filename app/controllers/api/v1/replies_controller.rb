@@ -74,7 +74,7 @@ class Api::V1::RepliesController < ApplicationController
     end
     
     def show
-        @reply = Reply.select(:id, :text, :created_at, :user_id, :parent_id, :points).find_by(:id => params[:replyId])
+        @reply = Reply.select(:id, :text, :created_at, :user_id, :parent_id, :votes).find_by(:id => params[:replyId])
         if !@reply.nil?
             respond_to do |format|
                 format.json { render json: @reply, status: 200}
