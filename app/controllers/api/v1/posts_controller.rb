@@ -229,7 +229,7 @@ class Api::V1::PostsController < ApplicationController
                     format.json { render json: {status: 409, error: 'Conflict', message: "No Vote to the Contribution exists"}, status: 409 }
                     end
                 else
-                    VoteComment.find_by(user_id: @user.id, comment_id: @comment.id).destroy
+                    VoteComment.find_by(user_id: @user.id, post_id: @post.id).destroy
                     @post.votes -=1
                     @post.save
                     respond_to do |format|
