@@ -258,6 +258,14 @@ paths:
       summary: Vote a Post
       description: Vote a Post
       operationId: votePost
+      parameters:
+      - name: postId
+        in: path
+        description: ID of Post to return
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         201:
           description: Vote done
@@ -301,6 +309,14 @@ paths:
       summary: Unvote a Post
       description: Unvote a Post
       operationId: unvotePost
+      parameters:
+      - name: postId
+        in: path
+        description: ID of Post to return
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
         204:
           description: Unvote done
@@ -423,6 +439,43 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404User'
+
+  ### POSTS/DATE 
+  /posts/date:
+    get:
+      tags:
+      - posts
+      summary: Get all posts ordered by date
+      description: Return all posts ordered by date of creation
+      operationId: getPostsByDate
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+      security:
+      - ApiKeyAuth: []
+
+
+  ### POSTS/POINTS
+  /posts/points:
+    get:
+      tags:
+      - posts
+      summary: Get all posts ordered by points
+      description: Return all posts ordered by points
+      operationId: getPostsByPoints
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+      security:
+      - ApiKeyAuth: []
 
   ### COMMENTS
   /comments:
@@ -560,14 +613,6 @@ paths:
       summary: Updates Comment by its Id
       description: Update the Comment with the new info
       operationId: updateCommentById
-      parameters:
-        - name: commentId
-          in: path
-          description: Comment id to update
-          required: true
-          schema:
-            type: integer
-            format: int64
       responses:
         200:
           description: Comment updated
@@ -619,14 +664,6 @@ paths:
       summary: Deletes Comment by its Id
       description: Delete the Comment
       operationId: deleteCommentById
-      parameters:
-        - name: commentId
-          in: path
-          description: Coment id to delete
-          required: true
-          schema:
-            type: integer
-            format: int64
       responses:
         204:
           description: Comment removed
@@ -841,7 +878,7 @@ components:
       type: object
       properties:
         id:
-         type: integer
+          type: integer
           format: int64
           example: 2
         username:
