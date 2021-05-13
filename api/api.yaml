@@ -490,14 +490,6 @@ paths:
       summary: Update a user
       description: Update a user
       operationId: updateUser
-      parameters:
-      - name: userId
-        in: path
-        description: ID of the user to return
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         description: Provide the new about of the user
         content:
