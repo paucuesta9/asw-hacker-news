@@ -756,7 +756,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error404Post'
+                  $ref: '#/components/examples/error404Comment'
         409:
           description: 'Error: Conflict'
           content:
