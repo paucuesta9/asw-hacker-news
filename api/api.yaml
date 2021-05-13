@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   version: 1.0.0
   title: Hacker News
-  description: "This is the Open API documentation for the REST API of our beloved application **Hacker News** deployed at <https://hacker-news-fib.herokuapp.com/>. <br>All operations are executable. Only one operation requires authentication: `deleteTweet`. In this case, you must **Authorize** your request by providing the api_key vaule you got when you created the tweet."
+  description: "This is the Open API documentation for the REST API of our beloved application **Hacker News** deployed at <https://hacker-news-fib.herokuapp.com/>. <br>All operations are executable. Only one operation requires authentication: `deleteTweet`. "
 servers:
   - url: 'http://127.0.0.1:3000/api/v1/'
 paths:
@@ -528,6 +528,45 @@ paths:
 
   ### COMMENTS
   /comments:
+    get:
+      tags:
+        - comments
+      summary: Finds Comments of a Post
+      description: Return the Comments of a Post
+      operationId: getComments
+      parameters:
+      - name: post_id
+        in: query
+        description: ID of the Post
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentList'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400Order'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorUser:
+                  $ref: '#/components/examples/error404User'
     post:
       tags:
         - comments
@@ -874,6 +913,52 @@ paths:
   
   ### REPLIES
   /replies:
+    get:
+      tags:
+        - replies
+      summary: Finds Replies of a Comment or Reply
+      description: Return the Replies of a Comment or Reply
+      operationId: getReplies
+      parameters:
+      - name: parent_id
+        in: query
+        description: ID of the parent
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: parent_type
+        in: query
+        description: Type of parent
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplyList'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400Order'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorUser:
+                  $ref: '#/components/examples/error404User'
+
     post:
       tags:
         - replies

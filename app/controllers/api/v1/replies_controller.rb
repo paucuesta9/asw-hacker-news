@@ -2,19 +2,19 @@ class Api::V1::RepliesController < ApplicationController
   skip_before_action :authenticate, :verify_authenticity_token
 
   def index
-    if reply_params[:parent_id].blank?
+    if params[:parent_id].blank?
       respond_to do |format|
         format.json { render json: {status: 400, error: 'Bad Request', message: "Parent id empty"}, status: 400 }
       end
     end
-    if reply_params[:parent_type] == "Comment"
-      @comment = Comment.find_by(id: reply_params[:parent_id])
+    if params[:parent_type] == "Comment"
+      @comment = Comment.find_by(id: params[:parent_id])
       if (@comment.nil?)
         respond_to do |format|
           format.json { render json: {status: 400, error: 'Bad Request', message: "Comment id not exists"}, status: 400 }
         end
       else
-        @reply_ids = Reply.select(:reply_id).where(parent_id: reply_params[:parent_id], parent_type: "Comment")
+        @reply_ids = Reply.select(:id).where(parent_id: params[:parent_id], parent_type: "Comment")
         if(@reply_ids.nil?)
           respond_to do |format|
             format.json { render json: {status: 404, error: 'Not found', message: "No Replies from a Comment with that ID"}, status: 404 }
@@ -25,14 +25,14 @@ class Api::V1::RepliesController < ApplicationController
           format.json { render json: @replies, status: 200}
         end
       end
-    elsif reply_params[:parent_type] == "Reply"
-      @reply = Reply.find_by(id: reply_params[:parent_id])
+    elsif params[:parent_type] == "Reply"
+      @reply = Reply.find_by(id: params[:parent_id])
       if (@reply.nil?)
         respond_to do |format|
           format.json { render json: {status: 400, error: 'Bad Request', message: "Reply id not exists"}, status: 400 }
         end
       else
-        @reply_ids = Reply.select(:reply_id).where(parent_id: reply_params[:parent_id], parent_type: "Reply")
+        @reply_ids = Reply.select(:reply_id).where(parent_id: params[:parent_id], parent_type: "Reply")
         if(@reply_ids.nil?)
           respond_to do |format|
             format.json { render json: {status: 404, error: 'Not found', message: "No Replies from a Reply with that ID"}, status: 404 }
