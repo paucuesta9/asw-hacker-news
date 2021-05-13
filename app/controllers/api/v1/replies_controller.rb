@@ -10,6 +10,7 @@ class Api::V1::RepliesController < ApplicationController
         redirect_to request.referrer
       end
     end
+
     def unvote
       if !request.headers["HTTP_X_API_KEY"].nil?
         @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
@@ -20,6 +21,7 @@ class Api::V1::RepliesController < ApplicationController
         redirect_to request.referrer
       end
     end
+    
   private
       # Use callbacks to share common setup or constraints between actions.
       def set_vote_post
