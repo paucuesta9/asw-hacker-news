@@ -830,6 +830,78 @@ paths:
         - ApiKeyAuth: []
   
   ### REPLIES
+  /replies:
+    post:
+      tags:
+        - replies
+      summary: Creates a new Reply
+      description: Creates a new Reply and returns its info
+      operationId: newReply
+      requestBody:
+        description: Provide the info of a Reply to create
+        content:
+          application/json:
+            schema:
+              required:
+              - text
+              - user_id
+              - parent_id
+              - parent_type
+              type: object
+              properties:
+                text:
+                  type: string
+                  minLength: 4
+                  example: 'My text'
+                user_id:
+                  type: integer
+                  format: int64
+                  example: 2
+                parent_id:
+                  type: integer
+                  format: int64
+                  example: 2
+                parent_type:
+                  type: string
+                  minLength: 4
+                  example: 'Comment'
+        required: true
+      responses:
+        201:
+          description: Reply created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddReplyResult'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+      security:
+        - ApiKeyAuth: []
   /replies/{replyId}:
     get:
       tags:
@@ -1211,12 +1283,12 @@ components:
     AddCommentResult:
       type: object
       properties:
-        new_post:
+        new_comment:
           $ref: '#/components/schemas/Comment'
     AddReplyResult:
       type: object
       properties:
-        new_post:
+        new_reply:
           $ref: '#/components/schemas/Reply'
     ErrorResult:
       type: object

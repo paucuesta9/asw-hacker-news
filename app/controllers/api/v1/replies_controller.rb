@@ -1,5 +1,6 @@
 class Api::V1::RepliesController < ApplicationController
   skip_before_action :authenticate, :verify_authenticity_token
+  
     def upvote
       if !request.headers["HTTP_X_API_KEY"].nil?
         @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
@@ -87,31 +88,34 @@ class Api::V1::RepliesController < ApplicationController
     
     def create
         if !request.headers["HTTP_X_API_KEY"].nil?
-            @comment = Comment.new(comment_params)
+            @reply = Reply.new(reply_params)
             
             @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
-
-            if (@comment.text.empty?)
-                respond_to do |format|
-                    format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
-                end
+            if (@user.nil?)
+              respond_to do |format|
+                format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
+              end
             else
-                if @comment.save
-                    #@comment = Comment.new(text: @post.text, user_id: @user.id, post_id: @post.id, votes: 1)
-                    #@comment.save
-                    @vote = VoteComment.new(:user_id => @user.id, :post_id => @post.id)
-                    @vote.save
-                    @comment.votes = 1
-                    @comment.save
-                    respond_to do |format|
-                        format.json { render json: @comment, status: 200}
-                    end
-                end
+              if (@reply.text.empty?)
+                  respond_to do |format|
+                      format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
+                  end
+              else
+                  if @reply.save
+                      @vote = VoteReply.new(:user_id => @user.id, :reply_id => @reply.id)
+                      @vote.save
+                      @reply.votes = 1
+                      @reply.save
+                      respond_to do |format|
+                          format.json { render json: @reply, status: 201}
+                      end
+                  end
+              end
             end
         else
-            respond_to do |format|
-                format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
-            end
+          respond_to do |format|
+              format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+          end
         end    
     end
     
@@ -171,7 +175,7 @@ class Api::V1::RepliesController < ApplicationController
     
     private
     def reply_params
-      params.require(:reply).permit(:text, :user_id, :parent_id)
+      params.require(:reply).permit(:text, :user_id, :parent_id, :parent_type)
     end
       # Use callbacks to share common setup or constraints between actions.
     def set_vote_post

@@ -19,38 +19,42 @@ class Api::V1::PostsController < ApplicationController
             @post = Post.new(post_params)
             
             @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
-            
-            
-            unless(@post.text.empty?) 
-                @post.typePost = "ask"
-            end
-            
-            unless(@post.url.empty?) 
-                @post.typePost = "url"
-            end
-
-            if ((@post.url.empty? && @post.text.empty?) || @post.title.empty?)
+            if (@user.nil?)
                 respond_to do |format|
-                    format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
+                  format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
                 end
             else
-                unless @post.typePost == "url" and Post.find_by(url: @post.url)
-                    if @post.save
-                        if @post.typePost == "url" and not @post.text.empty?
-                            @comment = Comment.new(text: @post.text, user_id: @user.id, post_id: @post.id, votes: 1)
-                            @comment.save
-                        end
-                        @vote = VotePost.new(:user_id => @user.id, :post_id => @post.id)
-                        @vote.save
-                        @post.points = 1
-                        @post.save
-                        respond_to do |format|
-                            format.json { render json: @post, status: 200}
-                        end
+                unless(@post.text.empty?) 
+                    @post.typePost = "ask"
+                end
+                
+                unless(@post.url.empty?) 
+                    @post.typePost = "url"
+                end
+
+                if ((@post.url.empty? && @post.text.empty?) || @post.title.empty?)
+                    respond_to do |format|
+                        format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
                     end
                 else
-                    respond_to do |format|
-                        format.json { render json: {status: 409, error: 'Conflict', message: "Post with the same url already created"}, status: 409 }
+                    unless @post.typePost == "url" and Post.find_by(url: @post.url)
+                        if @post.save
+                            if @post.typePost == "url" and not @post.text.empty?
+                                @comment = Comment.new(text: @post.text, user_id: @user.id, post_id: @post.id, votes: 1)
+                                @comment.save
+                            end
+                            @vote = VotePost.new(:user_id => @user.id, :post_id => @post.id)
+                            @vote.save
+                            @post.points = 1
+                            @post.save
+                            respond_to do |format|
+                                format.json { render json: @post, status: 201}
+                            end
+                        end
+                    else
+                        respond_to do |format|
+                            format.json { render json: {status: 409, error: 'Conflict', message: "Post with the same url already created"}, status: 409 }
+                        end
                     end
                 end
             end
