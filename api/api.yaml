@@ -436,15 +436,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        401:
-          description: 'Error: Unauthorized'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error401'
         409:
           description: 'Error: Conflict'
           content:
@@ -453,7 +444,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
               examples:
                 errorExample:
-                  $ref: '#/components/examples/error409Vote'
+                  $ref: '#/components/examples/error409User'
       security:
         - ApiKeyAuth: []
     put:
@@ -487,15 +478,6 @@ paths:
               examples:
                 errorUser:
                   $ref: '#/components/examples/error404User'
-        409:
-          description: 'Error: Conflict'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error409Vote'
       security:
         - ApiKeyAuth: []
 
@@ -1057,6 +1039,11 @@ components:
         status: 409
         error: "Conflict"
         message: "Post with the same url already created"
+    error409User:
+      value:
+        status: 409
+        error: "Conflict"
+        message: "User with the same uid already created"
     error409Vote:
       value:
         status: 409
