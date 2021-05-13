@@ -2,11 +2,7 @@ class Api::V1::CommentsController < ApplicationController
   skip_before_action :authenticate, :verify_authenticity_token
 
     def index
-      if params[:post_id].blank?
-        respond_to do |format|
-          format.json { render json: {status: 400, error: 'Bad Request', message: "Post id empty"}, status: 400 }
-        end
-      else
+      if !params[:post_id].blank?
         @post = Post.find_by(id: params[:post_id])
         if (@post.nil?)
           respond_to do |format|
@@ -25,6 +21,24 @@ class Api::V1::CommentsController < ApplicationController
             end
           end
         end
+      elsif !params[:user_id].blank?
+        @user = User.select(:id, :username, :about, :created_at).find(params[:user_id])
+        if(@user.nil?)
+          respond_to do |format|
+            format.json { render json: {status: 404, error: 'Not found', message: "No User with that ID"}, status: 404 }
+          end
+        else
+            @comments = Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).where(user_id: params[:user_id])
+            @replies = Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).where(user_id: params[:user_id])
+            @return = @comments + @replies
+            respond_to do |format|
+                format.json { render json: @return.sort_by! {|r| r.created_at}.reverse!, status: 200}
+            end
+        end
+      else
+        respond_to do |format|
+          format.json { render json: {status: 400, error: 'Bad Request', message: "Post id or User id empty"}, status: 400 }
+        end 
       end
     end
     
