@@ -590,41 +590,6 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404Comment'
-  /comments/upvoted:
-    get:
-      tags:
-        - comments
-        - replies
-      summary: Finds Comments and Replies Upvoted by a User
-      description: Return the Comments and Replies Upvoted by a User
-      operationId: getCommentsUpvoted
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommentReplyList'
-        401:
-          description: 'Error: Unauthorized'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error401'
-        403:
-          description: 'Error: Forbidden'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error403'
-      security:
-          - ApiKeyAuth: []   
     put:
       tags:
         - comments
@@ -716,6 +681,41 @@ paths:
                   $ref: '#/components/examples/error403'
       security:
       - ApiKeyAuth: []
+  /comments/upvoted:
+    get:
+      tags:
+        - comments
+        - replies
+      summary: Finds Comments and Replies Upvoted by a User
+      description: Return the Comments and Replies Upvoted by a User
+      operationId: getCommentsUpvoted
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentReplyList'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+      security:
+          - ApiKeyAuth: []   
   /comment/{id}/vote:
     post:
       tags:
