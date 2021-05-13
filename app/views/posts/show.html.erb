@@ -62,6 +62,7 @@
             <tbody>
               <% @post.comments.each do |comment| %>
                 <%= render 'comments/show_in_post', current_comment: comment %>
+                <%= current_comment.id %>
               <% end %>
             </tbody>
           </table>

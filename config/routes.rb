@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     post '/posts' => 'api/v1/posts#create'
     post '/comment/:id/vote' => 'api/v1/comments#upvote'
     delete '/comment/:id/vote' => 'api/v1/comments#unvote'
+    post '/replies/:id/vote' => 'api/v1/replies#upvote'
+    delete '/replies/:id/vote' => 'api/v1/replies#unvote'
   end
 
   resources :replies
