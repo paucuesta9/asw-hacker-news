@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   scope "/api/v1" ,defaults: {format: 'json'} do
+    #GET POSTS BY DATE
+    get '/posts/date' => 'api/v1/posts#date'
+    #GET POSTS BY POINTS
+    get '/posts/points' => 'api/v1/posts#points'
+    
     get '/posts/:postId' => 'api/v1/posts#show'
     put '/posts/:postId' => 'api/v1/posts#update'
     delete '/posts/:postId' => 'api/v1/posts#destroy'
@@ -9,6 +14,9 @@ Rails.application.routes.draw do
     delete '/comment/:id/vote' => 'api/v1/comments#unvote'
     post '/replies/:id/vote' => 'api/v1/replies#upvote'
     delete '/replies/:id/vote' => 'api/v1/replies#unvote'
+    get '/users/:id' => 'api/v1/users#show'
+    put '/users/:id' => 'api/v1/users#update'
+    post '/users' => 'api/v1/users#create'
   end
 
   resources :replies
