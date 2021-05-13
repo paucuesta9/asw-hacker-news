@@ -998,6 +998,15 @@ paths:
                 examples:
                   errorExample:
                     $ref: '#/components/examples/error401'
+          403:
+            description: 'Error: Forbidden'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error403'
           404:
             description: 'Error: Not Found'
             content:
@@ -1006,7 +1015,7 @@ paths:
                   $ref: '#/components/schemas/ErrorResult'
                 examples:
                   errorExample:
-                    $ref: '#/components/examples/error404Post'
+                    $ref: '#/components/examples/error404Reply'
           409:
             description: 'Error: Conflict'
             content:
