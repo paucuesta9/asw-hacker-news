@@ -445,8 +445,6 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error409User'
-      security:
-        - ApiKeyAuth: []
     put:
       tags:
         - users
