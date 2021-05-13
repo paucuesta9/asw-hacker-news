@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
   scope "/api/v1" ,defaults: {format: 'json'} do
-    #GET POSTS BY DATE
-    get '/posts/date' => 'api/v1/posts#date'
-    #GET POSTS BY POINTS
-    get '/posts/points' => 'api/v1/posts#points'
-    
+    get '/posts' => 'api/v1/posts#index'
     get '/posts/:postId' => 'api/v1/posts#show'
     put '/posts/:postId' => 'api/v1/posts#update'
     delete '/posts/:postId' => 'api/v1/posts#destroy'

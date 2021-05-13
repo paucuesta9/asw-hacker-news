@@ -34,6 +34,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostList'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400Order'
         404:
           description: 'Error: Not Found'
           content:
@@ -155,6 +164,28 @@ paths:
           schema:
             type: integer
             format: int64
+      requestBody:
+        description: Provide the title & content of the updated Post
+        content:
+          application/json:
+            schema:
+              required:
+              - title
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 4
+                  example: 'My name'
+                url:
+                  type: string
+                  format: url
+                  example: 'https://www.github.com'
+                text:
+                  type: string
+                  minLength: 4
+                  example: 'My text'
+        required: true
       responses:
         200:
           description: Post updated
@@ -1332,6 +1363,11 @@ components:
         status: 400
         error: "Bad Request"
         message: "Content is empty"
+    error400Order:
+      value:
+        status: 400
+        error: "Bad Request"
+        message: "Ordering not valid"
     error401:
       value:
         status: 401
@@ -1361,12 +1397,14 @@ components:
       value:
         status: 404
         error: "Not Found"
-        message: "No User with that UID"
+        message: "No User with that ID"
     error409:
       value:
         status: 409
         error: "Conflict"
         message: "Post with the same url already created"
+        post: 
+          $ref: '#/components/schemas/Post'
     error409User:
       value:
         status: 409
