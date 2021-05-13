@@ -23,8 +23,109 @@ class Api::V1::CommentsController < ApplicationController
         redirect_to request.referrer
       end
     end
-  
+    
+    def show
+        @comment = Comment.select(:id, :text, :created_at, :user_id, :post_id, :votes).find_by(:id => params[:commentId])
+        if !@comment.nil?
+            respond_to do |format|
+                format.json { render json: @comment, status: 200}
+            end
+        else
+            respond_to do |format|
+                format.json { render json: {status: 404, error: 'Not found', message: "No Comment with that ID"}, status: 404 }
+            end
+        end
+    end
+    
+    
+    def create
+        if !request.headers["HTTP_X_API_KEY"].nil?
+            @comment = Comment.new(comment_params)
+            
+            @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
+
+            if (@comment.text.empty?)
+                respond_to do |format|
+                    format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
+                end
+            else
+                if @comment.save
+                    #@comment = Comment.new(text: @post.text, user_id: @user.id, post_id: @post.id, votes: 1)
+                    #@comment.save
+                    @vote = VoteComment.new(:user_id => @user.id, :post_id => @post.id)
+                    @vote.save
+                    @comment.votes = 1
+                    @comment.save
+                    respond_to do |format|
+                        format.json { render json: @comment, status: 200}
+                    end
+                end
+            end
+        else
+            respond_to do |format|
+                format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+            end
+        end    
+    end
+    
+    def update
+        if !request.headers["HTTP_X_API_KEY"].nil?
+            @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
+            @comment = Comment.find_by(:id => params[:commentId])
+            if !@comment.nil?
+                    if @user.id == @comment.user_id
+                        @comment.update(comment_params)
+                        respond_to do |format|
+                            format.json { render json: @comment, status: 200}
+                        end
+                    else
+                        respond_to do |format|
+                            format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
+                        end
+                    end
+            else
+                respond_to do |format|
+                    format.json { render json: {status: 404, error: 'Not found', message: "No Comment with that ID"}, status: 404 }
+                end
+            end
+        else
+            respond_to do |format|
+                format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+            end
+        end
+    end
+    
+    def destroy
+        if !request.headers["HTTP_X_API_KEY"].nil?
+            @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
+            @comment = Comment.find_by(:id => params[:commentId])
+            if !@comment.nil?
+                if @user.id == @comment.user_id
+                    @comment.destroy
+                    respond_to do |format|
+                        format.json { head :no_content, status: 204 }
+                    end
+                else
+                    respond_to do |format|
+                        format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
+                    end
+                end
+            else
+                respond_to do |format|
+                    format.json { render json: {status: 404, error: 'Not found', message: "No Comment with that ID"}, status: 404 }
+                end
+            end
+        else
+            respond_to do |format|
+                format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
+            end
+        end
+    end
+
     private
+    def comment_params
+      params.require(:comment).permit(:text, :user_id, :post_id)
+    end
       # Use callbacks to share common setup or constraints between actions.
       def set_vote_comment
         @vote_comments = VoteComment.find(params[:id])
@@ -34,4 +135,6 @@ class Api::V1::CommentsController < ApplicationController
       def vote_comment_params
         params.require(:vote_comment).permit(:comment_id, :user_id)
       end
+
+      
 end
