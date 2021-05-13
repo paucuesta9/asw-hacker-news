@@ -439,7 +439,8 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404User'
-                  
+
+  ### POSTS/DATE 
   /posts/date:
     get:
       tags:
@@ -458,7 +459,7 @@ paths:
       - ApiKeyAuth: []
 
 
-
+  ### POSTS/POINTS
   /posts/points:
     get:
       tags:
