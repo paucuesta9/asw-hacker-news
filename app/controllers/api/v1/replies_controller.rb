@@ -148,8 +148,13 @@ class Api::V1::RepliesController < ApplicationController
     
     def destroy
         if !request.headers["HTTP_X_API_KEY"].nil?
-            @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
-            @reply = Reply.find_by(:id => params[:commentId])
+          @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
+          if (@user.nil?)
+            respond_to do |format|
+              format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
+            end
+          else
+            @reply = Reply.find_by(:id => params[:reply_id])
             if !@reply.nil?
                 if @user.id == @reply.user_id
                     @reply.destroy
@@ -166,6 +171,7 @@ class Api::V1::RepliesController < ApplicationController
                     format.json { render json: {status: 404, error: 'Not found', message: "No Reply with that ID"}, status: 404 }
                 end
             end
+          end
         else
             respond_to do |format|
                 format.json { render json: {status: 401, error: 'Unauthorized', message: "You provided no api key (X-API-KEY Header)"}, status: 401 }
