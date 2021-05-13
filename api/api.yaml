@@ -541,14 +541,14 @@ paths:
             schema:
               required:
               - text
-              - postId
+              - post_id
               type: object
               properties:
                 text:
                   type: string
                   minLength: 4
                   example: 'My text'
-                postId:
+                post_id:
                   type: integer
                   format: int64
                   example: 2

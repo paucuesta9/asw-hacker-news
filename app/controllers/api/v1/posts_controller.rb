@@ -49,7 +49,6 @@ class Api::V1::PostsController < ApplicationController
 
     def create
         if !request.headers["HTTP_X_API_KEY"].nil?
-            @post = Post.new(post_params)
             
             @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
             if (@user.nil?)
@@ -57,6 +56,7 @@ class Api::V1::PostsController < ApplicationController
                   format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
                 end
             else
+                @post = Post.new(title: post_params[:title], url: post_params[:url], text: post_params[:text], user_id: @user.id)
                 unless(@post.text.empty?) 
                     @post.typePost = "ask"
                 end

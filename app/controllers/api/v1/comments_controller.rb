@@ -88,29 +88,35 @@ class Api::V1::CommentsController < ApplicationController
     
     
     def create
-        if !request.headers["HTTP_X_API_KEY"].nil?
-            @comment = Comment.new(comment_params)
-            
+        if !request.headers["HTTP_X_API_KEY"].nil?            
             @user = User.find_by(:uid =>  request.headers["HTTP_X_API_KEY"])
             if (@user.nil?)
               respond_to do |format|
                 format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
               end
             else
-              if (@comment.text.empty?)
-                  respond_to do |format|
-                      format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
-                  end
+              @post = Post.find_by(id: comment_params[:post_id])
+              if (@post.nil?)
+                respond_to do |format|
+                  format.json { render json: {status: 400, error: 'Bad Request', message: "Post id not exists"}, status: 400 }
+                end
               else
-                  if @comment.save
-                      @vote = VoteComment.new(:user_id => @user.id, :comment_id => @comment.id)
-                      @vote.save
-                      @comment.votes = 1
-                      @comment.save
-                      respond_to do |format|
-                          format.json { render json: Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).find(@comment.id), status: 201}
-                      end
-                  end
+                @comment = Comment.new(text: comment_params[:text], post_id: comment_params[:post_id], user_id: @user.id)
+                if (@comment.text.empty?)
+                    respond_to do |format|
+                        format.json { render json: {status: 400, error: 'Bad Request', message: "Content is empty"}, status: 400}
+                    end
+                else
+                    if @comment.save
+                        @vote = VoteComment.new(:user_id => @user.id, :comment_id => @comment.id)
+                        @vote.save
+                        @comment.votes = 1
+                        @comment.save
+                        respond_to do |format|
+                            format.json { render json: Comment.select(:id, :text, :votes, :user_id, :post_id, :created_at).find(@comment.id), status: 201}
+                        end
+                    end
+                end
               end
             end
         else
@@ -210,7 +216,7 @@ class Api::V1::CommentsController < ApplicationController
 
     private
     def comment_params
-      params.require(:comment).permit(:text, :user_id, :post_id)
+      params.require(:comment).permit(:text, :post_id)
     end
       # Use callbacks to share common setup or constraints between actions.
       def set_vote_comment
