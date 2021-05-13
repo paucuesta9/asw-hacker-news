@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   
   def show
-    @user = User.find(params[:id])
+    @user = User.select(:id, :username, :about, :created_at).find(params[:id])
     if !@user.nil?
       respond_to do |format|
         format.json { render json: @user, status: 200}
