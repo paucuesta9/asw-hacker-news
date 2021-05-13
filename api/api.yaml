@@ -753,6 +753,117 @@ paths:
                   $ref: '#/components/examples/error403'
       security:
       - ApiKeyAuth: []
+  /comment/{id}/vote:
+    post:
+      tags:
+        - comments
+      summary: Vote a Comment
+      description: Vote a Comment
+      operationId: voteComment
+      parameters:
+      - name: id
+        in: path
+        description: ID of Comment to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        201:
+          description: Vote done
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409Vote'
+      security:
+        - ApiKeyAuth: []
+    delete:
+      tags:
+        - comments
+        - votes
+      summary: Unvote a Comment
+      description: Unvote a Comment
+      operationId: unvoteComment
+      parameters:
+      - name: id
+        in: path
+        description: ID of Comment to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        204:
+          description: Unvote done
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        403:
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error403'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404Post'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409Unvote'
+      security:
+        - ApiKeyAuth: []
   
   ### REPLIES
   /replies/{replyId}:
@@ -891,6 +1002,117 @@ paths:
                   $ref: '#/components/examples/error403'
       security:
       - ApiKeyAuth: []
+  /reply/{id}/vote:
+      post:
+        tags:
+          - replies
+        summary: Vote a Reply
+        description: Vote a Reply
+        operationId: voteReply
+        parameters:
+        - name: id
+          in: path
+          description: ID of Reply to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+        responses:
+          201:
+            description: Vote done
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Reply'
+          401:
+            description: 'Error: Unauthorized'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error401'
+          404:
+            description: 'Error: Not Found'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error404Post'
+          409:
+            description: 'Error: Conflict'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error409Vote'
+        security:
+          - ApiKeyAuth: []
+      delete:
+        tags:
+          - replies
+          - votes
+        summary: Unvote a Reply
+        description: Unvote a Reply
+        operationId: unvoteReply
+        parameters:
+        - name: id
+          in: path
+          description: ID of Reply to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+        responses:
+          204:
+            description: Unvote done
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Reply'
+          401:
+            description: 'Error: Unauthorized'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error401'
+          403:
+            description: 'Error: Forbidden'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error403'
+          404:
+            description: 'Error: Not Found'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error404Post'
+          409:
+            description: 'Error: Conflict'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResult'
+                examples:
+                  errorExample:
+                    $ref: '#/components/examples/error409Unvote'
+        security:
+          - ApiKeyAuth: []
 
 ### COMPONENTS
 components:
