@@ -173,27 +173,6 @@ class Api::V1::PostsController < ApplicationController
         end
     end
 
-
-
-  # GET /posts/date or /posts/date.json
-  def date
-    @posts = Post.all
-    respond_to do |format|
-    format.json { render json: @posts.order(:created_at) , status: 200 }
-    end
-  end
-  
-  # GET /posts/points or /posts/date.json
-  def points
-    @posts = Post.all
-    respond_to do |format|
-    format.json { render json: @posts.order(:points) , status: 200}
-    end
-  end
-
-
-
-
     private
     def post_params
       params.require(:post).permit(:title, :url, :text)
