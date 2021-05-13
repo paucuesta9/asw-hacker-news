@@ -168,6 +168,10 @@ class Api::V1::CommentsController < ApplicationController
                       @votes.each do |v|
                         v.destroy
                       end
+                      @replies = Reply.where(parent_type: "Comment", parent_id: @comment.id)
+                      @replies.each do |r|
+                        r.destroy
+                      end
                       @comment.destroy
                       respond_to do |format|
                           format.json { head :no_content, status: 204 }

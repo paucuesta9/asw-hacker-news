@@ -1081,7 +1081,7 @@ paths:
                   $ref: '#/components/examples/error403'
       security:
       - ApiKeyAuth: []
-  /reply/{replyId}/vote:
+  /replies/{replyId}/vote:
       post:
         tags:
           - votes

@@ -9,13 +9,13 @@ class Api::V1::RepliesController < ApplicationController
             format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
           end
         else
-          @replies = Reply.find_by(id: params[:id])
+          @replies = Reply.find_by(id: params[:replyId])
           if(@replies.nil?)
             respond_to do |format|
               format.json { render json: {status: 404, error: 'Not found', message: "No Reply with that ID"}, status: 404 }
             end
           else
-            @vote = VoteReply.find_by(reply_id: params[:id], user_id: @user.id)
+            @vote = VoteReply.find_by(reply_id: params[:replyId], user_id: @user.id)
             if(!@vote.nil?)
               respond_to do |format|
                 format.json { render json: {status: 409, error: 'Conflict', message: "Vote to the same Contribution already created"}, status: 409 }
@@ -25,7 +25,7 @@ class Api::V1::RepliesController < ApplicationController
               @replies.votes += 1
               @replies.save
               respond_to do |format|
-                  format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@reply.id), status: 201}
+                  format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@replies.id), status: 201}
               end
             end
           end
@@ -45,13 +45,13 @@ class Api::V1::RepliesController < ApplicationController
             format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
         end
         else
-          @replies = Reply.find_by(id: params[:id])
+          @replies = Reply.find_by(id: params[:replyId])
           if(@replies.nil?)
             respond_to do |format|
               format.json { render json: {status: 404, error: 'Not found', message: "No Reply with that ID"}, status: 404 }
             end
           else
-            @vote = VoteReply.find_by(reply_id: params[:id], user_id: @user.id)
+            @vote = VoteReply.find_by(reply_id: params[:replyId], user_id: @user.id)
             if(@vote.nil?)
               respond_to do |format|
                 format.json { render json: {status: 409, error: 'Conflict', message: "No Vote to the Contribution exists"}, status: 409 }
@@ -61,7 +61,7 @@ class Api::V1::RepliesController < ApplicationController
               @replies.votes -= 1
               @replies.save
               respond_to do |format|
-                  format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@reply.id), status: 204}
+                  format.json { render json: Reply.select(:id, :text, :votes, :user_id, :parent_id, :parent_type, :created_at).find(@replies.id), status: 204}
               end
             end
           end
@@ -94,7 +94,7 @@ class Api::V1::RepliesController < ApplicationController
                 format.json { render json: {status: 403, error: 'Forbidden', message: "Your api key (X-API-KEY Header) is not valid"}, status: 403 }
               end
             else
-              if reply_params[:parent_id].nil?
+              if reply_params[:parent_id].blank?
                 respond_to do |format|
                   format.json { render json: {status: 400, error: 'Bad Request', message: "Parent id empty"}, status: 400 }
                 end
@@ -183,6 +183,10 @@ class Api::V1::RepliesController < ApplicationController
                     @votes = VoteReply.where(reply_id: @reply.id)
                     @votes.each do |v|
                       v.destroy
+                    end
+                    @replies = Reply.where(parent_type: "Reply", parent_id: @reply.id)
+                    @replies.each do |r|
+                      r.destroy
                     end
                     @reply.destroy
                     respond_to do |format|
