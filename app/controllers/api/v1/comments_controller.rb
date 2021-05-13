@@ -51,7 +51,7 @@ class Api::V1::CommentsController < ApplicationController
                 format.json { render json: {status: 404, error: 'Not found', message: "No Comment with that ID"}, status: 404 }
               end
           else
-            @vote = VoteComment.find_by(reply_id: params[:id], user_id: @user.id)
+            @vote = VoteComment.find_by(comment_id: params[:id], user_id: @user.id)
             if(@vote.nil?)
               respond_to do |format|
                 format.json { render json: {status: 409, error: 'Conflict', message: "No Vote to the Contribution exists"}, status: 409 }
