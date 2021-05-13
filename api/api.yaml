@@ -887,7 +887,6 @@ paths:
             schema:
               required:
               - text
-              - user_id
               - parent_id
               - parent_type
               type: object
@@ -896,10 +895,6 @@ paths:
                   type: string
                   minLength: 4
                   example: 'My text'
-                user_id:
-                  type: integer
-                  format: int64
-                  example: 2
                 parent_id:
                   type: integer
                   format: int64
@@ -990,6 +985,20 @@ paths:
           schema:
             type: integer
             format: int64
+      requestBody:
+        description: Provide the info of a Reply to create
+        content:
+          application/json:
+            schema:
+              required:
+              - text
+              type: object
+              properties:
+                text:
+                  type: string
+                  minLength: 4
+                  example: 'My text'
+        required: true
       responses:
         200:
           description: Reply updated
@@ -1024,15 +1033,6 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error403'
-        409:
-          description: 'Error: Conflict'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorExample:
-                  $ref: '#/components/examples/error409'
       security:
         - ApiKeyAuth: []
     delete:
@@ -1081,7 +1081,7 @@ paths:
                   $ref: '#/components/examples/error403'
       security:
       - ApiKeyAuth: []
-  /reply/{id}/vote:
+  /reply/{replyId}/vote:
       post:
         tags:
           - votes
@@ -1090,9 +1090,9 @@ paths:
         description: Vote a Reply
         operationId: voteReply
         parameters:
-        - name: id
+        - name: replyId
           in: path
-          description: ID of Reply to return
+          description: ID of Reply to vote
           required: true
           schema:
             type: integer
@@ -1150,9 +1150,9 @@ paths:
         description: Unvote a Reply
         operationId: unvoteReply
         parameters:
-        - name: id
+        - name: replyId
           in: path
-          description: ID of Reply to return
+          description: ID of Reply to unvote
           required: true
           schema:
             type: integer

@@ -21,8 +21,12 @@ Rails.application.routes.draw do
     delete '/comments/:commentId/vote' => 'api/v1/comments#unvote'
 
     #REPLIES
-    post '/replies/:id/vote' => 'api/v1/replies#upvote'
-    delete '/replies/:id/vote' => 'api/v1/replies#unvote'
+    post '/replies' => 'api/v1/replies#create'
+    get '/replies/:replyId' => 'api/v1/replies#show'
+    put '/replies/:replyId' => 'api/v1/replies#update'
+    delete '/replies/:replyId' => 'api/v1/replies#destroy'
+    post '/replies/:replyId/vote' => 'api/v1/replies#upvote'
+    delete '/replies/:replyId/vote' => 'api/v1/replies#unvote'
 
     #USERS
     get '/users/:id' => 'api/v1/users#show'
