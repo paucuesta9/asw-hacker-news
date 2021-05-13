@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     put '/posts/:postId' => 'api/v1/posts#update'
     delete '/posts/:postId' => 'api/v1/posts#destroy'
     post '/posts' => 'api/v1/posts#create'
+    get '/users/:id' => 'api/v1/users#show'
+    put '/users/:id' => 'api/v1/users#update'
+    post '/users' => 'api/v1/users#create'
   end
 
   resources :replies

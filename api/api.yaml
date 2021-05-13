@@ -439,6 +439,61 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error404User'
+    post:
+      tags:
+        - users
+      summary: create a new user
+      description: Create a new user
+      operationId: createUser
+      responses:
+        200:
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        409:
+          description: 'Error: Conflict'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409User'
+    put:
+      tags:
+        - users
+      summary: Update a user
+      description: Update a user
+      operationId: updateUser
+      responses:
+        200:
+          description: User Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+        404:
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorUser:
+                  $ref: '#/components/examples/error404User'
+      security:
+        - ApiKeyAuth: []
 
   ### POSTS/DATE 
   /posts/date:
@@ -1019,6 +1074,11 @@ components:
         status: 409
         error: "Conflict"
         message: "Post with the same url already created"
+    error409User:
+      value:
+        status: 409
+        error: "Conflict"
+        message: "User with the same uid already created"
     error409Vote:
       value:
         status: 409
