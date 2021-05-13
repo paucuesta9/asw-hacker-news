@@ -426,15 +426,6 @@ paths:
               examples:
                 errorExample:
                   $ref: '#/components/examples/error403'
-        404:
-          description: 'Error: Not Found'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResult'
-              examples:
-                errorUser:
-                  $ref: '#/components/examples/error404User'
       security:
           - ApiKeyAuth: []    
      

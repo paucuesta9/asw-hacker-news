@@ -2,13 +2,14 @@ Rails.application.routes.draw do
 
   scope "/api/v1" ,defaults: {format: 'json'} do
     #POSTS
+    get '/posts/upvoted' => 'api/v1/posts#upvoted'
     get '/posts' => 'api/v1/posts#index'
     post '/posts' => 'api/v1/posts#create'
     get '/posts/:postId' => 'api/v1/posts#show'
     put '/posts/:postId' => 'api/v1/posts#update'
     delete '/posts/:postId' => 'api/v1/posts#destroy'
-    post '/posts/:id/vote' => 'api/v1/posts#upvote'
-    delete '/posts/:id/vote' => 'api/v1/posts#unvote'
+    post '/posts/:postId/vote' => 'api/v1/posts#upvote'
+    delete '/posts/:postId/vote' => 'api/v1/posts#unvote'
 
     #COMMENTS
     post '/comment/:id/vote' => 'api/v1/comments#upvote'
