@@ -495,43 +495,6 @@ paths:
       security:
         - ApiKeyAuth: []
 
-  ### POSTS/DATE 
-  /posts/date:
-    get:
-      tags:
-      - posts
-      summary: Get all posts ordered by date
-      description: Return all posts ordered by date of creation
-      operationId: getPostsByDate
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Post'
-      security:
-      - ApiKeyAuth: []
-
-
-  ### POSTS/POINTS
-  /posts/points:
-    get:
-      tags:
-      - posts
-      summary: Get all posts ordered by points
-      description: Return all posts ordered by points
-      operationId: getPostsByPoints
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Post'
-      security:
-      - ApiKeyAuth: []
-
   ### COMMENTS
   /comments:
     post:
@@ -756,6 +719,7 @@ paths:
   /comment/{id}/vote:
     post:
       tags:
+        - votes
         - comments
       summary: Vote a Comment
       description: Vote a Comment
@@ -1005,6 +969,7 @@ paths:
   /reply/{id}/vote:
       post:
         tags:
+          - votes
           - replies
         summary: Vote a Reply
         description: Vote a Reply
