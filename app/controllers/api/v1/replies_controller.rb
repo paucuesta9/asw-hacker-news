@@ -32,7 +32,7 @@ class Api::V1::RepliesController < ApplicationController
           format.json { render json: {status: 404, error: 'Not found', message: "Reply id not exists"}, status: 404 }
         end
       else
-        @reply_ids = Reply.select(:reply_id).where(parent_id: params[:parent_id], parent_type: "Reply")
+        @reply_ids = Reply.select(:id).where(parent_id: params[:parent_id], parent_type: "Reply")
         if(@reply_ids.nil?)
           respond_to do |format|
             format.json { render json: {status: 404, error: 'Not found', message: "No Replies from a Reply with that ID"}, status: 404 }
