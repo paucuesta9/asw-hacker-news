@@ -27,6 +27,12 @@ paths:
         description: Type of ordering
         schema:
           type: string
+      - name: reply_id
+        in: query
+        description: ID of the reply
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: successful operation
@@ -52,6 +58,8 @@ paths:
               examples:
                 errorUser:
                   $ref: '#/components/examples/error404User'
+                errorReply:
+                  $ref: '#/components/examples/error404Reply'
                   
     post:
       tags:
