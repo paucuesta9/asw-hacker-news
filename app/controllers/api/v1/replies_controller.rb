@@ -66,7 +66,7 @@ class Api::V1::RepliesController < ApplicationController
                 format.json { render json: {status: 409, error: 'Conflict', message: "Vote to the same Contribution already created"}, status: 409 }
               end
             else
-              VoteReply.create(user_id: session[:user_id], reply_id: @replies.id)
+              VoteReply.create(user_id: @user.id, reply_id: @replies.id)
               @replies.votes += 1
               @replies.save
               respond_to do |format|
@@ -102,7 +102,7 @@ class Api::V1::RepliesController < ApplicationController
                 format.json { render json: {status: 409, error: 'Conflict', message: "No Vote to the Contribution exists"}, status: 409 }
               end
             else
-              VoteReply.find_by(user_id: session[:user_id], reply_id: @replies.id).destroy
+              VoteReply.find_by(user_id: @user.id, reply_id: @replies.id).destroy
               @replies.votes -= 1
               @replies.save
               respond_to do |format|
