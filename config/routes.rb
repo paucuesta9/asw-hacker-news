@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
     #USERS
     get '/users/:id' => 'api/v1/users#show'
-    put '/users/:id' => 'api/v1/users#update'
+    put '/users' => 'api/v1/users#update'
     post '/users' => 'api/v1/users#create'
   end
 
