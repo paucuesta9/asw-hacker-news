@@ -39,7 +39,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostList'
+                oneOf:
+                  - $ref: '#/components/schemas/PostList'
+                  - $ref: '#/components/schemas/Post'
         400:
           description: 'Error: Bad Request'
           content:

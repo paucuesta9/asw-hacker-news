@@ -26,6 +26,18 @@ class Api::V1::PostsController < ApplicationController
                     format.json { render json: {status: 400, error: 'Bad Request', message: "Ordering not valid"}, status: 400}
                 end
             end
+        elsif (!params[:reply_id].nil?)
+            @reply = Reply.find_by(:id => params[:reply_id])
+            if (@reply.nil?)
+                respond_to do |format|
+                    format.json { render json: {status: 404, error: 'Not found', message: "No Reply with that ID"}, status: 404 }
+                end
+            else
+                respond_to do |format|
+                    @post = @reply.getPost
+                    format.json { render json: @post, status: 200}
+                end
+            end
         else
             respond_to do |format|
                 @posts = @posts.order("created_at DESC")
